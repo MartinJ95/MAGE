@@ -1,0 +1,6 @@
+﻿  MeshGL.cpp
+  main.cpp
+  Vector2f.cpp
+c:\users\t7099851\source\mage-level0\mage_engine\mage_engine\src\vector2f.cpp(22): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
+  MAGE_Engine.vcxproj -> C:\Users\t7099851\source\MAGE-Level0\MAGE_Engine\Debug\MAGE_Engine.exe
