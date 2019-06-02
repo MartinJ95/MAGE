@@ -1,6 +1,5 @@
-﻿  MeshGL.cpp
-  main.cpp
-  Vector2f.cpp
-c:\users\t7099851\source\mage-level0\mage_engine\mage_engine\src\vector2f.cpp(22): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-  Generating Code...
-  MAGE_Engine.vcxproj -> C:\Users\t7099851\source\MAGE-Level0\MAGE_Engine\Debug\MAGE_Engine.exe
+﻿  test.cpp
+c:\users\t7099851\source\github\mage-level0\mage_engine\mage_engine\src\test.cpp(3): error C2143: syntax error: missing ';' before '<<'
+c:\users\t7099851\source\github\mage-level0\mage_engine\mage_engine\src\test.cpp(3): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\t7099851\source\github\mage-level0\mage_engine\mage_engine\src\test.cpp(3): error C2371: 'std::cout': redefinition; different basic types
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.15.26726\include\iostream(29): note: see declaration of 'std::cout'

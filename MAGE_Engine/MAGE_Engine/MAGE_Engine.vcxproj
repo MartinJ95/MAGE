@@ -124,15 +124,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Maths.cpp" />
     <ClCompile Include="src\MeshGL.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Visualization.cpp" />
     <ClCompile Include="src\Vector2f.cpp" />
+    <ClCompile Include="src\Vector2i.cpp" />
+    <ClCompile Include="src\Vector3f.cpp" />
+    <ClCompile Include="src\Vector3i.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Maths.h" />
     <ClInclude Include="src\MeshGL.h" />
     <ClInclude Include="src\Visualization.h" />
     <ClInclude Include="src\Vector2f.h" />
+    <ClInclude Include="src\Vector2i.h" />
+    <ClInclude Include="src\Vector3f.h" />
+    <ClInclude Include="src\Vector3i.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

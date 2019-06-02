@@ -43,6 +43,9 @@
 //}
 
 #include "Visualization.h"
+#include "Maths.h"
+#include <iostream>
+
 
 
 int main(void)
