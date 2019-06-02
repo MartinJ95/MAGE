@@ -36,6 +36,15 @@ void Vector2f::normaliseInPlace()
 	return;
 }
 
+float Vector2f::dotProduct(const Vector2f& other) const
+{
+	return x * other.x + y * other.y;
+}
+
+float Vector2f::angleBetween(const Vector2f & other) const
+{
+	return (acos(dotProduct(other) / (length() * other.length())) * 180 / M_PI);
+}
 
 Vector2f::~Vector2f()
 {

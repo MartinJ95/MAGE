@@ -1,5 +1,7 @@
 #pragma once
+#define _USE_MATH_DEFINES
 #include <math.h>
+
 
 class Vector3f
 {
@@ -11,6 +13,9 @@ public:
 	float length() const;
 	Vector3f normalised() const;
 	void normaliseInPlace();
+	float dotProduct(const Vector3f& other) const;
+	float angleBetween(const Vector3f& other) const;
+	Vector3f crossProduct(const Vector3f& other) const;
 
 	Vector3f operator+(const Vector3f& other) const
 	{

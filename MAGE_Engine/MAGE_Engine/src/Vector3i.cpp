@@ -42,7 +42,20 @@ void Vector3i::normaliseInPlace()
 }
 
 
+float Vector3i::dotProduct(const Vector3i& other) const
+{
+	return x * other.x + y * other.y + z * other.z;
+}
 
+float Vector3i::angleBetween(const Vector3i & other) const
+{
+	return (acos(dotProduct(other) / (length() * other.length())) * 180 / M_PI);
+}
+
+Vector3i Vector3i::crossProduct(const Vector3i & other) const
+{
+	return Vector3i(y * other.z - z * other.y, z * other.x - x * other.z, x * other.y - y * other.x);
+}
 
 Vector3i::~Vector3i()
 {

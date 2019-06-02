@@ -1,4 +1,5 @@
 #pragma once
+#define _USE_MATH_DEFINES
 #include <math.h>
 
 class Vector2i
@@ -11,6 +12,8 @@ public:
 	float length() const;
 	Vector2i normalised() const;
 	void normaliseInPlace();
+	float dotProduct(const Vector2i& other) const;
+	float angleBetween(const Vector2i& other) const;
 
 	Vector2i operator+(const Vector2i& other) const
 	{
