@@ -11,6 +11,7 @@ namespace Maths
 #include "Vector3f.h"
 #include "Vector2i.h"
 #include "Vector3i.h"
+	class Matrix4f;
+#include "Matrix4f.h"
 
-	float dotProduct();
 }

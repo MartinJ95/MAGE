@@ -124,6 +124,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Matrix4f.cpp" />
     <ClCompile Include="src\Maths.cpp" />
     <ClCompile Include="src\MeshGL.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -134,6 +135,7 @@
     <ClCompile Include="src\Vector3i.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Matrix4f.h" />
     <ClInclude Include="src\Maths.h" />
     <ClInclude Include="src\MeshGL.h" />
     <ClInclude Include="src\Visualization.h" />
