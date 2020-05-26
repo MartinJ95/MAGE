@@ -1,7 +1,8 @@
 #pragma once
 #include <map>
-#include <GLFW/glfw3.h>
+#include <glfw3.h>
 #include <string>
+#include "MeshGL.h"
 
 class Visualization
 {
@@ -16,6 +17,6 @@ private:
 	GLFWwindow* m_window;
 	int m_screenWidth, m_screenHeight;
 	std::string m_windowName;
-	//std::map<>
+	std::map <std::string, MeshGL> meshes;
 };
 

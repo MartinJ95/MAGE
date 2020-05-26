@@ -1,5 +1,32 @@
-﻿  test.cpp
-c:\users\t7099851\source\github\mage-level0\mage_engine\mage_engine\src\test.cpp(3): error C2143: syntax error: missing ';' before '<<'
-c:\users\t7099851\source\github\mage-level0\mage_engine\mage_engine\src\test.cpp(3): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-c:\users\t7099851\source\github\mage-level0\mage_engine\mage_engine\src\test.cpp(3): error C2371: 'std::cout': redefinition; different basic types
-  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.15.26726\include\iostream(29): note: see declaration of 'std::cout'
+﻿  Matrix4f.cpp
+  Maths.cpp
+  MeshGL.cpp
+  main.cpp
+  Visualization.cpp
+  Vector2f.cpp
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\vector2f.cpp(22): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\vector2f.cpp(46): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  Vector2i.cpp
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\vector2i.cpp(22): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\vector2i.cpp(28): warning C4244: 'argument': conversion from 'float' to 'const int', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\vector2i.cpp(34): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\vector2i.cpp(35): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\vector2i.cpp(41): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\vector2i.cpp(46): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  Vector3f.cpp
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\vector3f.cpp(26): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\vector3f.cpp(51): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  Vector3i.cpp
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\vector3i.cpp(4): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\vector3i.cpp(5): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\vector3i.cpp(6): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\vector3i.cpp(26): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\vector3i.cpp(32): warning C4244: 'argument': conversion from 'float' to 'const int', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\vector3i.cpp(38): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\vector3i.cpp(39): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\vector3i.cpp(40): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\vector3i.cpp(47): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\vector3i.cpp(52): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+  MAGE_Engine.vcxproj -> C:\Users\marti\Documents\GitHub\MAGE\MAGE_Engine\Debug\MAGE_Engine.exe
