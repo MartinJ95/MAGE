@@ -1,13 +1,23 @@
 #include "MeshGL.h"
 
-MeshGL::MeshGL()
+MeshGL::MeshGL() : 
+	m_vertices(),
+	m_indices(),
+	m_elementCount(),
+	m_VertexVBO(0),
+	m_IndexIBO(0),
+	m_MeshVAO(0)
 {
 }
 
-MeshGL::MeshGL(const std::vector<Vertex> vertices, const std::vector<unsigned int> indices)
+MeshGL::MeshGL(const std::vector<Vertex> vertices, const std::vector<unsigned int> indices) : 
+	m_vertices(vertices),
+	m_indices(indices),
+	m_elementCount(),
+	m_VertexVBO(0),
+	m_IndexIBO(0),
+	m_MeshVAO(0)
 {
-	m_vertices = vertices;
-	m_indices = indices;
 }
 
 void MeshGL::initualize()

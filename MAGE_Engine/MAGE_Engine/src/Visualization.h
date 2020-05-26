@@ -1,5 +1,5 @@
 #pragma once
-#include <map>
+#include <unordered_map>
 #include <glfw3.h>
 #include <fstream>
 #include <iostream>
@@ -21,7 +21,7 @@ private:
 	GLFWwindow* m_window;
 	int m_screenWidth, m_screenHeight;
 	std::string m_windowName;
-	std::map <std::string, MeshGL> meshes;
-	std::map <std::string, GLuint> shaderPrograms;
+	std::unordered_map <std::string, MeshGL> m_meshes;
+	std::unordered_map <std::string, GLuint> m_shaderPrograms;
 };
 

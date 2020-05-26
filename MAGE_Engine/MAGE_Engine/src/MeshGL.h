@@ -32,12 +32,11 @@ public:
 	void initualize();
 	void render(const GLuint shader);
 	~MeshGL();
-	std::string texture;
-private:
 	std::vector<Vertex> m_vertices;
 	std::vector<unsigned int> m_indices;
 	unsigned int m_elementCount;
-	GLuint m_VertexVBO{ 0 };
-	GLuint m_IndexIBO{ 0 };
-	GLuint m_MeshVAO{ 0 };
+private:
+	GLuint m_VertexVBO;
+	GLuint m_IndexIBO;
+	GLuint m_MeshVAO;
 };

@@ -1,9 +1,12 @@
 #include "Visualization.h"
 
-Visualization::Visualization(int screenWidth, int screenHeight, std::string windowName)
+Visualization::Visualization(const int screenWidth, const int screenHeight, const std::string windowName)
 	: m_screenWidth(screenWidth),
 	m_screenHeight(screenHeight),
-	m_windowName(windowName)
+	m_windowName(windowName),
+	m_window(nullptr),
+	m_meshes(),
+	m_shaderPrograms()
 {
 	
 }
@@ -54,7 +57,7 @@ void Visualization::generateShader(std::string vertexShader, std::string fragmen
 	glDeleteShader(vertex);
 	glDeleteShader(fragment);
 
-	shaderPrograms.emplace(shaderName, shaderProgramID);
+	m_shaderPrograms.emplace(shaderName, shaderProgramID);
 }
 
 bool Visualization::isOpen() const
@@ -89,7 +92,7 @@ void Visualization::display()
 
 Visualization::~Visualization()
 {
-	for (auto x : shaderPrograms)
+	for (auto x : m_shaderPrograms)
 	{
 		glDeleteProgram(x.second);
 	}
