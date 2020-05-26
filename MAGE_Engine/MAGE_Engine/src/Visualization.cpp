@@ -30,6 +30,33 @@ bool Visualization::initialise()
 	return true;
 }
 
+void Visualization::generateShader(std::string vertexShader, std::string fragmentShader, std::string shaderName)
+{
+	GLuint shaderProgramID;
+
+	int success;
+	char infoLog[512];
+
+	GLuint vertex = compileShader("VERTEX", vertexShader);
+	GLuint fragment = compileShader("FRAGMENT", fragmentShader);
+
+	shaderProgramID = glCreateProgram();
+	glAttachShader(shaderProgramID, vertex);
+	glAttachShader(shaderProgramID, fragment);
+	glLinkProgram(shaderProgramID);
+	glGetProgramiv(shaderProgramID, GL_LINK_STATUS, &success);
+	if (!success)
+	{
+		glGetProgramInfoLog(shaderProgramID, 512, NULL, infoLog);
+		std::cout << "ERROR::SHADER::PROGRAM::LINKING::FAILED\n" << infoLog << std::endl;
+	}
+
+	glDeleteShader(vertex);
+	glDeleteShader(fragment);
+
+	shaderPrograms.emplace(shaderName, shaderProgramID);
+}
+
 bool Visualization::isOpen() const
 {
 	if (!glfwWindowShouldClose(m_window))
@@ -63,4 +90,33 @@ void Visualization::display()
 Visualization::~Visualization()
 {
 	glfwTerminate();
+}
+
+GLuint Visualization::compileShader(std::string shaderType, std::string shaderFileName)
+{
+
+	std::string shaderCode;
+	std::ifstream shaderFile;
+	std::stringstream shaderStream;
+
+	shaderFile.open(shaderFileName);
+	shaderStream << shaderFile.rdbuf();
+	shaderCode = shaderStream.str();
+
+	const char* cShaderCode = shaderCode.c_str();
+
+	unsigned int shader;
+	int success;
+	char infoLog[512];
+
+	glCreateShader(shader);
+	glShaderSource(shader, 1, &cShaderCode, NULL);
+	glCompileShader(shader);
+	glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
+	if (!success)
+	{
+		glGetShaderInfoLog(shader, 512, NULL, infoLog);
+		std::cout << "ERROR::SHADER::" + shaderType + "::COMPILATION_FAILED\n" << infoLog << std::endl;
+	}
+	return shader;
 }
