@@ -9,15 +9,15 @@
 class Visualization
 {
 public:
-	Visualization(int screenWidth, int screenHeight, std::string windowName);
+	Visualization(const int screenWidth, const int screenHeight, const std::string windowName);
 	bool initialise();
-	void generateShader(std::string vertexShader, std::string fragmentShader, std::string shaderName);
+	void generateShader(const std::string vertexShader, const std::string fragmentShader, const std::string shaderName);
 	bool isOpen() const;
 	void clear();
 	void display();
 	~Visualization();
 private:
-	GLuint compileShader(std::string shaderType, std::string shaderFileName);
+	GLuint compileShader(const std::string &shaderType, const std::string &shaderFileName);
 	GLFWwindow* m_window;
 	int m_screenWidth, m_screenHeight;
 	std::string m_windowName;

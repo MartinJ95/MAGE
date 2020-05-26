@@ -96,7 +96,7 @@ Visualization::~Visualization()
 	glfwTerminate();
 }
 
-GLuint Visualization::compileShader(std::string shaderType, std::string shaderFileName)
+GLuint Visualization::compileShader(const std::string &shaderType, const std::string &shaderFileName)
 {
 
 	std::string shaderCode;

@@ -4,7 +4,7 @@ MeshGL::MeshGL()
 {
 }
 
-MeshGL::MeshGL(std::vector<Vertex> vertices, std::vector<unsigned int> indices)
+MeshGL::MeshGL(const std::vector<Vertex> vertices, const std::vector<unsigned int> indices)
 {
 	m_vertices = vertices;
 	m_indices = indices;
@@ -38,7 +38,7 @@ void MeshGL::initualize()
 	glBindVertexArray(0);
 }
 
-void MeshGL::render(GLuint shader)
+void MeshGL::render(const GLuint shader)
 {
 	glBindVertexArray(m_MeshVAO);
 	glDrawElements(GL_TRIANGLES, m_elementCount, GL_UNSIGNED_INT, 0);

@@ -28,9 +28,9 @@ class MeshGL
 {
 public:
 	MeshGL();
-	MeshGL(std::vector<Vertex> vertices, std::vector<unsigned int> indices);
+	MeshGL(const std::vector<Vertex> vertices, const std::vector<unsigned int> indices);
 	void initualize();
-	void render(GLuint shader);
+	void render(const GLuint shader);
 	~MeshGL();
 	std::string texture;
 private:
