@@ -89,6 +89,10 @@ void Visualization::display()
 
 Visualization::~Visualization()
 {
+	for (auto x : shaderPrograms)
+	{
+		glDeleteProgram(x.second);
+	}
 	glfwTerminate();
 }
 
