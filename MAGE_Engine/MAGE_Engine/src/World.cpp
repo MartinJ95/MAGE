@@ -1,7 +1,7 @@
 #include "World.h"
 
 World::World(const int screenWidth, const int screenHeight, const std::string &windowName) :
-	m_viz(Visualization(screenWidth, screenHeight, windowName))
+	m_viz(screenWidth, screenHeight, windowName)
 {
 
 }

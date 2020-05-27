@@ -1,6 +1,6 @@
 #include "Visualization.h"
 
-Visualization::Visualization(const int &screenWidth, const int &screenHeight, const std::string &windowName) :
+Visualization::Visualization(const int screenWidth, const int screenHeight, const std::string &windowName) :
 	m_window(nullptr),
 	m_screenWidth(screenWidth),
 	m_screenHeight(screenHeight),

@@ -10,7 +10,7 @@
 class Visualization
 {
 public:
-	Visualization(const int &screenWidth, const int &screenHeight, const std::string &windowName);
+	Visualization(const int screenWidth, const int screenHeight, const std::string &windowName);
 	bool initialise();
 	void generateShader(const std::string &vertexShader, const std::string &fragmentShader, const std::string &shaderName);
 	bool isOpen() const;
