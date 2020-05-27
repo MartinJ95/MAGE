@@ -1,10 +1,10 @@
 #include "Visualization.h"
 
-Visualization::Visualization(const int &screenWidth, const int &screenHeight, const std::string &windowName)
-	: m_screenWidth(screenWidth),
+Visualization::Visualization(const int &screenWidth, const int &screenHeight, const std::string &windowName) :
+	m_window(nullptr),
+	m_screenWidth(screenWidth),
 	m_screenHeight(screenHeight),
 	m_windowName(windowName),
-	m_window(nullptr),
 	m_meshes(),
 	m_shaderPrograms()
 {
