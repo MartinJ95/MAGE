@@ -23,7 +23,7 @@ bool Visualization::initialise()
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	/* Create a windowed mode window and its OpenGL context */
 	m_window = glfwCreateWindow(m_screenWidth, m_screenHeight, m_windowName.c_str(), NULL, NULL);
-	if (!m_window)
+	if (m_window == NULL)
 	{
 		glfwTerminate();
 		{
@@ -33,7 +33,12 @@ bool Visualization::initialise()
 
 	/* Make the window's context current */
 	glfwMakeContextCurrent(m_window);
-	glViewport(0, 0, m_screenWidth, m_screenHeight);
+	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+	{
+		std::cout << "GLAD failed to initualize" << std::endl;
+		return false;
+	}
+	//glViewport(0, 0, m_screenWidth, m_screenHeight);
 	return true;
 }
 
