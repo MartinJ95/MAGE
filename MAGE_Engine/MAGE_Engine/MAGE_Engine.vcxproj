@@ -142,6 +142,7 @@
     <ClCompile Include="src\Vector2i.cpp" />
     <ClCompile Include="src\Vector3f.cpp" />
     <ClCompile Include="src\Vector3i.cpp" />
+    <ClCompile Include="src\World.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Matrix4f.h" />
@@ -152,6 +153,7 @@
     <ClInclude Include="src\Vector2i.h" />
     <ClInclude Include="src\Vector3f.h" />
     <ClInclude Include="src\Vector3i.h" />
+    <ClInclude Include="src\World.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

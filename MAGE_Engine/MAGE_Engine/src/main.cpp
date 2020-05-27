@@ -42,7 +42,7 @@
 //	return 0;
 //}
 
-#include "Visualization.h"
+#include "World.h"
 #include "Maths.h"
 #include <iostream>
 
@@ -50,22 +50,13 @@
 
 int main(void)
 {
-	Visualization viz(640, 480, "MAGE");
+	World world(640, 480, "MAGE");
 
-	if (!viz.initialise())
+	if (!world.Initualize())
 	{
 		return -1;
 	}
-	while (viz.isOpen())
-	{
-		viz.clear();
-
-
-		viz.display();
-
-
-		glfwPollEvents();
-	}
+	world.Run();
 
 	return 0;
 }
