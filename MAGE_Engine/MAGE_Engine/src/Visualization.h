@@ -1,5 +1,6 @@
 #pragma once
 #include <unordered_map>
+#include <glad/glad.h>
 #include <glfw3.h>
 #include <fstream>
 #include <iostream>
@@ -9,9 +10,9 @@
 class Visualization
 {
 public:
-	Visualization(const int screenWidth, const int screenHeight, const std::string windowName);
+	Visualization(const int &screenWidth, const int &screenHeight, const std::string &windowName);
 	bool initialise();
-	void generateShader(const std::string vertexShader, const std::string fragmentShader, const std::string shaderName);
+	void generateShader(const std::string &vertexShader, const std::string &fragmentShader, const std::string &shaderName);
 	bool isOpen() const;
 	void clear();
 	void display();

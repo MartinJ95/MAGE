@@ -1,6 +1,6 @@
 #include "Visualization.h"
 
-Visualization::Visualization(const int screenWidth, const int screenHeight, const std::string windowName)
+Visualization::Visualization(const int &screenWidth, const int &screenHeight, const std::string &windowName)
 	: m_screenWidth(screenWidth),
 	m_screenHeight(screenHeight),
 	m_windowName(windowName),
@@ -18,6 +18,9 @@ bool Visualization::initialise()
 	{
 		return false;
 	}
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	/* Create a windowed mode window and its OpenGL context */
 	m_window = glfwCreateWindow(m_screenWidth, m_screenHeight, m_windowName.c_str(), NULL, NULL);
 	if (!m_window)
@@ -30,10 +33,11 @@ bool Visualization::initialise()
 
 	/* Make the window's context current */
 	glfwMakeContextCurrent(m_window);
+	glViewport(0, 0, m_screenWidth, m_screenHeight);
 	return true;
 }
 
-void Visualization::generateShader(std::string vertexShader, std::string fragmentShader, std::string shaderName)
+void Visualization::generateShader(const std::string &vertexShader, const std::string &fragmentShader, const std::string &shaderName)
 {
 	GLuint shaderProgramID;
 
@@ -112,7 +116,7 @@ GLuint Visualization::compileShader(const std::string &shaderType, const std::st
 
 	const char* cShaderCode = shaderCode.c_str();
 
-	unsigned int shader;
+	GLuint shader{ 0 };
 	int success;
 	char infoLog[512];
 

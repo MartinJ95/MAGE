@@ -1,7 +1,7 @@
 #pragma once
-#include "Vector3f.h"
 #define _USE_MATH_DEFINES
 #include <math.h>
+#include "Vector3f.h"
 
 class Matrix4f
 {

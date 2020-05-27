@@ -1,15 +1,15 @@
 #pragma once
 #include <iostream>
 #include <vector>
-#include <glad.h>
+#include <glad/glad.h>
 #include <glfw3.h>
 #include "Maths.h"
 
 struct Vertex
 {
-	Maths::Vector3f position;
-	Maths::Vector3f normal;
-	Maths::Vector2f texCoords;
+	float position[3];
+	float normal[3];
+	float texCoords[2];
 };
 
 enum VertexAttributes
