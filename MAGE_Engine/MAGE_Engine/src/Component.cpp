@@ -1,8 +1,10 @@
 #include "Component.h"
 #include "World.h"
+#include "Entity.h"
 
 
-Component::Component()
+Component::Component(Entity &entity) :
+	m_entity(entity)
 {
 }
 
@@ -10,7 +12,7 @@ void Component::Update(World &world)
 {
 }
 
-void Component::FixedUpdate()
+void Component::FixedUpdate(World &world)
 {
 }
 

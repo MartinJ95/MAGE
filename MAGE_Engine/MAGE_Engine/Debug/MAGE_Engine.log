@@ -1,2 +1,6 @@
-﻿  main.cpp
+﻿  Component.cpp
+  Entity.cpp
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\entity.cpp(23): warning C4018: '<': signed/unsigned mismatch
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\entity.cpp(31): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
   MAGE_Engine.vcxproj -> C:\Users\marti\Documents\GitHub\MAGE\MAGE_Engine\Debug\MAGE_Engine.exe
