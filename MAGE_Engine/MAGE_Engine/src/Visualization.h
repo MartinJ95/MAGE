@@ -6,6 +6,10 @@
 #include <iostream>
 #include <sstream>
 #include "MeshGL.h"
+#include <glm/mat4x4.hpp>
+#include <glm/vec3.hpp>
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb_image.h"
 
 class Visualization
 {
@@ -16,6 +20,12 @@ public:
 	bool isOpen() const;
 	void clear();
 	void display();
+	void generateTexture(const std::string &textureFilePath, const std::string &textureName);
+	void useShader(const std::string &shaderName);
+	void setShaderUniformFloat(const std::string &shaderName, const std::string &uniformName, const float value);
+	void setShaderUniformInt(const std::string &shaderName, const std::string &uniformName, const int value);
+	void setShaderUniformBool(const std::string &shaderName, const std::string &uniformName, const bool value);
+	void setShaderUniformMatrix4f(const std::string &shaderName, const std::string &uniformName, const glm::mat4);
 	~Visualization();
 private:
 	GLuint compileShader(const std::string &shaderType, const std::string &shaderFileName);
@@ -23,6 +33,7 @@ private:
 	int m_screenWidth, m_screenHeight;
 	std::string m_windowName;
 	std::unordered_map <std::string, MeshGL> m_meshes;
+	std::unordered_map <std::string, GLuint> m_textures;
 	std::unordered_map <std::string, GLuint> m_shaderPrograms;
 };
 

@@ -32,6 +32,9 @@ void MeshGL::initualize()
 	glEnableVertexAttribArray(vertexPosition);
 	glVertexAttribPointer(vertexPosition, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, position));
 
+	glEnableVertexAttribArray(vertexColor);
+	glVertexAttribPointer(vertexColor, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, color));
+
 	glEnableVertexAttribArray(vertexNormal);
 	glVertexAttribPointer(vertexNormal, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, normal));
 

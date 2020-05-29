@@ -7,16 +7,18 @@
 
 struct Vertex
 {
-	float position[3];
-	float normal[3];
-	float texCoords[2];
+	Maths::Vector3f position;
+	Maths::Vector3f color;
+	Maths::Vector3f normal;
+	Maths::Vector2f texCoords;
 };
 
 enum VertexAttributes
 {
 	vertexPosition = 0,
-	vertexNormal = 1,
-	vertexTexCoords = 2
+	vertexColor = 1,
+	vertexNormal = 2,
+	vertexTexCoords = 3
 };
 
 enum FragmentData
