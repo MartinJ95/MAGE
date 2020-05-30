@@ -1,4 +1,5 @@
 #include "Visualization.h"
+#include "Transform.h"
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 
@@ -90,6 +91,11 @@ void Visualization::clear()
 		return;
 	}
 	return;
+}
+
+void Visualization::render2D(std::string & meshName, std::string & TextureName, std::string & shaderName, Transform & transform)
+{
+
 }
 
 void Visualization::display()

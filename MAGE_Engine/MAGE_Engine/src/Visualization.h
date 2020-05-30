@@ -9,6 +9,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+class Transform;
 
 class Visualization
 {
@@ -18,6 +19,7 @@ public:
 	void generateShader(const std::string &vertexShader, const std::string &fragmentShader, const std::string &shaderName);
 	bool isOpen() const;
 	void clear();
+	void render2D(std::string &meshName, std::string &TextureName, std::string &shaderName, Transform &transform);
 	void display();
 	void generateTexture(const std::string &textureFilePath, const std::string &textureName);
 	void useShader(const std::string &shaderName);

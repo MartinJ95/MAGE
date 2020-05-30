@@ -132,6 +132,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Mesh.cpp" />
     <ClCompile Include="src\Entity.cpp" />
     <ClCompile Include="src\Component.cpp" />
     <ClCompile Include="src\glad.c" />
@@ -148,6 +149,7 @@
     <ClCompile Include="src\Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Mesh.h" />
     <ClInclude Include="src\Entity.h" />
     <ClInclude Include="src\Component.h" />
     <ClInclude Include="src\Matrix4f.h" />
