@@ -6,10 +6,9 @@
 #include <iostream>
 #include <sstream>
 #include "MeshGL.h"
-#include <glm/mat4x4.hpp>
-#include <glm/vec3.hpp>
-#define STB_IMAGE_IMPLEMENTATION
-#include "stb_image.h"
+#include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
 
 class Visualization
 {
@@ -25,7 +24,7 @@ public:
 	void setShaderUniformFloat(const std::string &shaderName, const std::string &uniformName, const float value);
 	void setShaderUniformInt(const std::string &shaderName, const std::string &uniformName, const int value);
 	void setShaderUniformBool(const std::string &shaderName, const std::string &uniformName, const bool value);
-	void setShaderUniformMatrix4f(const std::string &shaderName, const std::string &uniformName, const glm::mat4);
+	void setShaderUniformMatrix4f(const std::string &shaderName, const std::string &uniformName, const glm::mat4 &matrix);
 	~Visualization();
 private:
 	GLuint compileShader(const std::string &shaderType, const std::string &shaderFileName);

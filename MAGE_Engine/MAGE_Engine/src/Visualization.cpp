@@ -1,4 +1,6 @@
 #include "Visualization.h"
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb_image.h"
 
 Visualization::Visualization(const int screenWidth, const int screenHeight, const std::string &windowName) :
 	m_window(nullptr),
@@ -159,11 +161,11 @@ void Visualization::setShaderUniformBool(const std::string & shaderName, const s
 	}
 }
 
-void Visualization::setShaderUniformMatrix4f(const std::string & shaderName, const std::string & uniformName, const glm::mat4)
+void Visualization::setShaderUniformMatrix4f(const std::string & shaderName, const std::string & uniformName, const glm::mat4 &matrix)
 {
 	if (m_shaderPrograms.find(shaderName) != m_shaderPrograms.end())
 	{
-		glUniform4fv(glGetUniformLocation(m_shaderPrograms.find(shaderName)->second, uniformName.c_str()), )
+		glUniform4fv(glGetUniformLocation(m_shaderPrograms.find(shaderName)->second, uniformName.c_str()), 1, glm::value_ptr(matrix));
 	}
 }
 

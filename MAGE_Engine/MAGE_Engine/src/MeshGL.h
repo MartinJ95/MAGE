@@ -7,10 +7,10 @@
 
 struct Vertex
 {
-	Maths::Vector3f position;
-	Maths::Vector3f color;
-	Maths::Vector3f normal;
-	Maths::Vector2f texCoords;
+	Vector3f position;
+	Vector3f color;
+	Vector3f normal;
+	Vector2f texCoords;
 };
 
 enum VertexAttributes
