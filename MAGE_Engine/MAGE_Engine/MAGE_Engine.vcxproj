@@ -145,6 +145,7 @@
     <ClCompile Include="src\Vector3f.cpp" />
     <ClCompile Include="src\Vector3i.cpp" />
     <ClCompile Include="src\World.cpp" />
+    <ClCompile Include="src\Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Entity.h" />
@@ -158,6 +159,7 @@
     <ClInclude Include="src\Vector3f.h" />
     <ClInclude Include="src\Vector3i.h" />
     <ClInclude Include="src\World.h" />
+    <ClInclude Include="src\Transform.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
