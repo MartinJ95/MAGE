@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include "Component.h"
+#include "Transform.h"
 
 class World;
 
@@ -13,7 +14,7 @@ public:
 	{
 		for (int i = 0; i < m_components.size(); i++)
 		{
-			if (dynamic_cast<T>(m_components[i]) != NULL)
+			if (dynamic_cast<T*>(m_components[i]) != NULL)
 			{
 				return m_components[i];
 			}
@@ -24,8 +25,8 @@ public:
 	{
 		if (std::is_base_of<Component, T>::value == true)
 		{
-			T *newComponent = new T(&this);
-			m_components.push_back(newComponent);
+			T *newComponent = new T(*this);
+			m_components.emplace_back(newComponent);
 		}
 	}
 	void Update(World &world);

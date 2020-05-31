@@ -15,5 +15,6 @@ public:
 	~Mesh();
 	std::string m_meshName;
 	std::string m_textureName;
+	std::string m_shaderName;
 };
 

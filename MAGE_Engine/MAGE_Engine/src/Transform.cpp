@@ -21,4 +21,5 @@ void Transform::FixedUpdate(World & world)
 
 Transform::~Transform()
 {
+
 }

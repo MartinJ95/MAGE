@@ -13,7 +13,7 @@ MeshGL::MeshGL() :
 MeshGL::MeshGL(const std::vector<Vertex> vertices, const std::vector<unsigned int> indices) : 
 	m_vertices(vertices),
 	m_indices(indices),
-	m_elementCount(),
+	m_elementCount(indices.size()),
 	m_VertexVBO(0),
 	m_IndexIBO(0),
 	m_MeshVAO(0)
@@ -27,34 +27,36 @@ void MeshGL::initualize()
 	
 	glGenBuffers(1, &m_VertexVBO);
 	glBindBuffer(GL_ARRAY_BUFFER, m_VertexVBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex), &m_vertices, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * m_vertices.size(), &m_vertices, GL_STATIC_DRAW);
 
 	glEnableVertexAttribArray(vertexPosition);
-	glVertexAttribPointer(vertexPosition, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, position));
+	glVertexAttribPointer(vertexPosition, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex) * m_vertices.size(), (void*)offsetof(Vertex, position));
 
 	glEnableVertexAttribArray(vertexColor);
-	glVertexAttribPointer(vertexColor, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, color));
+	glVertexAttribPointer(vertexColor, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex) * m_vertices.size(), (void*)offsetof(Vertex, color));
 
 	glEnableVertexAttribArray(vertexNormal);
-	glVertexAttribPointer(vertexNormal, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, normal));
+	glVertexAttribPointer(vertexNormal, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex) * m_vertices.size(), (void*)offsetof(Vertex, normal));
 
 	glEnableVertexAttribArray(vertexTexCoords);
-	glVertexAttribPointer(vertexTexCoords, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, texCoords));
+	glVertexAttribPointer(vertexTexCoords, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex) * m_vertices.size(), (void*)offsetof(Vertex, texCoords));
 
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	
 
 	glGenBuffers(1, &m_IndexIBO);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndexIBO);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int), &m_indices, GL_STATIC_DRAW);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * m_indices.size(), &m_indices, GL_STATIC_DRAW);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 	glBindVertexArray(0);
+	
+	
 }
 
 void MeshGL::render(const GLuint shader)
 {
 	glBindVertexArray(m_MeshVAO);
-	glDrawElements(GL_TRIANGLES, m_elementCount, GL_UNSIGNED_INT, 0);
+	glDrawElements(GL_TRIANGLES, m_elementCount, GL_UNSIGNED_INT, NULL);
 }
 
 

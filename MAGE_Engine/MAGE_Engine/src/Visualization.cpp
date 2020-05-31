@@ -4,9 +4,9 @@
 #include "stb_image.h"
 
 Visualization::Visualization(const int screenWidth, const int screenHeight, const std::string &windowName) :
-	m_window(nullptr),
 	m_screenWidth(screenWidth),
 	m_screenHeight(screenHeight),
+	m_window(nullptr),
 	m_windowName(windowName),
 	m_meshes(),
 	m_textures(),
@@ -93,9 +93,17 @@ void Visualization::clear()
 	return;
 }
 
-void Visualization::render2D(std::string & meshName, std::string & TextureName, std::string & shaderName, Transform & transform)
+void Visualization::render2D(const std::string & meshName, const std::string & TextureName, const std::string & shaderName, const Transform & transform)
 {
-
+	glm::mat4 transformMatrix = glm::mat4(1.f);
+	transformMatrix = glm::scale(transformMatrix, glm::vec3(transform.m_scale.x / m_screenWidth, transform.m_scale.y / m_screenHeight, transform.m_scale.z));
+	transformMatrix = glm::rotate(transformMatrix, transform.m_rotation.x, glm::vec3(0, 1, 0));
+	transformMatrix = glm::rotate(transformMatrix, transform.m_rotation.y, glm::vec3(1, 0, 0));
+	transformMatrix = glm::rotate(transformMatrix, transform.m_rotation.z, glm::vec3(0, 0, 1));
+	transformMatrix = glm::translate(transformMatrix, glm::vec3((((transform.m_position.x / m_screenWidth)*2)-1), (((transform.m_position.y / m_screenHeight)*2)-1), transform.m_position.z));
+	useShader(shaderName);
+	setShaderUniformMatrix4f(shaderName, "model_xform", transformMatrix);
+	m_meshes.find(meshName)->second->render(m_shaderPrograms.find(shaderName)->second);
 }
 
 void Visualization::display()
@@ -133,6 +141,16 @@ void Visualization::generateTexture(const std::string & textureFilePath, const s
 	stbi_image_free(data);
 
 	m_textures.emplace(textureName, texture);
+}
+
+void Visualization::generateMesh(const std::vector<Vertex>& vertices, const std::vector<unsigned int>& indices, const std::string & meshName)
+{
+	MeshGL *newMesh = new MeshGL(vertices, indices);
+	newMesh->initualize();
+	//std::pair<std::string, MeshGL> meshPair;
+	//meshPair.first = meshName;
+	//meshPair.second = MeshGL(vertices, indices);
+	m_meshes.emplace(meshName, newMesh);
 }
 
 void Visualization::useShader(const std::string & shaderName)
@@ -177,9 +195,13 @@ void Visualization::setShaderUniformMatrix4f(const std::string & shaderName, con
 
 Visualization::~Visualization()
 {
-	for (auto x : m_shaderPrograms)
+	for (auto i : m_shaderPrograms)
 	{
-		glDeleteProgram(x.second);
+		glDeleteProgram(i.second);
+	}
+	for (auto i : m_meshes)
+	{
+		delete i.second;
 	}
 	glfwTerminate();
 }
@@ -193,6 +215,7 @@ GLuint Visualization::compileShader(const std::string &shaderType, const std::st
 
 	shaderFile.open(shaderFileName);
 	shaderStream << shaderFile.rdbuf();
+	shaderFile.close();
 	shaderCode = shaderStream.str();
 
 	const char* cShaderCode = shaderCode.c_str();
@@ -200,8 +223,14 @@ GLuint Visualization::compileShader(const std::string &shaderType, const std::st
 	GLuint shader{ 0 };
 	int success;
 	char infoLog[512];
-
-	glCreateShader(shader);
+	if (shaderType == "VERTEX")
+	{
+		shader = glCreateShader(GL_VERTEX_SHADER);
+	}
+	else if (shaderType == "FRAGMENT")
+	{
+		shader = glCreateShader(GL_FRAGMENT_SHADER);
+	}
 	glShaderSource(shader, 1, &cShaderCode, NULL);
 	glCompileShader(shader);
 	glGetShaderiv(shader, GL_COMPILE_STATUS, &success);

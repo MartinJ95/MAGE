@@ -1,5 +1,11 @@
 #pragma once
 #include "Visualization.h"
+#include "Entity.h"
+#include "Component.h"
+#include "Transform.h"
+#include "Mesh.h"
+#include "MeshGL.h"
+#include <vector>
 
 class World
 {
@@ -8,7 +14,7 @@ public:
 	bool Initualize();
 	void Run();
 	~World();
-private:
 	Visualization m_viz;
+	std::vector<Entity*> m_entities;
 };
 

@@ -18,4 +18,5 @@ void Component::FixedUpdate(World &world)
 
 Component::~Component()
 {
+	
 }
