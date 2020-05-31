@@ -17,7 +17,7 @@ bool World::Initualize()
 	m_viz.generateTexture("resources\\mageIntro.png", "introTexture");
 
 	std::vector<Vertex> vertices;
-	std::vector<unsigned int> indices{1, 2, 3, 3, 2, 4};
+	std::vector<unsigned int> indices{0, 1, 2, 2, 1, 3};
 
 	Vertex v1;
 	v1.position = Vector3f(-0.5, -0.5, 0);
