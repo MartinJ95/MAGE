@@ -15,7 +15,9 @@ Mesh::Mesh(Entity &entity) :
 void Mesh::Update(World &world)
 {
 	Component *t = m_entity.getComponent<Transform>();
-	world.m_viz.render2D(m_meshName, m_textureName, m_shaderName, (Transform&)t);
+	Transform *tran = dynamic_cast<Transform*>(t);
+	//world.m_viz.render2D(m_meshName, m_textureName, m_shaderName, (Transform&)t);
+	world.m_viz.render2D(m_meshName, m_textureName, m_shaderName, *tran);
 }
 
 void Mesh::FixedUpdate(World &world)

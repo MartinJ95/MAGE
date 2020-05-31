@@ -12,7 +12,7 @@ uniform mat4 model_xform;
 
 void main()
 {
-	//gl_Position = model_xform * vec4(vertexPosition, 1);
-	gl_Position = vec4(vertexPosition, 1);
+	gl_Position = model_xform * vec4(vertexPosition, 1);
+	//gl_Position = vec4(vertexPosition, 1);
 	TexCoord = vertexTexCoords;
 }

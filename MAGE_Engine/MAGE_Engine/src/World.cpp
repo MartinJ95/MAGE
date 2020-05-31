@@ -56,7 +56,7 @@ bool World::Initualize()
 	Component * transform = e->getComponent<Transform>();
 	Transform *t = dynamic_cast<Transform*>(transform);
 	t->m_position = Vector3f(m_viz.m_screenWidth / 2, m_viz.m_screenHeight / 2, 0);
-	t->m_scale = Vector3f(1, 1, 1);
+	t->m_scale = Vector3f(m_viz.m_screenWidth/2, m_viz.m_screenHeight/2, 1);
 	t->m_rotation = Vector3f(0, 0, 0);
 
 	Component * mesh = e->getComponent<Mesh>();
