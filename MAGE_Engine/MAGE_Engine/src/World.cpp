@@ -14,7 +14,7 @@ bool World::Initualize()
 		return false;
 	}
 	m_viz.generateShader("src\\default2DShader.vs", "src\\default2DShader.fs", "default2DShader");
-	m_viz.generateTexture("resources\\mageIntro.png", "introTexture");
+	m_viz.generateTexture("Resources\\mageIntro.png", "introTexture");
 
 	std::vector<Vertex> vertices;
 	std::vector<unsigned int> indices{0, 1, 2, 2, 1, 3};

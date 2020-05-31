@@ -26,6 +26,7 @@ public:
 	void generateTexture(const std::string &textureFilePath, const std::string &textureName);
 	void generateMesh(const std::vector<Vertex> &vertices, const std::vector<unsigned int> &indices, const std::string &meshName);
 	void useShader(const std::string &shaderName);
+	void setShaderTexture(const std::string &textureUniform, const std::string &textureName, const std::string &shaderName, const int textureIndex);
 	void setShaderUniformFloat(const std::string &shaderName, const std::string &uniformName, const float value);
 	void setShaderUniformInt(const std::string &shaderName, const std::string &uniformName, const int value);
 	void setShaderUniformBool(const std::string &shaderName, const std::string &uniformName, const bool value);

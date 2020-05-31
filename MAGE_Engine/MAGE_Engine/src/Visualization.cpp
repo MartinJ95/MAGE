@@ -103,6 +103,7 @@ void Visualization::render2D(const std::string & meshName, const std::string & T
 	transformMatrix = glm::translate(transformMatrix, glm::vec3((((transform.m_position.x / m_screenWidth)*2)-1), (((transform.m_position.y / m_screenHeight)*2)-1), transform.m_position.z));
 	useShader(shaderName);
 	setShaderUniformMatrix4f(shaderName, "model_xform", transformMatrix);
+	setShaderTexture("Texture", TextureName, shaderName, 1);
 	m_meshes.find(meshName)->second->render(m_shaderPrograms.find(shaderName)->second);
 }
 
@@ -128,6 +129,7 @@ void Visualization::generateTexture(const std::string & textureFilePath, const s
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	// load and generate the texture
 	int width, height, nrChannels;
+	stbi_set_flip_vertically_on_load(true);
 	unsigned char *data = stbi_load(textureFilePath.c_str(), &width, &height, &nrChannels, 0);
 	if (data)
 	{
@@ -159,6 +161,18 @@ void Visualization::useShader(const std::string & shaderName)
 	{
 		glUseProgram(m_shaderPrograms.find(shaderName)->second);
 	}
+}
+
+void Visualization::setShaderTexture(const std::string &textureUniform, const std::string & textureName, const std::string & shaderName, const int textureIndex)
+{
+	if (m_textures.find(textureName) != m_textures.end()
+		&& m_shaderPrograms.find(shaderName) != m_shaderPrograms.end())
+	{
+		glActiveTexture(GL_TEXTURE0 + textureIndex);
+		glBindTexture(GL_TEXTURE_2D, m_textures.find(textureName)->second);
+		setShaderUniformInt(shaderName, textureUniform, 1);
+	}
+	
 }
 
 void Visualization::setShaderUniformFloat(const std::string & shaderName, const std::string & uniformName, const float value)
