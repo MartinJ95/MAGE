@@ -2,6 +2,8 @@
 #include <vector>
 #include "Component.h"
 #include "Transform.h"
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
 class World;
 
@@ -10,13 +12,13 @@ class Entity
 public:
 	Entity(bool active);
 	Entity(bool active, Entity &parent);
-	template<typename T> Component* getComponent()
+	template<typename T> T* getComponent()
 	{
 		for (int i = 0; i < m_components.size(); i++)
 		{
 			if (dynamic_cast<T*>(m_components[i]) != NULL)
 			{
-				return m_components[i];
+				return static_cast<T*>(m_components[i]);
 			}
 		}
 		return NULL;
@@ -32,6 +34,8 @@ public:
 	void Update(World &world);
 	void fixedUpdate(World &world);
 	void createChild(bool active);
+	glm::mat4 getTransformMatrix2D(World &world);
+	glm::mat4 getTransformMatrix3D(World &world);
 	~Entity();
 	bool m_active;
 	Entity *m_parent;

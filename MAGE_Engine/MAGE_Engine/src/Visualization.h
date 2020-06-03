@@ -21,7 +21,7 @@ public:
 	void generateShader(const std::string &vertexShader, const std::string &fragmentShader, const std::string &shaderName);
 	bool isOpen() const;
 	void clear();
-	void render2D(const std::string &meshName, const std::string &TextureName, const std::string &shaderName, const Transform &transform);
+	void render2D(const std::string &meshName, const std::string &TextureName, const std::string &shaderName, const glm::mat4 transformMatrix);
 	void display();
 	void generateTexture(const std::string &textureFilePath, const std::string &textureName);
 	void generateMesh(const std::vector<Vertex> &vertices, const std::vector<unsigned int> &indices, const std::string &meshName);

@@ -93,20 +93,8 @@ void Visualization::clear()
 	return;
 }
 
-void Visualization::render2D(const std::string & meshName, const std::string & TextureName, const std::string & shaderName, const Transform & transform)
+void Visualization::render2D(const std::string & meshName, const std::string & TextureName, const std::string & shaderName, const glm::mat4 transformMatrix)
 {
-	glm::mat4 transformMatrix = glm::mat4(1.f);
-	float test1 = 2;
-	test1 /=  m_screenWidth;
-	float test2 = 2;
-	test2 /= m_screenHeight;
-	transformMatrix = glm::scale(transformMatrix, glm::vec3(test1 * transform.m_scale.x, test2 * transform.m_scale.y, transform.m_scale.z));
-	//transformMatrix = glm::scale(transformMatrix, glm::vec3(1, 1, 1));
-	transformMatrix = glm::rotate(transformMatrix, transform.m_rotation.x, glm::vec3(0, 1, 0));
-	transformMatrix = glm::rotate(transformMatrix, transform.m_rotation.y, glm::vec3(1, 0, 0));
-	transformMatrix = glm::rotate(transformMatrix, transform.m_rotation.z, glm::vec3(0, 0, 1));
-	transformMatrix = glm::translate(transformMatrix, glm::vec3((((transform.m_position.x / m_screenWidth)*2)-1), (((transform.m_position.y / m_screenHeight)*2)-1), transform.m_position.z));
-	//transformMatrix = glm::translate(transformMatrix, glm::vec3(0, 0, 0));
 	useShader(shaderName);
 	setShaderUniformMatrix4f(shaderName, "model_xform", transformMatrix);
 	setShaderTexture("Texture", TextureName, shaderName, 1);

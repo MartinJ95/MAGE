@@ -60,6 +60,27 @@ void Entity::createChild(bool active)
 	m_children.push_back(newChild);
 }
 
+glm::mat4 Entity::getTransformMatrix2D(World &world)
+{
+	Transform *t = getComponent<Transform>();
+	glm::mat4 transformMatrix = glm::mat4(1.f);
+	float meshSizeX = 1;
+	float meshSizeY = 1;
+	meshSizeX /= world.m_viz.m_screenWidth;
+	meshSizeY /= world.m_viz.m_screenHeight;
+	transformMatrix = glm::scale(transformMatrix, glm::vec3(meshSizeX *t->m_scale.x, meshSizeY *t->m_scale.y, t->m_scale.y));
+	transformMatrix = glm::rotate(transformMatrix, t->m_rotation.x, glm::vec3(0, 1, 0));
+	transformMatrix = glm::rotate(transformMatrix, t->m_rotation.y, glm::vec3(1, 0, 0));
+	transformMatrix = glm::rotate(transformMatrix, t->m_rotation.z, glm::vec3(0, 0, 1));
+	transformMatrix = glm::translate(transformMatrix, glm::vec3((((t->m_position.x / world.m_viz.m_screenWidth) * 2) - 1), (((t->m_position.y / world.m_viz.m_screenHeight) * 2) - 1), t->m_position.z));
+	return transformMatrix;
+}
+
+glm::mat4 Entity::getTransformMatrix3D(World &world)
+{
+	return glm::mat4();
+}
+
 Entity::~Entity()
 {
 	for (int i = 0; i < m_components.size(); i++)
