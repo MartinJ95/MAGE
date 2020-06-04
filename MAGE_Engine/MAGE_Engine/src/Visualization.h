@@ -13,6 +13,8 @@
 
 class Transform;
 
+void frameBufferSizeCallback(GLFWwindow *window, int screenWidth, int screenHeight);
+
 class Visualization
 {
 public:
@@ -20,6 +22,7 @@ public:
 	bool initialise();
 	void generateShader(const std::string &vertexShader, const std::string &fragmentShader, const std::string &shaderName);
 	bool isOpen() const;
+	
 	void clear();
 	void render2D(const std::string &meshName, const std::string &TextureName, const std::string &shaderName, const glm::mat4 transformMatrix);
 	void display();

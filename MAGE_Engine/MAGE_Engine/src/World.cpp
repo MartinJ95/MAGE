@@ -2,7 +2,9 @@
 
 World::World(const int screenWidth, const int screenHeight, const std::string &windowName) :
 	m_viz(screenWidth, screenHeight, windowName),
-	m_entities()
+	m_entities(),
+	m_worldUp(0, 1, 0),
+	m_mainCamera(nullptr)
 {
 
 }
@@ -59,6 +61,7 @@ bool World::Initualize()
 	t->m_rotation = Vector3f(0, 0, 0);
 
 	Mesh * m = e->getComponent<Mesh>();
+	m->m_is3D = false;
 	m->m_meshName = "default2DMesh";
 	m->m_shaderName = "default2DShader";
 	m->m_textureName = "introTexture";

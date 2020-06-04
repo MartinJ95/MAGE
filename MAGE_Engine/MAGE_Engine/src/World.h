@@ -4,6 +4,7 @@
 #include "Component.h"
 #include "Transform.h"
 #include "Mesh.h"
+#include "Camera.h"
 #include "MeshGL.h"
 #include <vector>
 
@@ -16,5 +17,7 @@ public:
 	~World();
 	Visualization m_viz;
 	std::vector<Entity*> m_entities;
+	Vector3f m_worldUp;
+	Camera *m_mainCamera;
 };
 

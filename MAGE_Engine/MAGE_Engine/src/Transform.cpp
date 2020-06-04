@@ -4,6 +4,7 @@
 
 Transform::Transform(Entity& entity) :
 	Component(entity),
+	m_forward(1, 0, 0),
 	m_position(0, 0, 0),
 	m_scale(1, 1, 1),
 	m_rotation(0, 0, 0)

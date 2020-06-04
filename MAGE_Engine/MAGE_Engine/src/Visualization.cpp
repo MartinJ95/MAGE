@@ -37,12 +37,13 @@ bool Visualization::initialise()
 
 	/* Make the window's context current */
 	glfwMakeContextCurrent(m_window);
+	glfwSetFramebufferSizeCallback(m_window, frameBufferSizeCallback);
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 	{
 		std::cout << "GLAD failed to initualize" << std::endl;
 		return false;
 	}
-	//glViewport(0, 0, m_screenWidth, m_screenHeight);
+	glViewport(0, 0, m_screenWidth, m_screenHeight);
 	return true;
 }
 
@@ -252,4 +253,9 @@ GLuint Visualization::compileShader(const std::string &shaderType, const std::st
 		std::cout << "ERROR::SHADER::" + shaderType + "::COMPILATION_FAILED\n" << infoLog << std::endl;
 	}
 	return shader;
+}
+
+void frameBufferSizeCallback(GLFWwindow * window, int screenWidth, int screenHeight)
+{
+	glViewport(0, 0, screenWidth, screenHeight);
 }

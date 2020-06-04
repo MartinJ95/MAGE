@@ -6,6 +6,7 @@
 
 Mesh::Mesh(Entity &entity) :
 	Component(entity),
+	m_is3D(true),
 	m_meshName(),
 	m_textureName(),
 	m_shaderName()
@@ -14,7 +15,14 @@ Mesh::Mesh(Entity &entity) :
 
 void Mesh::Update(World &world)
 {
-	world.m_viz.render2D(m_meshName, m_textureName, m_shaderName, m_entity.getTransformMatrix2D(world));
+	if (!m_is3D)
+	{
+		world.m_viz.render2D(m_meshName, m_textureName, m_shaderName, m_entity.getTransformMatrix2D(world));
+	}
+	else
+	{
+
+	}
 }
 
 void Mesh::FixedUpdate(World &world)

@@ -28,7 +28,7 @@ void Entity::Update(World &world)
 			Transform *t = dynamic_cast<Transform*>(m_components[i]);
 			t->Update(world);
 		}
-		if (dynamic_cast<Mesh*>(m_components[i]) != NULL)
+		else if (dynamic_cast<Mesh*>(m_components[i]) != NULL)
 		{
 			Mesh *m = dynamic_cast<Mesh*>(m_components[i]);
 			m->Update(world);
@@ -78,7 +78,14 @@ glm::mat4 Entity::getTransformMatrix2D(World &world)
 
 glm::mat4 Entity::getTransformMatrix3D(World &world)
 {
-	return glm::mat4();
+	Transform *t = getComponent<Transform>();
+	glm::mat4 transformMatrix = glm::mat4(1.f);
+	transformMatrix = glm::scale(transformMatrix, glm::vec3(t->m_scale.x, t->m_scale.y, t->m_scale.z));
+	transformMatrix = glm::rotate(transformMatrix, t->m_rotation.x, glm::vec3(0, 1, 0));
+	transformMatrix = glm::rotate(transformMatrix, t->m_rotation.y, glm::vec3(1, 0, 0));
+	transformMatrix = glm::rotate(transformMatrix, t->m_rotation.z, glm::vec3(0, 0, 1));
+	transformMatrix = glm::translate(transformMatrix, glm::vec3(t->m_position.x, t->m_position.y, t->m_position.z));
+	return transformMatrix;
 }
 
 Entity::~Entity()
