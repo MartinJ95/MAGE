@@ -32,7 +32,7 @@ public:
 	MeshGL();
 	MeshGL(const std::vector<Vertex> vertices, const std::vector<unsigned int> indices);
 	void initualize();
-	void render(const GLuint shader);
+	void render();
 	~MeshGL();
 	std::vector<Vertex> m_vertices;
 	std::vector<unsigned int> m_indices;

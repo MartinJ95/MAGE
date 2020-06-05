@@ -112,4 +112,8 @@
     <Text Include="src\default2DShader.vs" />
     <Text Include="src\default2DShader.fs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="src\default3DShader.vs" />
+    <None Include="src\default3DShader.fs" />
+  </ItemGroup>
 </Project>

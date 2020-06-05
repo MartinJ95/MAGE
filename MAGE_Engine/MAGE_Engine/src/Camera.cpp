@@ -4,7 +4,7 @@
 
 Camera::Camera(Entity &entity) :
 	Component(entity),
-	m_fieldOfView(45)
+	m_fieldOfView(90)
 {
 }
 

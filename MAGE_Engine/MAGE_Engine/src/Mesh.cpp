@@ -21,7 +21,7 @@ void Mesh::Update(World &world)
 	}
 	else
 	{
-
+		world.m_viz.render3D(m_meshName, m_textureName, m_shaderName, m_entity.getTransformMatrix3D(world), *world.m_mainCamera, world.m_worldUp);
 	}
 }
 

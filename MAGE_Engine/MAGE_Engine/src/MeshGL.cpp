@@ -59,10 +59,8 @@ void MeshGL::initualize()
 	
 }
 
-void MeshGL::render(const GLuint shader)
+void MeshGL::render()
 {
-	glDisable(GL_CULL_FACE);
-	glDisable(GL_DEPTH_TEST);
 	glBindVertexArray(m_MeshVAO);
 	glDrawElements(GL_TRIANGLES, m_elementCount, GL_UNSIGNED_INT, NULL);
 	//float test[3];

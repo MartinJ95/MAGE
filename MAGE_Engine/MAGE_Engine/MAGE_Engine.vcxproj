@@ -169,6 +169,10 @@
     <Text Include="src\default2DShader.fs" />
     <Text Include="src\default2DShader.vs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="src\default3DShader.fs" />
+    <None Include="src\default3DShader.vs" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

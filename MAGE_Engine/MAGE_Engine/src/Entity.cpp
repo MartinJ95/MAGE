@@ -33,6 +33,11 @@ void Entity::Update(World &world)
 			Mesh *m = dynamic_cast<Mesh*>(m_components[i]);
 			m->Update(world);
 		}
+		else if (dynamic_cast<Camera*>(m_components[i]) != NULL)
+		{
+			Camera *c = dynamic_cast<Camera*>(m_components[i]);
+			c->Update(world);
+		}
 	}
 }
 
@@ -51,6 +56,11 @@ void Entity::fixedUpdate(World &world)
 			Mesh *m = dynamic_cast<Mesh*>(m_components[i]);
 			m->FixedUpdate(world);
 		}
+		if (dynamic_cast<Camera*>(m_components[i]) != NULL)
+		{
+			Camera *c = dynamic_cast<Camera*>(m_components[i]);
+			c->FixedUpdate(world);
+		}
 	}
 }
 
@@ -68,11 +78,11 @@ glm::mat4 Entity::getTransformMatrix2D(World &world)
 	float meshSizeY = 1;
 	meshSizeX /= world.m_viz.m_screenWidth;
 	meshSizeY /= world.m_viz.m_screenHeight;
-	transformMatrix = glm::scale(transformMatrix, glm::vec3(meshSizeX *t->m_scale.x, meshSizeY *t->m_scale.y, t->m_scale.y));
-	transformMatrix = glm::rotate(transformMatrix, t->m_rotation.x, glm::vec3(0, 1, 0));
-	transformMatrix = glm::rotate(transformMatrix, t->m_rotation.y, glm::vec3(1, 0, 0));
-	transformMatrix = glm::rotate(transformMatrix, t->m_rotation.z, glm::vec3(0, 0, 1));
 	transformMatrix = glm::translate(transformMatrix, glm::vec3((((t->m_position.x / world.m_viz.m_screenWidth) * 2) - 1), (((t->m_position.y / world.m_viz.m_screenHeight) * 2) - 1), t->m_position.z));
+	transformMatrix = glm::rotate(transformMatrix, glm::radians(t->m_rotation.x), glm::vec3(1, 0, 0));
+	transformMatrix = glm::rotate(transformMatrix, glm::radians(t->m_rotation.y), glm::vec3(0, 1, 0));
+	transformMatrix = glm::rotate(transformMatrix, glm::radians(t->m_rotation.z), glm::vec3(0, 0, 1));
+	transformMatrix = glm::scale(transformMatrix, glm::vec3(meshSizeX *t->m_scale.x, meshSizeY *t->m_scale.y, t->m_scale.y));
 	return transformMatrix;
 }
 
@@ -80,11 +90,11 @@ glm::mat4 Entity::getTransformMatrix3D(World &world)
 {
 	Transform *t = getComponent<Transform>();
 	glm::mat4 transformMatrix = glm::mat4(1.f);
-	transformMatrix = glm::scale(transformMatrix, glm::vec3(t->m_scale.x, t->m_scale.y, t->m_scale.z));
-	transformMatrix = glm::rotate(transformMatrix, t->m_rotation.x, glm::vec3(0, 1, 0));
-	transformMatrix = glm::rotate(transformMatrix, t->m_rotation.y, glm::vec3(1, 0, 0));
-	transformMatrix = glm::rotate(transformMatrix, t->m_rotation.z, glm::vec3(0, 0, 1));
 	transformMatrix = glm::translate(transformMatrix, glm::vec3(t->m_position.x, t->m_position.y, t->m_position.z));
+	transformMatrix = glm::rotate(transformMatrix, glm::radians(t->m_rotation.x), glm::vec3(1, 0, 0));
+	transformMatrix = glm::rotate(transformMatrix, glm::radians(t->m_rotation.y), glm::vec3(0, 1, 0));
+	transformMatrix = glm::rotate(transformMatrix, glm::radians(t->m_rotation.z), glm::vec3(0, 0, 1));
+	transformMatrix = glm::scale(transformMatrix, glm::vec3(t->m_scale.x, t->m_scale.y, t->m_scale.z));
 	return transformMatrix;
 }
 
@@ -95,13 +105,18 @@ Entity::~Entity()
 		//delete(m_components[i]);
 		if (dynamic_cast<Transform*>(m_components[i]) != NULL)
 		{
-			Transform *t = dynamic_cast<Transform*>(m_components[i]);
+			Transform *t = static_cast<Transform*>(m_components[i]);
 			delete t;
 		}
 		else if (dynamic_cast<Mesh*>(m_components[i]) != NULL)
 		{
-			Mesh *m = dynamic_cast<Mesh*>(m_components[i]);
+			Mesh *m = static_cast<Mesh*>(m_components[i]);
 			delete m;
+		}
+		else if (dynamic_cast<Camera*>(m_components[i]) != NULL)
+		{
+			Camera *c = static_cast<Camera*>(m_components[i]);
+			delete c;
 		}
 	}
 	m_components.clear();

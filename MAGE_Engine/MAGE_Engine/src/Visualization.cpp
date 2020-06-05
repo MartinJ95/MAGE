@@ -1,7 +1,8 @@
 #include "Visualization.h"
-#include "Transform.h"
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
+#include "Camera.h"
+#include "Entity.h"
 
 Visualization::Visualization(const int screenWidth, const int screenHeight, const std::string &windowName) :
 	m_screenWidth(screenWidth),
@@ -94,12 +95,29 @@ void Visualization::clear()
 	return;
 }
 
-void Visualization::render2D(const std::string & meshName, const std::string & TextureName, const std::string & shaderName, const glm::mat4 transformMatrix)
+void Visualization::render2D(const std::string & meshName, const std::string & textureName, const std::string & shaderName, const glm::mat4 transformMatrix)
 {
 	useShader(shaderName);
 	setShaderUniformMatrix4f(shaderName, "model_xform", transformMatrix);
-	setShaderTexture("Texture", TextureName, shaderName, 1);
-	m_meshes.find(meshName)->second->render(m_shaderPrograms.find(shaderName)->second);
+	setShaderTexture("Texture", textureName, shaderName, 1);
+	m_meshes.find(meshName)->second->render();
+}
+
+void Visualization::render3D(const std::string & meshName, const std::string & textureName, const std::string & shaderName, const glm::mat4 transformMatrix, Camera & camera, Vector3f &worldUp)
+{
+	useShader(shaderName);
+	setShaderUniformMatrix4f(shaderName, "model_xform", transformMatrix);
+	glm::mat4 projection = glm::perspective(glm::radians(camera.m_fieldOfView), (float)m_screenWidth / (float)m_screenHeight, 0.1f, 100.0f);
+	setShaderUniformMatrix4f(shaderName, "projection", projection);
+	Vector3f cameraPosition(camera.m_entity.getComponent<Transform>()->m_position);
+	Vector3f cameraDirection(camera.m_entity.getComponent<Transform>()->m_forward);
+	glm::vec3 camPos(cameraPosition.x, cameraPosition.y, cameraPosition.z);
+	glm::vec3 camDir(cameraDirection.x, cameraDirection.y, cameraDirection.z);
+	glm::vec3 up(worldUp.x, worldUp.y, worldUp.z);
+	glm::mat4 view = glm::lookAt(camPos, camPos + camDir, up);
+	setShaderUniformMatrix4f(shaderName, "view", view);
+	setShaderTexture("Texture", textureName, shaderName, 1);
+	m_meshes.find(meshName)->second->render();
 }
 
 void Visualization::display()
