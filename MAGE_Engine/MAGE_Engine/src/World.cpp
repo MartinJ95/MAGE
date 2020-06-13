@@ -2,8 +2,11 @@
 
 World::World(const int screenWidth, const int screenHeight, const std::string &windowName) :
 	m_viz(screenWidth, screenHeight, windowName),
+	m_physics(),
 	m_entities(),
 	m_worldUp(0, 1, 0),
+	m_worldForward(1, 0, 0),
+	m_worldRight(0, 0, 1),
 	m_mainCamera(nullptr)
 {
 
@@ -61,6 +64,7 @@ bool World::Initualize()
 	cam->getComponent<Transform>()->m_rotation = Vector3f(-45, -90, 0);
 	cam->getComponent<Transform>()->updateDirection();
 	cam->addComponent<Camera>();
+	cam->addComponent<RigidBody>();
 	m_mainCamera = cam->getComponent<Camera>();
 
 	m_entities.emplace_back(cam);

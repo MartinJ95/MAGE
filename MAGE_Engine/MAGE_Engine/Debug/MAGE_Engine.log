@@ -1,11 +1,7 @@
-﻿  World.cpp
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(129): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(130): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(150): warning C4018: '<': signed/unsigned mismatch
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(163): warning C4305: '-=': truncation from 'double' to 'float'
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(177): warning C4018: '<': signed/unsigned mismatch
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\entity.h(17): warning C4018: '<': signed/unsigned mismatch
-  c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(60): note: see reference to function template instantiation 'T *Entity::getComponent<Transform>(void)' being compiled
+﻿  Physics.cpp
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\physics.cpp(10): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\entity.h(18): warning C4018: '<': signed/unsigned mismatch
+  c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\physics.cpp(18): note: see reference to function template instantiation 'T *Entity::getComponent<Transform>(void)' being compiled
           with
           [
               T=Transform

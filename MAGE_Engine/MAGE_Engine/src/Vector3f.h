@@ -21,9 +21,28 @@ public:
 		return Vector3f(x + other.x, y + other.y, z + other.z);
 	}
 
+	void operator+=(const Vector3f& other)
+	{
+		x = x + other.x;
+		y = y + other.y;
+		z = z + other.z;
+	}
+
+	Vector3f operator/(const float& scalar) const
+	{
+		return Vector3f(x / scalar, y / scalar, z / scalar);
+	}
+
 	Vector3f operator*(const float& scaler) const
 	{
 		return Vector3f(x * scaler, y * scaler, z * scaler);
+	}
+
+	void operator*= (const float& scalar)
+	{
+		x *= scalar;
+		y *= scalar;
+		z *= scalar;
 	}
 
 	Vector3f operator*(const Vector3f& other) const

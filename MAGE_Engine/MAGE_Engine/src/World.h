@@ -1,5 +1,6 @@
 #pragma once
 #include "Visualization.h"
+#include "Physics.h"
 #include "Entity.h"
 #include "Component.h"
 #include "Transform.h"
@@ -16,8 +17,11 @@ public:
 	void Run();
 	~World();
 	Visualization m_viz;
+	Physics m_physics;
 	std::vector<Entity*> m_entities;
 	Vector3f m_worldUp;
+	Vector3f m_worldForward;
+	Vector3f m_worldRight;
 	Camera *m_mainCamera;
 };
 

@@ -2,6 +2,7 @@
 #include <vector>
 #include "Component.h"
 #include "Transform.h"
+#include "RigidBody.h"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 

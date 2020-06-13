@@ -38,6 +38,11 @@ void Entity::Update(World &world)
 			Camera *c = dynamic_cast<Camera*>(m_components[i]);
 			c->Update(world);
 		}
+		else if (dynamic_cast<RigidBody*>(m_components[i]) != NULL)
+		{
+			RigidBody *r = dynamic_cast<RigidBody*>(m_components[i]);
+			r->Update(world);
+		}
 	}
 }
 
@@ -60,6 +65,11 @@ void Entity::fixedUpdate(World &world)
 		{
 			Camera *c = dynamic_cast<Camera*>(m_components[i]);
 			c->FixedUpdate(world);
+		}
+		else if (dynamic_cast<RigidBody*>(m_components[i]) != NULL)
+		{
+			RigidBody *r = dynamic_cast<RigidBody*>(m_components[i]);
+			r->FixedUpdate(world);
 		}
 	}
 }
@@ -117,6 +127,11 @@ Entity::~Entity()
 		{
 			Camera *c = static_cast<Camera*>(m_components[i]);
 			delete c;
+		}
+		else if (dynamic_cast<RigidBody*>(m_components[i]) != NULL)
+		{
+			RigidBody *r = static_cast<RigidBody*>(m_components[i]);
+			delete r;
 		}
 	}
 	m_components.clear();
