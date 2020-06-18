@@ -4,6 +4,7 @@
 
 RigidBody::RigidBody(Entity &entity) : Component(entity),
 	m_mass(1),
+	m_restitution(0.9),
 	m_velocity(0, 0, 0),
 	m_force(0, 0, 0),
 	m_impulseForce(0, 0, 0)

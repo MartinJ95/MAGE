@@ -22,26 +22,12 @@ void Entity::Update(World &world)
 {
 	for (int i = 0; i < m_components.size(); i++)
 	{
-		//m_components[i]->Update(world);
-		if (dynamic_cast<Transform*>(m_components[i]) != NULL)
+		for (auto f : componentManagerTypes)
 		{
-			Transform *t = dynamic_cast<Transform*>(m_components[i]);
-			t->Update(world);
-		}
-		else if (dynamic_cast<Mesh*>(m_components[i]) != NULL)
-		{
-			Mesh *m = dynamic_cast<Mesh*>(m_components[i]);
-			m->Update(world);
-		}
-		else if (dynamic_cast<Camera*>(m_components[i]) != NULL)
-		{
-			Camera *c = dynamic_cast<Camera*>(m_components[i]);
-			c->Update(world);
-		}
-		else if (dynamic_cast<RigidBody*>(m_components[i]) != NULL)
-		{
-			RigidBody *r = dynamic_cast<RigidBody*>(m_components[i]);
-			r->Update(world);
+			if (f(m_components[i], &world, 0) == true)
+			{
+				break;
+			}
 		}
 	}
 }
@@ -50,26 +36,12 @@ void Entity::fixedUpdate(World &world)
 {
 	for (int i = 0; i < m_components.size(); i++)
 	{
-		//m_components[i]->FixedUpdate(world);
-		if (dynamic_cast<Transform*>(m_components[i]) != NULL)
+		for (auto f : componentManagerTypes)
 		{
-			Transform *t = dynamic_cast<Transform*>(m_components[i]);
-			t->FixedUpdate(world);
-		}
-		if (dynamic_cast<Mesh*>(m_components[i]) != NULL)
-		{
-			Mesh *m = dynamic_cast<Mesh*>(m_components[i]);
-			m->FixedUpdate(world);
-		}
-		if (dynamic_cast<Camera*>(m_components[i]) != NULL)
-		{
-			Camera *c = dynamic_cast<Camera*>(m_components[i]);
-			c->FixedUpdate(world);
-		}
-		else if (dynamic_cast<RigidBody*>(m_components[i]) != NULL)
-		{
-			RigidBody *r = dynamic_cast<RigidBody*>(m_components[i]);
-			r->FixedUpdate(world);
+			if (f(m_components[i], &world, 1) == true)
+			{
+				break;
+			}
 		}
 	}
 }
@@ -112,26 +84,12 @@ Entity::~Entity()
 {
 	for (int i = 0; i < m_components.size(); i++)
 	{
-		//delete(m_components[i]);
-		if (dynamic_cast<Transform*>(m_components[i]) != NULL)
+		for (auto f : componentManagerTypes)
 		{
-			Transform *t = static_cast<Transform*>(m_components[i]);
-			delete t;
-		}
-		else if (dynamic_cast<Mesh*>(m_components[i]) != NULL)
-		{
-			Mesh *m = static_cast<Mesh*>(m_components[i]);
-			delete m;
-		}
-		else if (dynamic_cast<Camera*>(m_components[i]) != NULL)
-		{
-			Camera *c = static_cast<Camera*>(m_components[i]);
-			delete c;
-		}
-		else if (dynamic_cast<RigidBody*>(m_components[i]) != NULL)
-		{
-			RigidBody *r = static_cast<RigidBody*>(m_components[i]);
-			delete r;
+			if (f(m_components[i], nullptr, 2) == true)
+			{
+				break;
+			}
 		}
 	}
 	m_components.clear();

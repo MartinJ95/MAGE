@@ -1,12 +1,40 @@
 #pragma once
 #include <vector>
 #include "Component.h"
+#include "Camera.h"
 #include "Transform.h"
 #include "RigidBody.h"
+#include "Mesh.h"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
 class World;
+
+typedef bool(*componentFunction)(Component&, World&);
+
+typedef bool(*componentManager)(Component*, World*, int);
+
+template<typename T> bool manageComponents(Component *component, World *world, int functionNumber)
+{
+	switch(functionNumber)
+	{
+	case 0:
+		return Entity::updateComponent<T>(component, *world);
+	case 1:
+		return Entity::FixedUpdateComponent<T>(component, *world);
+	case 2:
+		return Entity::CleanUpComponent<T>(component);
+	default:
+		return false;
+	}
+}
+
+static componentManager const componentManagerTypes[] =
+{ manageComponents<Transform>,
+manageComponents<Camera>,
+manageComponents<Mesh>,
+manageComponents<RigidBody>
+};
 
 class Entity
 {
@@ -32,6 +60,36 @@ public:
 			m_components.emplace_back(newComponent);
 		}
 	}
+	template<typename T> static bool updateComponent(Component *component, World &world)
+	{
+		if (dynamic_cast<T*>(component) != NULL)
+		{
+			T *c = static_cast<T*>(component);
+			c->Update(world);
+			return true;
+		}
+		return false;
+	}
+	template<typename T> static bool FixedUpdateComponent(Component *component, World &world)
+	{
+		if (dynamic_cast<T*>(component) != NULL)
+		{
+			T *c = static_cast<T*>(component);
+			c->FixedUpdate(world);
+			return true;
+		}
+		return false;
+	}
+	template<typename T> static bool CleanUpComponent(Component *component)
+	{
+		if (dynamic_cast<T*>(component) != NULL)
+		{
+			T *c = static_cast<T*>(component);
+			delete(c);
+			return true;
+		}
+		return false;
+	}
 	void Update(World &world);
 	void fixedUpdate(World &world);
 	void createChild(bool active);
@@ -44,3 +102,7 @@ public:
 private:
 	std::vector<Component*> m_components;
 };
+
+
+
+

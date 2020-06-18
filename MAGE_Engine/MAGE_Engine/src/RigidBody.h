@@ -11,6 +11,7 @@ public:
 	void FixedUpdate(World &world) override;
 	~RigidBody();
 	float m_mass;
+	float m_restitution;
 	Vector3f m_velocity;
 	Vector3f m_force;
 	Vector3f m_impulseForce;
