@@ -5,7 +5,7 @@
 
 
 Physics::Physics() :
-	m_gravity(9),
+	m_gravity(0.009),
 	m_velocityDropoff(0.98)
 {
 }

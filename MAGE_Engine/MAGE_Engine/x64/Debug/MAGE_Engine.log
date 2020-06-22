@@ -1,0 +1,57 @@
+﻿  RigidBody.cpp
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\rigidbody.cpp(11): warning C4305: 'initializing': truncation from 'double' to 'float'
+  Physics.cpp
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\physics.cpp(10): warning C4305: 'initializing': truncation from 'double' to 'float'
+  Camera.cpp
+  Mesh.cpp
+  Entity.cpp
+  Component.cpp
+  Matrix4f.cpp
+  Maths.cpp
+  MeshGL.cpp
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\meshgl.cpp(20): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+  main.cpp
+  Visualization.cpp
+  Vector2f.cpp
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\vector2f.cpp(22): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\vector2f.cpp(46): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  Vector2i.cpp
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\vector2i.cpp(22): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\vector2i.cpp(28): warning C4244: 'argument': conversion from 'float' to 'const int', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\vector2i.cpp(34): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\vector2i.cpp(35): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\vector2i.cpp(41): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\vector2i.cpp(46): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  Vector3f.cpp
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\vector3f.cpp(26): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\vector3f.cpp(51): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  Vector3i.cpp
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\vector3i.cpp(4): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\vector3i.cpp(5): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\vector3i.cpp(6): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\vector3i.cpp(26): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\vector3i.cpp(32): warning C4244: 'argument': conversion from 'float' to 'const int', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\vector3i.cpp(38): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\vector3i.cpp(39): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\vector3i.cpp(40): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\vector3i.cpp(47): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\vector3i.cpp(52): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  World.cpp
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(133): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(134): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(167): warning C4305: '-=': truncation from 'double' to 'float'
+  Transform.cpp
+  Generating Code...
+  glad.c
+Visualization.obj : error LNK2019: unresolved external symbol glfwInit referenced in function "public: bool __cdecl Visualization::initialise(void)" (?initialise@Visualization@@QEAA_NXZ)
+Visualization.obj : error LNK2019: unresolved external symbol glfwTerminate referenced in function "public: __cdecl Visualization::~Visualization(void)" (??1Visualization@@QEAA@XZ)
+Visualization.obj : error LNK2019: unresolved external symbol glfwWindowHint referenced in function "public: bool __cdecl Visualization::initialise(void)" (?initialise@Visualization@@QEAA_NXZ)
+Visualization.obj : error LNK2019: unresolved external symbol glfwCreateWindow referenced in function "public: bool __cdecl Visualization::initialise(void)" (?initialise@Visualization@@QEAA_NXZ)
+Visualization.obj : error LNK2019: unresolved external symbol glfwWindowShouldClose referenced in function "public: void __cdecl Visualization::clear(void)" (?clear@Visualization@@QEAAXXZ)
+Visualization.obj : error LNK2019: unresolved external symbol glfwSetFramebufferSizeCallback referenced in function "public: bool __cdecl Visualization::initialise(void)" (?initialise@Visualization@@QEAA_NXZ)
+Visualization.obj : error LNK2019: unresolved external symbol glfwMakeContextCurrent referenced in function "public: bool __cdecl Visualization::initialise(void)" (?initialise@Visualization@@QEAA_NXZ)
+Visualization.obj : error LNK2019: unresolved external symbol glfwSwapBuffers referenced in function "public: void __cdecl Visualization::display(void)" (?display@Visualization@@QEAAXXZ)
+Visualization.obj : error LNK2019: unresolved external symbol glfwGetProcAddress referenced in function "public: bool __cdecl Visualization::initialise(void)" (?initialise@Visualization@@QEAA_NXZ)
+World.obj : error LNK2019: unresolved external symbol glfwPollEvents referenced in function "public: void __cdecl World::Run(void)" (?Run@World@@QEAAXXZ)
+C:\Users\marti\Documents\GitHub\MAGE\MAGE_Engine\Dependencies\lib\glfw3.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Users\marti\Documents\GitHub\MAGE\MAGE_Engine\x64\Debug\MAGE_Engine.exe : fatal error LNK1120: 10 unresolved externals

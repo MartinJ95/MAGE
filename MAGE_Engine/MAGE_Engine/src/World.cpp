@@ -154,20 +154,9 @@ void World::Run()
 		for (int i = 0; i < m_entities.size(); i++)
 		{
 			m_entities[i]->Update(*this);
-			if (m_entities[i]->getComponent<Mesh>() != NULL)
-			{
-				if (m_entities[i]->getComponent<Mesh>()->m_is3D)
-				{
-					//m_entities[i]->getComponent<Transform>()->m_rotation.x += 1;
-					//m_entities[i]->getComponent<Transform>()->updateDirection();
-				}
-			}
 		}
 
 		m_mainCamera->m_entity.getComponent<Transform>()->m_rotation.y -= 0.1;
-		//m_mainCamera->m_entity.getComponent<Transform>()->m_rotation.y = 1;
-		//std::cout << m_mainCamera->m_entity.getComponent<Transform>()->m_rotation.x << std::endl;
-		//m_mainCamera->m_entity.getComponent<Transform>()->m_forward = Vector3f(0, -1, 0);
 		m_mainCamera->m_entity.getComponent<Transform>()->updateDirection();
 
 		m_viz.display();

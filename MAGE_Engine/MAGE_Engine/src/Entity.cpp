@@ -58,13 +58,16 @@ glm::mat4 Entity::getTransformMatrix2D(World &world)
 	glm::mat4 transformMatrix = glm::mat4(1.f);
 	float meshSizeX = 1;
 	float meshSizeY = 1;
+	Vector3f worldPosition = t->worldPosition();
+	Vector3f worldRotation = t->worldRotation();
+	Vector3f worldScale = t->worldScale();
 	meshSizeX /= world.m_viz.m_screenWidth;
 	meshSizeY /= world.m_viz.m_screenHeight;
-	transformMatrix = glm::translate(transformMatrix, glm::vec3((((t->m_position.x / world.m_viz.m_screenWidth) * 2) - 1), (((t->m_position.y / world.m_viz.m_screenHeight) * 2) - 1), t->m_position.z));
-	transformMatrix = glm::rotate(transformMatrix, glm::radians(t->m_rotation.x), glm::vec3(1, 0, 0));
-	transformMatrix = glm::rotate(transformMatrix, glm::radians(t->m_rotation.y), glm::vec3(0, 1, 0));
-	transformMatrix = glm::rotate(transformMatrix, glm::radians(t->m_rotation.z), glm::vec3(0, 0, 1));
-	transformMatrix = glm::scale(transformMatrix, glm::vec3(meshSizeX *t->m_scale.x, meshSizeY *t->m_scale.y, t->m_scale.y));
+	transformMatrix = glm::translate(transformMatrix, glm::vec3((((worldPosition.x / world.m_viz.m_screenWidth) * 2) - 1), (((worldPosition.y / world.m_viz.m_screenHeight) * 2) - 1), worldPosition.z));
+	transformMatrix = glm::rotate(transformMatrix, glm::radians(worldRotation.x), glm::vec3(1, 0, 0));
+	transformMatrix = glm::rotate(transformMatrix, glm::radians(worldRotation.y), glm::vec3(0, 1, 0));
+	transformMatrix = glm::rotate(transformMatrix, glm::radians(worldRotation.z), glm::vec3(0, 0, 1));
+	transformMatrix = glm::scale(transformMatrix, glm::vec3(meshSizeX *worldScale.x, meshSizeY *worldScale.y, worldScale.y));
 	return transformMatrix;
 }
 
@@ -72,11 +75,14 @@ glm::mat4 Entity::getTransformMatrix3D(World &world)
 {
 	Transform *t = getComponent<Transform>();
 	glm::mat4 transformMatrix = glm::mat4(1.f);
-	transformMatrix = glm::translate(transformMatrix, glm::vec3(t->m_position.x, t->m_position.y, t->m_position.z));
-	transformMatrix = glm::rotate(transformMatrix, glm::radians(t->m_rotation.x), glm::vec3(1, 0, 0));
-	transformMatrix = glm::rotate(transformMatrix, glm::radians(t->m_rotation.y), glm::vec3(0, 1, 0));
-	transformMatrix = glm::rotate(transformMatrix, glm::radians(t->m_rotation.z), glm::vec3(0, 0, 1));
-	transformMatrix = glm::scale(transformMatrix, glm::vec3(t->m_scale.x, t->m_scale.y, t->m_scale.z));
+	Vector3f worldPosition = t->worldPosition();
+	Vector3f worldRotation = t->worldRotation();
+	Vector3f worldScale = t->worldScale();
+	transformMatrix = glm::translate(transformMatrix, glm::vec3(worldPosition.x, worldPosition.y, worldPosition.z));
+	transformMatrix = glm::rotate(transformMatrix, glm::radians(worldRotation.x), glm::vec3(1, 0, 0));
+	transformMatrix = glm::rotate(transformMatrix, glm::radians(worldRotation.y), glm::vec3(0, 1, 0));
+	transformMatrix = glm::rotate(transformMatrix, glm::radians(worldRotation.z), glm::vec3(0, 0, 1));
+	transformMatrix = glm::scale(transformMatrix, glm::vec3(worldScale.x, worldScale.y, worldScale.z));
 	return transformMatrix;
 }
 

@@ -109,8 +109,8 @@ void Visualization::render3D(const std::string & meshName, const std::string & t
 	setShaderUniformMatrix4f(shaderName, "model_xform", transformMatrix);
 	glm::mat4 projection = glm::perspective(glm::radians(camera.m_fieldOfView), (float)m_screenWidth / (float)m_screenHeight, 0.1f, 100.0f);
 	setShaderUniformMatrix4f(shaderName, "projection", projection);
-	Vector3f cameraPosition(camera.m_entity.getComponent<Transform>()->m_position);
-	Vector3f cameraDirection(camera.m_entity.getComponent<Transform>()->m_forward);
+	Vector3f cameraPosition(camera.m_entity.getComponent<Transform>()->worldPosition());
+	Vector3f cameraDirection(camera.m_entity.getComponent<Transform>()->worldForward());
 	glm::vec3 camPos(cameraPosition.x, cameraPosition.y, cameraPosition.z);
 	glm::vec3 camDir(cameraDirection.x, cameraDirection.y, cameraDirection.z);
 	glm::vec3 up(worldUp.x, worldUp.y, worldUp.z);

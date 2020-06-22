@@ -1,13 +1,15 @@
-﻿  World.cpp
+﻿  Camera.cpp
+  World.cpp
 c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(133): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
 c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(134): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
 c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(154): warning C4018: '<': signed/unsigned mismatch
 c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(167): warning C4305: '-=': truncation from 'double' to 'float'
 c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(181): warning C4018: '<': signed/unsigned mismatch
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\entity.h(46): warning C4018: '<': signed/unsigned mismatch
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\entity.h(44): warning C4018: '<': signed/unsigned mismatch
   c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(63): note: see reference to function template instantiation 'T *Entity::getComponent<Transform>(void)' being compiled
           with
           [
               T=Transform
           ]
+  Generating Code...
   MAGE_Engine.vcxproj -> C:\Users\marti\Documents\GitHub\MAGE\MAGE_Engine\Debug\MAGE_Engine.exe

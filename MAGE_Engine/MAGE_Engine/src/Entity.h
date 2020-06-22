@@ -10,8 +10,6 @@
 
 class World;
 
-typedef bool(*componentFunction)(Component&, World&);
-
 typedef bool(*componentManager)(Component*, World*, int);
 
 template<typename T> bool manageComponents(Component *component, World *world, int functionNumber)
@@ -51,6 +49,18 @@ public:
 			}
 		}
 		return NULL;
+	}
+	template<typename T> std::vector<T*> getComponents()
+	{
+		std::vector<T*> componentVector;
+		for (int i = 0; i < m_components.size(); i++)
+		{
+			if (dynamic_cast<T*>(m_components[i]) != NULL)
+			{
+				componentVector.emplace_back(static_cast<T*>(m_components[i]));
+			}
+		}
+		return componentVector;
 	}
 	template<typename T> void addComponent()
 	{
