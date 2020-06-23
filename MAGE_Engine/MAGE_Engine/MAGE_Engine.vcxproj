@@ -132,6 +132,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\PlaneCollider.cpp" />
+    <ClCompile Include="src\SphereCollider.cpp" />
     <ClCompile Include="src\RigidBody.cpp" />
     <ClCompile Include="src\Physics.cpp" />
     <ClCompile Include="src\Camera.cpp" />
@@ -152,6 +154,8 @@
     <ClCompile Include="src\Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\PlaneCollider.h" />
+    <ClInclude Include="src\SphereCollider.h" />
     <ClInclude Include="src\RigidBody.h" />
     <ClInclude Include="src\Physics.h" />
     <ClInclude Include="src\Camera.h" />

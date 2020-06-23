@@ -4,6 +4,8 @@
 #include "Camera.h"
 #include "Transform.h"
 #include "RigidBody.h"
+#include "PlaneCollider.h"
+#include "SphereCollider.h"
 #include "Mesh.h"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -31,7 +33,9 @@ static componentManager const componentManagerTypes[] =
 { manageComponents<Transform>,
 manageComponents<Camera>,
 manageComponents<Mesh>,
-manageComponents<RigidBody>
+manageComponents<RigidBody>,
+manageComponents<PlaneCollider>,
+manageComponents<SphereCollider>
 };
 
 class Entity
