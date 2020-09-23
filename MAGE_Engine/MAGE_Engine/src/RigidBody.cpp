@@ -15,6 +15,7 @@ RigidBody::RigidBody(Entity &entity) : Component(entity),
 void RigidBody::Update(World &world)
 {
 	world.m_physics.applyForces(world, *this);
+	world.m_physics.handleCollisions(*this, world);
 }
 
 void RigidBody::FixedUpdate(World &world)

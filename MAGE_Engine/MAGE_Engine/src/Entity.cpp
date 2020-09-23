@@ -52,6 +52,22 @@ void Entity::createChild(bool active)
 	m_children.push_back(newChild);
 }
 
+colliderTypes Entity::getCollider()
+{
+	if (getComponent<SphereCollider>() != NULL)
+	{
+		return colliderTypes::eSphere;
+	}
+	else if (getComponent<PlaneCollider>() != NULL)
+	{
+		return colliderTypes::ePlane;
+	}
+	else
+	{
+		return colliderTypes::eNone;
+	}
+}
+
 glm::mat4 Entity::getTransformMatrix2D(World &world)
 {
 	Transform *t = getComponent<Transform>();

@@ -15,10 +15,16 @@ public:
 	float dotProduct(const Vector3f& other) const;
 	float angleBetween(const Vector3f& other) const;
 	Vector3f crossProduct(const Vector3f& other) const;
+	Vector3f reflect(const Vector3f& normal) const;
 
 	Vector3f operator+(const Vector3f& other) const
 	{
 		return Vector3f(x + other.x, y + other.y, z + other.z);
+	}
+
+	Vector3f operator-(const Vector3f& other) const
+	{
+		return Vector3f(x - other.x, y - other.y, z - other.z);
 	}
 
 	void operator+=(const Vector3f& other)

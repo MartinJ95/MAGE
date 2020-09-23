@@ -56,6 +56,11 @@ Vector3f Vector3f::crossProduct(const Vector3f & other) const
 	return Vector3f(y * other.z - z * other.y, z * other.x - x * other.z, x * other.y - y * other.x);
 }
 
+Vector3f Vector3f::reflect(const Vector3f & normal) const
+{
+	return *this - (normal * dotProduct(normal)) * 2;
+}
+
 Vector3f::~Vector3f()
 {
 }

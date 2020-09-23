@@ -12,6 +12,13 @@
 
 class World;
 
+enum colliderTypes
+{
+	eNone,
+	eSphere,
+	ePlane
+};
+
 typedef bool(*componentManager)(Component*, World*, int);
 
 template<typename T> bool manageComponents(Component *component, World *world, int functionNumber)
@@ -107,6 +114,7 @@ public:
 	void Update(World &world);
 	void fixedUpdate(World &world);
 	void createChild(bool active);
+	colliderTypes getCollider();
 	glm::mat4 getTransformMatrix2D(World &world);
 	glm::mat4 getTransformMatrix3D(World &world);
 	~Entity();

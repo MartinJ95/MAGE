@@ -1,11 +1,12 @@
 ﻿  World.cpp
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(133): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(134): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(154): warning C4018: '<': signed/unsigned mismatch
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(159): warning C4305: '-=': truncation from 'double' to 'float'
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(170): warning C4018: '<': signed/unsigned mismatch
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\entity.h(44): warning C4018: '<': signed/unsigned mismatch
-  c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(63): note: see reference to function template instantiation 'T *Entity::getComponent<Transform>(void)' being compiled
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(99): warning C4305: 'argument': truncation from 'double' to 'const float'
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(180): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(181): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(201): warning C4018: '<': signed/unsigned mismatch
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(206): warning C4305: '-=': truncation from 'double' to 'float'
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(217): warning C4018: '<': signed/unsigned mismatch
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\entity.h(55): warning C4018: '<': signed/unsigned mismatch
+  c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(94): note: see reference to function template instantiation 'T *Entity::getComponent<Transform>(void)' being compiled
           with
           [
               T=Transform
