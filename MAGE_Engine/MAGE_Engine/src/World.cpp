@@ -26,70 +26,8 @@ bool World::Initualize()
 	m_viz.generateTexture("Resources\\wall.png", "wall");
 	m_viz.generateTexture("Resources\\floor.png", "floor");
 
-	std::vector<Vertex> vertices;
-	std::vector<Vertex> vertices2;
-	std::vector<unsigned int> indices{0, 1, 2, 2, 1, 3};
-
-	Vertex v1;
-	v1.position = Vector3f(-1, -1, 0);
-	v1.color = Vector3f(0, 0, 0);
-	v1.normal = Vector3f(0, 0, 0);
-	v1.texCoords = Vector2f(0, 0);
-
-	Vertex v2;
-	v2.position = Vector3f(1, -1, 0);
-	v2.color = Vector3f(0, 0, 0);
-	v2.normal = Vector3f(0, 0, 0);
-	v2.texCoords = Vector2f(1, 0);
-
-	Vertex v3;
-	v3.position = Vector3f(-1, 1, 0);
-	v3.color = Vector3f(0, 0, 0);
-	v3.normal = Vector3f(0, 0, 0);
-	v3.texCoords = Vector2f(0, 1);
-
-	Vertex v4;
-	v4.position = Vector3f(1, 1, 0);
-	v4.color = Vector3f(0, 0, 0);
-	v4.normal = Vector3f(0, 0, 0);
-	v4.texCoords = Vector2f(1, 1);
-
-	Vertex v21;
-	v21.position = Vector3f(-25, -25, 0);
-	v21.color = Vector3f(0, 0, 0);
-	v21.normal = Vector3f(0, 0, 0);
-	v21.texCoords = Vector2f(0, 0);
-
-	Vertex v22;
-	v22.position = Vector3f(25, -25, 0);
-	v22.color = Vector3f(0, 0, 0);
-	v22.normal = Vector3f(0, 0, 0);
-	v22.texCoords = Vector2f(5, 0);
-
-	Vertex v23;
-	v23.position = Vector3f(-25, 25, 0);
-	v23.color = Vector3f(0, 0, 0);
-	v23.normal = Vector3f(0, 0, 0);
-	v23.texCoords = Vector2f(0, 5);
-
-	Vertex v24;
-	v24.position = Vector3f(25, 25, 0);
-	v24.color = Vector3f(0, 0, 0);
-	v24.normal = Vector3f(0, 0, 0);
-	v24.texCoords = Vector2f(5, 5);
-
-	vertices.push_back(v1);
-	vertices.push_back(v2);
-	vertices.push_back(v3);
-	vertices.push_back(v4);
-
-	vertices2.push_back(v21);
-	vertices2.push_back(v22);
-	vertices2.push_back(v23);
-	vertices2.push_back(v24);
-
-	m_viz.generateMesh(vertices, indices, "default2DMesh");
-	m_viz.generateMesh(vertices2, indices, "wall");
+	m_viz.generateSquareMesh(-1, 1, 0, 1, "default2DMesh");
+	m_viz.generateSquareMesh(-25, 25, 0, 5, "wall");
 
 	Entity *cam = new Entity(true);
 	cam->addComponent<Transform>();

@@ -177,6 +177,43 @@ void Visualization::generateMesh(const std::vector<Vertex>& vertices, const std:
 	m_meshes.emplace(meshName, newMesh);
 }
 
+void Visualization::generateSquareMesh(const int & minSize, const int & maxSize, const int & minTexCoord, const int & maxTexCoord, const std::string & meshName)
+{
+	std::vector<Vertex> vertices;
+	std::vector<unsigned int> indices{ 0, 1, 2, 2, 1, 3 };
+
+	Vertex v1;
+	v1.position = Vector3f(minSize, minSize, 0);
+	v1.color = Vector3f(0, 0, 0);
+	v1.normal = Vector3f(0, 0, 0);
+	v1.texCoords = Vector2f(minTexCoord, minTexCoord);
+
+	Vertex v2;
+	v2.position = Vector3f(maxSize, minSize, 0);
+	v2.color = Vector3f(0, 0, 0);
+	v2.normal = Vector3f(0, 0, 0);
+	v2.texCoords = Vector2f(maxTexCoord, minTexCoord);
+
+	Vertex v3;
+	v3.position = Vector3f(minSize, maxSize, 0);
+	v3.color = Vector3f(0, 0, 0);
+	v3.normal = Vector3f(0, 0, 0);
+	v3.texCoords = Vector2f(minTexCoord, maxTexCoord);
+
+	Vertex v4;
+	v4.position = Vector3f(maxSize, maxSize, 0);
+	v4.color = Vector3f(0, 0, 0);
+	v4.normal = Vector3f(0, 0, 0);
+	v4.texCoords = Vector2f(maxTexCoord, maxTexCoord);
+
+	vertices.push_back(v1);
+	vertices.push_back(v2);
+	vertices.push_back(v3);
+	vertices.push_back(v4);
+
+	generateMesh(vertices, indices, meshName);
+}
+
 void Visualization::useShader(const std::string & shaderName)
 {
 	if (m_shaderPrograms.find(shaderName) != m_shaderPrograms.end())
