@@ -1,5 +1,6 @@
 #pragma once
 #include "Visualization.h"
+#include "InputManager.h"
 #include "Physics.h"
 #include "Entity.h"
 #include "Component.h"
@@ -17,6 +18,7 @@ public:
 	void Run();
 	~World();
 	Visualization m_viz;
+	InputManager *m_input;
 	Physics m_physics;
 	std::vector<Entity*> m_entities;
 	Vector3f m_worldUp;

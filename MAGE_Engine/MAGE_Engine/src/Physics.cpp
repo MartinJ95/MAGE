@@ -24,13 +24,11 @@ void Physics::handleCollisions(RigidBody & body, World & world)
 	colliderTypes collider1 = body.m_entity.getCollider();
 	if (collider1 != colliderTypes::eNone)
 	{
-		std::cout << "handling collisions" << std::endl;
 		for (int i = 0; i < world.m_entities.size(); i++)
 		{
 			RigidBody *r = world.m_entities[i]->getComponent<RigidBody>();
 			if (world.m_entities[i]->getCollider() != colliderTypes::eNone && r != &body)
 			{
-				std::cout << "testing collision" << std::endl;
 				colliderTypes collider2 = world.m_entities[i]->getCollider();
 				if (collider2 != colliderTypes::eNone)
 				{
@@ -95,10 +93,8 @@ collisionData Physics::detectCollisions(SphereCollider &collider1, PlaneCollider
 {
 	Vector3f vectorBetween = ((collider1.m_entity.getComponent<Transform>()->m_position + collider1.m_center) - (collider2.m_entity.getComponent<Transform>()->m_position + collider2.m_position));
 	Vector3f collisionNormal = collider2.m_normal;
-	std::cout << vectorBetween.dotProduct(collisionNormal) << std::endl;
 	if (vectorBetween.dotProduct(collisionNormal) < collider1.m_radius)
 	{
-		std::cout << "collided" << std::endl;
 		float penetrationDepth = collider1.m_radius - vectorBetween.dotProduct(collisionNormal);
 		if (penetrationDepth < 0)
 		{
@@ -108,7 +104,6 @@ collisionData Physics::detectCollisions(SphereCollider &collider1, PlaneCollider
 	}
 	else
 	{
-		std::cout << "not collided" << std::endl;
 		return collisionData(false, 0, Vector3f(0, 0, 0));
 	}
 }

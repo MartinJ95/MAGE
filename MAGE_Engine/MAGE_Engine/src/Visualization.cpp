@@ -84,6 +84,15 @@ bool Visualization::isOpen() const
 	return false;
 }
 
+GLFWwindow * Visualization::getWindow() const
+{
+	if (m_window != nullptr)
+	{
+		return m_window;
+	}
+	return nullptr;
+}
+
 void Visualization::clear()
 {
 	if (!glfwWindowShouldClose(m_window))

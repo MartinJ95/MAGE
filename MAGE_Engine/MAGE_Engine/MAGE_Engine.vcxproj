@@ -132,6 +132,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\InputManager.cpp" />
     <ClCompile Include="src\PlaneCollider.cpp" />
     <ClCompile Include="src\SphereCollider.cpp" />
     <ClCompile Include="src\RigidBody.cpp" />
@@ -154,6 +155,7 @@
     <ClCompile Include="src\Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\InputManager.h" />
     <ClInclude Include="src\PlaneCollider.h" />
     <ClInclude Include="src\SphereCollider.h" />
     <ClInclude Include="src\RigidBody.h" />

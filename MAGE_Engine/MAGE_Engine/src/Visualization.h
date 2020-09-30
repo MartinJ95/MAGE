@@ -22,7 +22,7 @@ public:
 	bool initialise();
 	void generateShader(const std::string &vertexShader, const std::string &fragmentShader, const std::string &shaderName);
 	bool isOpen() const;
-	
+	GLFWwindow* getWindow() const;
 	void clear();
 	void render2D(const std::string &meshName, const std::string &textureName, const std::string &shaderName, const glm::mat4 transformMatrix);
 	void render3D(const std::string &meshName, const std::string &textureName, const std::string &shaderName, const glm::mat4 transformMatrix, Camera &camera, Vector3f &worldUp);

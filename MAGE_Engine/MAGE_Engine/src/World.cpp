@@ -2,6 +2,7 @@
 
 World::World(const int screenWidth, const int screenHeight, const std::string &windowName) :
 	m_viz(screenWidth, screenHeight, windowName),
+	m_input(new InputManager(nullptr)),
 	m_physics(),
 	m_entities(),
 	m_worldUp(0, 1, 0),
@@ -9,7 +10,6 @@ World::World(const int screenWidth, const int screenHeight, const std::string &w
 	m_worldRight(0, 0, 1),
 	m_mainCamera(nullptr)
 {
-
 }
 
 bool World::Initualize()
@@ -18,6 +18,8 @@ bool World::Initualize()
 	{
 		return false;
 	}
+	m_input->m_window = m_viz.getWindow();
+	ActiveInputManager = m_input;
 	m_viz.generateShader("src\\default2DShader.vs", "src\\default2DShader.fs", "default2DShader");
 	m_viz.generateShader("src\\default3DShader.vs", "src\\default3DShader.fs", "default3DShader");
 	m_viz.generateTexture("Resources\\mageIntro.png", "introTexture");
@@ -96,7 +98,7 @@ bool World::Initualize()
 	cam->getComponent<Transform>()->updateDirection();
 	cam->addComponent<Camera>();
 	cam->addComponent<RigidBody>();
-	cam->getComponent<RigidBody>()->m_force = Vector3f(0.002, 0, 0.003);
+	//cam->getComponent<RigidBody>()->m_force = Vector3f(0.002, 0, 0.003);
 	cam->addComponent<SphereCollider>();
 	cam->getComponent<SphereCollider>()->m_radius = 5.f;
 	m_mainCamera = cam->getComponent<Camera>();
@@ -198,14 +200,41 @@ void World::Run()
 	{
 		m_viz.clear();
 
+		m_input->processInput();
+
 		for (int i = 0; i < m_entities.size(); i++)
 		{
 			m_entities[i]->Update(*this);
 		}
 
-		m_mainCamera->m_entity.getComponent<Transform>()->m_rotation.y -= 0.1;
-		m_mainCamera->m_entity.getComponent<Transform>()->updateDirection();
+		//m_mainCamera->m_entity.getComponent<Transform>()->m_rotation.y -= 0.1;
+		//m_mainCamera->m_entity.getComponent<Transform>()->updateDirection();
+		RigidBody *r = m_mainCamera->m_entity.getComponent<RigidBody>();
+		if (m_input->getInput("fire1")->m_inputValue == 1)
+		{
+			glfwSetInputMode(m_viz.getWindow(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+			glfwSetCursorPosCallback(m_input->m_window, m_input->mouse_callback);
+		}
+		else
+		{
+			glfwSetInputMode(m_viz.getWindow(), GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+			glfwSetCursorPosCallback(m_input->m_window, NULL);
+		}
+		r->m_entity.getComponent<Transform>()->m_rotation += Vector3f(m_input->getAxis("vertical1")->m_inputValue, m_input->getAxis("horizontal1")->m_inputValue, 0);
+		r->m_entity.getComponent<Transform>()->updateDirection();
+		ActiveInputManager->getAxis(ActiveInputManager->m_mouseAxis)->m_inputValue = 0;
+		ActiveInputManager->getAxis(ActiveInputManager->m_mouseAxis1)->m_inputValue = 0;
+		if (m_input->getInput("jump")->m_inputValue == 1)
+		{
+			r->m_impulseForce += Vector3f(0, 0.05, 0);
+		}
 
+		Vector3f movement = (Vector3f(m_input->getAxis("vertical")->m_inputValue, 0, m_input->getAxis("horizontal")->m_inputValue));
+		Vector3f forward = r->m_entity.getComponent<Transform>()->m_forward;
+		forward.y = 0;
+		forward.normaliseInPlace();
+		r->m_impulseForce += forward * movement.x * 0.01;
+		r->m_impulseForce += forward.crossProduct(m_worldUp) * movement.z * 0.01;
 		m_viz.display();
 
 		glfwPollEvents();
