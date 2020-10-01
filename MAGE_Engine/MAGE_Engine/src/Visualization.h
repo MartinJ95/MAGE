@@ -28,8 +28,10 @@ public:
 	void render3D(const std::string &meshName, const std::string &textureName, const std::string &shaderName, const glm::mat4 transformMatrix, Camera &camera, Vector3f &worldUp);
 	void display();
 	void generateTexture(const std::string &textureFilePath, const std::string &textureName);
+	void generateFace(std::vector<Vertex> &vertices, std::vector<unsigned int> &indices, const Vector3f &minSize, const Vector3f &maxSize, const Vector2f &minTexcoord, const Vector2f &maxTexcoord, const Vector3f &normal, const int &offset);
 	void generateMesh(const std::vector<Vertex> &vertices, const std::vector<unsigned int> &indices, const std::string &meshName);
 	void generateSquareMesh(const int &minSize, const int &maxSize, const int &minTexCoord, const int &maxTexCoord, const std::string &meshName);
+	void generateBoxMesh(const int &minSize, const int &maxSize, const int &minTexCoord, const int &maxTexCoord, const std::string &meshName);
 	void useShader(const std::string &shaderName);
 	void setShaderTexture(const std::string &textureUniform, const std::string &textureName, const std::string &shaderName, const int textureIndex);
 	void setShaderUniformFloat(const std::string &shaderName, const std::string &uniformName, const float value);

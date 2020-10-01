@@ -45,6 +45,7 @@ bool Visualization::initialise()
 		return false;
 	}
 	glViewport(0, 0, m_screenWidth, m_screenHeight);
+	glEnable(GL_DEPTH_TEST);
 	return true;
 }
 
@@ -98,7 +99,7 @@ void Visualization::clear()
 	if (!glfwWindowShouldClose(m_window))
 	{
 		glClearColor(0.f, 0.25f, 0.5f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		return;
 	}
 	return;
@@ -167,6 +168,57 @@ void Visualization::generateTexture(const std::string & textureFilePath, const s
 	m_textures.emplace(textureName, texture);
 }
 
+void Visualization::generateFace(std::vector<Vertex>& vertices, std::vector<unsigned int>& indices, const Vector3f & minSize, const Vector3f & maxSize, const Vector2f & minTexcoord, const Vector2f & maxTexcoord, const Vector3f & normal, const int & offset)
+{
+	unsigned int newIndices[]{ 0, 1, 2, 2, 1, 3 };
+
+	for (auto i : newIndices)
+	{
+		indices.emplace_back(i + offset);
+	}
+
+	for (int i = 0; i < 4; i++)
+	{
+		vertices.emplace_back(Vertex());
+		if (minSize.x != maxSize.x)
+		{
+			vertices[i + offset].position = Vector3f(
+				(i % 2 == 0) ? minSize.x : maxSize.x,
+				(i < 2) ? minSize.y : maxSize.y,
+				(i < 2) ? minSize.z : maxSize.z);
+		}
+		else
+		{
+			vertices[i + offset].position = Vector3f(
+				minSize.x,
+				(i < 2) ? minSize.y : maxSize.y,
+				(i % 2 == 0) ? minSize.z : maxSize.z);
+		}
+
+		vertices[i + offset].normal = normal;
+		vertices[i + offset].color = Vector3f(0, 0, 0);
+
+		vertices[i + offset].texCoords = Vector2f(
+			(i % 2 == 0) ? minTexcoord.x : maxTexcoord.x,
+			(i < 2) ? minTexcoord.y : maxTexcoord.y);
+	}
+	/*for (int i = 0; i < 4; i++)
+	{
+		vertices.emplace_back(Vertex());
+		vertices[i].position = Vector3f(0, 0, 0);
+		vertices[i].position.x = (i % 2 == 0) ? minSize : maxSize;
+		vertices[i].position.y = (i < 2) ? minSize : maxSize;
+
+		vertices[i].color = Vector3f(0, 0, 0);
+
+		vertices[i].normal = Vector3f(0, 0, 1);
+
+		vertices[i].texCoords = Vector2f(0, 0);
+		vertices[i].texCoords.x = (i % 2 == 0) ? minTexCoord : maxTexCoord;
+		vertices[i].texCoords.y = (i < 2) ? minTexCoord : maxTexCoord;
+	}*/
+}
+
 void Visualization::generateMesh(const std::vector<Vertex>& vertices, const std::vector<unsigned int>& indices, const std::string & meshName)
 {
 	MeshGL *newMesh = new MeshGL(vertices, indices);
@@ -179,37 +231,50 @@ void Visualization::generateMesh(const std::vector<Vertex>& vertices, const std:
 
 void Visualization::generateSquareMesh(const int & minSize, const int & maxSize, const int & minTexCoord, const int & maxTexCoord, const std::string & meshName)
 {
+
 	std::vector<Vertex> vertices;
-	std::vector<unsigned int> indices{ 0, 1, 2, 2, 1, 3 };
+	std::vector<unsigned int> indices;
 
-	Vertex v1;
-	v1.position = Vector3f(minSize, minSize, 0);
-	v1.color = Vector3f(0, 0, 0);
-	v1.normal = Vector3f(0, 0, 0);
-	v1.texCoords = Vector2f(minTexCoord, minTexCoord);
+	generateFace(vertices, indices, Vector3f(minSize, minSize, 0), Vector3f(maxSize, maxSize, 0), Vector2f(minTexCoord, minTexCoord), Vector2f(maxTexCoord, maxTexCoord), Vector3f(0, 0, 1), 0);
 
-	Vertex v2;
-	v2.position = Vector3f(maxSize, minSize, 0);
-	v2.color = Vector3f(0, 0, 0);
-	v2.normal = Vector3f(0, 0, 0);
-	v2.texCoords = Vector2f(maxTexCoord, minTexCoord);
+	generateMesh(vertices, indices, meshName);
+}
 
-	Vertex v3;
-	v3.position = Vector3f(minSize, maxSize, 0);
-	v3.color = Vector3f(0, 0, 0);
-	v3.normal = Vector3f(0, 0, 0);
-	v3.texCoords = Vector2f(minTexCoord, maxTexCoord);
+void Visualization::generateBoxMesh(const int & minSize, const int & maxSize, const int & minTexCoord, const int & maxTexCoord, const std::string & meshName)
+{
+	std::vector<Vertex> vertices;
+	std::vector<unsigned int> indices;
 
-	Vertex v4;
-	v4.position = Vector3f(maxSize, maxSize, 0);
-	v4.color = Vector3f(0, 0, 0);
-	v4.normal = Vector3f(0, 0, 0);
-	v4.texCoords = Vector2f(maxTexCoord, maxTexCoord);
-
-	vertices.push_back(v1);
-	vertices.push_back(v2);
-	vertices.push_back(v3);
-	vertices.push_back(v4);
+	//back
+	generateFace(vertices, indices,
+		Vector3f(minSize, minSize, minSize), Vector3f(maxSize, maxSize, minSize),
+		Vector2f(minTexCoord, minTexCoord), Vector2f(maxTexCoord, maxTexCoord),
+		Vector3f(0, 0, -1), 0);
+	//front
+	generateFace(vertices, indices,
+		Vector3f(minSize, minSize, maxSize), Vector3f(maxSize, maxSize, maxSize),
+		Vector2f(minTexCoord, minTexCoord), Vector2f(maxTexCoord, maxTexCoord),
+		Vector3f(0, 0, 1), 4);
+	//top
+	generateFace(vertices, indices,
+		Vector3f(minSize, maxSize, minSize), Vector3f(maxSize, maxSize, maxSize),
+		Vector2f(minTexCoord, minTexCoord), Vector2f(maxTexCoord, maxTexCoord),
+		Vector3f(0, 1, 0), 8);
+	//bottom
+	generateFace(vertices, indices,
+		Vector3f(minSize, minSize, minSize), Vector3f(maxSize, minSize, maxSize),
+		Vector2f(minTexCoord, minTexCoord), Vector2f(maxTexCoord, maxTexCoord),
+		Vector3f(0, -1, 0), 12);
+	//left
+	generateFace(vertices, indices,
+		Vector3f(minSize, minSize, minSize), Vector3f(minSize, maxSize, maxSize),
+		Vector2f(minTexCoord, minTexCoord), Vector2f(maxTexCoord, maxTexCoord),
+		Vector3f(-1, 0, 0), 16);
+	//right
+	generateFace(vertices, indices,
+		Vector3f(maxSize, minSize, minSize), Vector3f(maxSize, maxSize, maxSize),
+		Vector2f(minTexCoord, minTexCoord),	Vector2f(maxTexCoord, maxTexCoord),
+		Vector3f(1, 0, 0), 20);
 
 	generateMesh(vertices, indices, meshName);
 }
