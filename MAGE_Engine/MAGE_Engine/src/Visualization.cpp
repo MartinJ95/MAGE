@@ -279,6 +279,156 @@ void Visualization::generateBoxMesh(const int & minSize, const int & maxSize, co
 	generateMesh(vertices, indices, meshName);
 }
 
+void Visualization::generateSphereMesh(const Vector3f & center, const float & radius, const int & details, const std::string &meshName)
+{
+	std::vector<Vertex> vertices;
+	std::vector<unsigned int> indices;
+
+	vertices.emplace_back();
+	vertices.emplace_back();
+
+	//top
+	vertices[0].position = center + Vector3f(0, radius, 0);
+	vertices[0].color = Vector3f(0, 0, 0);
+	vertices[0].normal = Vector3f(0, 1, 0);
+	vertices[0].texCoords = Vector2f(0, 0);
+
+	//bottom
+	vertices[1].position = center - Vector3f(0, radius, 0);
+	vertices[1].color = Vector3f(0, 0, 0);
+	vertices[1].normal = Vector3f(0, -1, 0);
+	vertices[1].texCoords = Vector2f(1, 1);
+
+	float theta, theta1;
+	float cs, cs1;
+	float sn, sn1;
+
+	Vector3f newPos;
+
+	for (int i = 0; i < details; i++)
+	{
+		theta = ((360 / (details + 1)) * i) * (PI / 180);
+
+		cs = cos(theta);
+		sn = sin(theta);
+
+		for (int j = 0; j < details + 1; j++)
+		{
+			if (j != 0)
+			{
+				vertices.emplace_back();
+				Vertex &v = vertices.back();
+
+				theta1 = ((180 / (details + 1)) * j) * (PI / 180);
+
+				cs1 = cos(theta1);
+				sn1 = sin(theta1);
+
+				//z rotation
+				v.position = Vector3f(vertices[0].position.x * cs1 - vertices[0].position.y * sn1, vertices[0].position.x * sn1 + vertices[0].position.y * cs1, 0);
+				v.color = Vector3f(0, 0, 0);
+
+				//y rotation
+				newPos = Vector3f(v.position.x * cs + v.position.z * sn, v.position.y, -(v.position.x * sn) + v.position.z * cs);
+				v.position = newPos;
+				v.texCoords = Vector2f((Vector3f(1, 0, 0).dotProduct(v.position.normalised()) + 2) / 1, (Vector3f(0, 1, 0).dotProduct(v.position.normalised()) + 2) / 1);
+				v.normal = (v.position - center).normalised();
+			}
+		}
+	}
+
+	int iOffset, iOffset1;
+	int jOffset, jOffset1;
+
+	for (int i = 0; i < details; i++)
+	{
+		for (int j = 0; j < details; j++)
+		{
+			iOffset = i + 2; // current row
+			iOffset1 = i + 1; // row before
+
+			jOffset = j * details; // current column
+			jOffset1 = (j + 1) * details; // next column
+
+			if (i != 0 && i != (details - 1)) // middle
+			{
+				if (j != (details - 1))
+				{
+					indices.emplace_back(iOffset1 + jOffset);
+					indices.emplace_back(iOffset1 + jOffset1);
+					indices.emplace_back(iOffset + jOffset);
+
+					indices.emplace_back(iOffset + jOffset);
+					indices.emplace_back(iOffset1 + jOffset1);
+					indices.emplace_back(iOffset + jOffset1);
+				}
+				else
+				{					
+					indices.emplace_back(iOffset1 + jOffset);
+					indices.emplace_back(iOffset1);
+					indices.emplace_back(iOffset + jOffset);
+
+					indices.emplace_back(iOffset + jOffset);
+					indices.emplace_back(iOffset1);
+					indices.emplace_back(iOffset);
+				}
+			}
+			else if (i == 0) // top
+			{
+				if (j != (details - 1))
+				{
+					indices.emplace_back(0);
+					indices.emplace_back(iOffset + jOffset1);
+					indices.emplace_back(iOffset + jOffset);
+				}
+				else
+				{
+					indices.emplace_back(0);
+					indices.emplace_back(iOffset);
+					indices.emplace_back(iOffset + jOffset);
+				}
+			}
+			else if (i == (details - 1)) // bottom
+			{
+				if (j != (details - 1))
+				{
+					//last middle
+					indices.emplace_back(iOffset1 + jOffset);
+					indices.emplace_back(iOffset1 + jOffset1);
+					indices.emplace_back(iOffset + jOffset);
+
+					indices.emplace_back(iOffset + jOffset);
+					indices.emplace_back(iOffset1 + jOffset1);
+					indices.emplace_back(iOffset + jOffset1);
+
+					//bottom
+					indices.emplace_back(iOffset + jOffset);
+					indices.emplace_back(iOffset + jOffset1);
+					indices.emplace_back(1);
+				}
+				else
+				{
+					//last middle
+					indices.emplace_back(iOffset1 + jOffset);
+					indices.emplace_back(iOffset1);
+					indices.emplace_back(iOffset + jOffset);
+
+					indices.emplace_back(iOffset + jOffset);
+					indices.emplace_back(iOffset1);
+					indices.emplace_back(iOffset);
+
+					//bottom
+					indices.emplace_back(iOffset + jOffset);
+					indices.emplace_back(iOffset);
+					indices.emplace_back(1);
+				}
+			}
+		}
+	}
+
+	generateMesh(vertices, indices, meshName);
+}
+
 void Visualization::useShader(const std::string & shaderName)
 {
 	if (m_shaderPrograms.find(shaderName) != m_shaderPrograms.end())

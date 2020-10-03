@@ -29,6 +29,7 @@ bool World::Initualize()
 	m_viz.generateSquareMesh(-1, 1, 0, 1, "default2DMesh");
 	m_viz.generateSquareMesh(-25, 25, 0, 5, "wall");
 	m_viz.generateBoxMesh(-1, 1, 0, 1, "box");
+	m_viz.generateSphereMesh(Vector3f(0, 0, 0), 1, 50, "sphere");
 
 	Entity *cam = new Entity(true);
 	cam->addComponent<Transform>();
@@ -53,6 +54,17 @@ bool World::Initualize()
 	box->getComponent<Mesh>()->m_textureName = "wall";
 
 	m_entities.emplace_back(box);
+
+	Entity *sphere = new Entity(true);
+	sphere->addComponent<Transform>();
+	sphere->getComponent<Transform>()->m_position = Vector3f(0, 2, 5);
+	sphere->addComponent<Mesh>();
+	sphere->getComponent<Mesh>()->m_meshName = "sphere";
+	sphere->getComponent<Mesh>()->m_shaderName = "default3DShader";
+	sphere->getComponent<Mesh>()->m_textureName = "wall";
+
+	m_entities.emplace_back(sphere);
+
 
 	Entity *floor = new Entity(true);
 	floor->addComponent<Transform>();

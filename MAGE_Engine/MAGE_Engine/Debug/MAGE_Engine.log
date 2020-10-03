@@ -1,31 +1,13 @@
-﻿  Visualization.cpp
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(286): warning C4244: 'argument': conversion from 'const int' to 'const float', possible loss of data
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(298): warning C4244: 'argument': conversion from 'const int' to 'const float', possible loss of data
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(299): warning C4244: 'argument': conversion from 'const int' to 'const float', possible loss of data
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(300): warning C4244: 'argument': conversion from 'const int' to 'const float', possible loss of data
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(301): warning C4244: 'argument': conversion from 'const int' to 'const float', possible loss of data
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(305): warning C4244: 'argument': conversion from 'const int' to 'const float', possible loss of data
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(306): warning C4244: 'argument': conversion from 'const int' to 'const float', possible loss of data
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(307): warning C4244: 'argument': conversion from 'const int' to 'const float', possible loss of data
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(308): warning C4244: 'argument': conversion from 'const int' to 'const float', possible loss of data
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(312): warning C4244: 'argument': conversion from 'const int' to 'const float', possible loss of data
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(313): warning C4244: 'argument': conversion from 'const int' to 'const float', possible loss of data
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(314): warning C4244: 'argument': conversion from 'const int' to 'const float', possible loss of data
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(315): warning C4244: 'argument': conversion from 'const int' to 'const float', possible loss of data
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(319): warning C4244: 'argument': conversion from 'const int' to 'const float', possible loss of data
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(320): warning C4244: 'argument': conversion from 'const int' to 'const float', possible loss of data
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(321): warning C4244: 'argument': conversion from 'const int' to 'const float', possible loss of data
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(322): warning C4244: 'argument': conversion from 'const int' to 'const float', possible loss of data
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(326): warning C4244: 'argument': conversion from 'const int' to 'const float', possible loss of data
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(327): warning C4244: 'argument': conversion from 'const int' to 'const float', possible loss of data
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(328): warning C4244: 'argument': conversion from 'const int' to 'const float', possible loss of data
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(329): warning C4244: 'argument': conversion from 'const int' to 'const float', possible loss of data
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(333): warning C4244: 'argument': conversion from 'const int' to 'const float', possible loss of data
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(334): warning C4244: 'argument': conversion from 'const int' to 'const float', possible loss of data
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(335): warning C4244: 'argument': conversion from 'const int' to 'const float', possible loss of data
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(336): warning C4244: 'argument': conversion from 'const int' to 'const float', possible loss of data
+﻿  World.cpp
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(143): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(144): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(166): warning C4018: '<': signed/unsigned mismatch
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(190): warning C4305: 'argument': truncation from 'double' to 'const float'
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(197): warning C4305: 'argument': truncation from 'double' to 'const float'
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(198): warning C4305: 'argument': truncation from 'double' to 'const float'
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(207): warning C4018: '<': signed/unsigned mismatch
 c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\entity.h(55): warning C4018: '<': signed/unsigned mismatch
-  c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(122): note: see reference to function template instantiation 'T *Entity::getComponent<Transform>(void)' being compiled
+  c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(36): note: see reference to function template instantiation 'T *Entity::getComponent<Transform>(void)' being compiled
           with
           [
               T=Transform

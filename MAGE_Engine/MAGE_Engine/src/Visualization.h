@@ -10,6 +10,9 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <vector>
+#include <math.h>
+
+#define PI 3.14159265
 
 class Camera;
 
@@ -32,6 +35,7 @@ public:
 	void generateMesh(const std::vector<Vertex> &vertices, const std::vector<unsigned int> &indices, const std::string &meshName);
 	void generateSquareMesh(const int &minSize, const int &maxSize, const int &minTexCoord, const int &maxTexCoord, const std::string &meshName);
 	void generateBoxMesh(const int &minSize, const int &maxSize, const int &minTexCoord, const int &maxTexCoord, const std::string &meshName);
+	void generateSphereMesh(const Vector3f &center, const float &radius, const int &details, const std::string &meshName);
 	void useShader(const std::string &shaderName);
 	void setShaderTexture(const std::string &textureUniform, const std::string &textureName, const std::string &shaderName, const int textureIndex);
 	void setShaderUniformFloat(const std::string &shaderName, const std::string &uniformName, const float value);
