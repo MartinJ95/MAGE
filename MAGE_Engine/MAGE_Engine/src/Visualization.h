@@ -36,6 +36,9 @@ public:
 	void generateSquareMesh(const int &minSize, const int &maxSize, const int &minTexCoord, const int &maxTexCoord, const std::string &meshName);
 	void generateBoxMesh(const int &minSize, const int &maxSize, const int &minTexCoord, const int &maxTexCoord, const std::string &meshName);
 	void generateSphereMesh(const Vector3f &center, const float &radius, const int &details, const std::string &meshName);
+	void generateSphereVertices(std::vector<Vertex>& vertices, const Vector3f &center, const int & details, Vector3f &newPos, float &theta, float &theta1, float &cs, float &sn, float &cs1, float &sn1);
+	void generateSphereColumn(std::vector<Vertex>& vertices, const Vector3f &center, const int & details, Vector3f &newPos, float &theta, float &theta1, float &cs, float &sn, float &cs1, float &sn1);
+	void generateSphereIndices(std::vector<unsigned int> &indices, const int &details);
 	void useShader(const std::string &shaderName);
 	void setShaderTexture(const std::string &textureUniform, const std::string &textureName, const std::string &shaderName, const int textureIndex);
 	void setShaderUniformFloat(const std::string &shaderName, const std::string &uniformName, const float value);

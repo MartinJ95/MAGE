@@ -308,72 +308,68 @@ void Visualization::generateSphereMesh(const Vector3f & center, const float & ra
 	Vector3f newPos;
 
 	//vertex generation
+	generateSphereVertices(vertices, center, details, newPos, theta, theta1, cs, sn, cs1, sn1);
+
+	generateSphereIndices(indices, details);
+
+	generateMesh(vertices, indices, meshName);
+}
+
+void Visualization::generateSphereVertices(std::vector<Vertex>& vertices, const Vector3f &center, const int & details, Vector3f &newPos, float &theta, float &theta1, float &cs, float &sn, float &cs1, float &sn1)
+{
+	float thetaChange = (360 / (details + 1)) * (PI / 180);
 	for (int i = 0; i < details; i++)
 	{
-		theta = ((360 / (details + 1)) * i) * (PI / 180);
+		theta = thetaChange * i;
 
 		cs = cos(theta);
 		sn = sin(theta);
 
-		for (int j = 0; j < details + 1; j++)
-		{
-			if (j != 0)
-			{
-				vertices.emplace_back();
-				Vertex &v = vertices.back();
+		generateSphereColumn(vertices, center, details, newPos, theta, theta1, cs, sn, cs1, sn1);
 
-				theta1 = ((180 / (details + 1)) * j) * (PI / 180);
-
-				cs1 = cos(theta1);
-				sn1 = sin(theta1);
-
-				//z rotation
-				v.position = Vector3f(vertices[0].position.x * cs1 - vertices[0].position.y * sn1, vertices[0].position.x * sn1 + vertices[0].position.y * cs1, 0);
-				v.color = Vector3f(0, 0, 0);
-
-				//y rotation
-				newPos = Vector3f(v.position.x * cs + v.position.z * sn, v.position.y, -(v.position.x * sn) + v.position.z * cs);
-				v.position = newPos;
-				v.texCoords = Vector2f((theta * (180 / PI) / 360), (Vector3f(0, 1, 0).dotProduct(v.position.normalised()) + 1) / 2);
-				std::cout << v.texCoords.x << std::endl;
-				v.normal = (v.position - center).normalised();
-			}
-		}
 		if (i == details - 1)
 		{
 			theta = 360 * (PI / 180);
 			cs = cos(theta);
 			sn = sin(theta);
-			for (int j = 0; j < details + 1; j++)
-			{
-				if (j != 0)
-				{
-					vertices.emplace_back();
-					Vertex &v = vertices.back();
 
-					theta1 = ((180 / (details + 1)) * j) * (PI / 180);
-
-					cs1 = cos(theta1);
-					sn1 = sin(theta1);
-
-					//z rotation
-					v.position = Vector3f(vertices[0].position.x * cs1 - vertices[0].position.y * sn1, vertices[0].position.x * sn1 + vertices[0].position.y * cs1, 0);
-					v.color = Vector3f(0, 0, 0);
-
-					//y rotation
-					newPos = Vector3f(v.position.x * cs + v.position.z * sn, v.position.y, -(v.position.x * sn) + v.position.z * cs);
-					v.position = newPos;
-					v.texCoords = Vector2f(1, (Vector3f(0, 1, 0).dotProduct(v.position.normalised()) + 1) / 2);
-					std::cout << v.texCoords.x << std::endl;
-					v.normal = (v.position - center).normalised();
-				}
-			}
+			generateSphereColumn(vertices, center, details, newPos, theta, theta1, cs, sn, cs1, sn1);
 		}
 	}
+}
 
+void Visualization::generateSphereColumn(std::vector<Vertex>& vertices, const Vector3f &center, const int & details, Vector3f &newPos, float &theta, float &theta1, float &cs, float &sn, float &cs1, float &sn1)
+{
+	theta1 = (180 / (details + 1)) * (PI / 180);
+	float xTexCoord = (theta * (180 / PI) / 360);
+	for (int j = 0; j < details + 1; j++)
+	{
+		if (j != 0)
+		{
+			vertices.emplace_back();
+			Vertex &v = vertices.back();
+
+			cs1 = cos(theta1 * j);
+			sn1 = sin(theta1 * j);
+
+			//z rotation
+			v.position = Vector3f(vertices[0].position.x * cs1 - vertices[0].position.y * sn1, vertices[0].position.x * sn1 + vertices[0].position.y * cs1, 0);
+			v.color = Vector3f(0, 0, 0);
+
+			//y rotation
+			newPos = Vector3f(v.position.x * cs + v.position.z * sn, v.position.y, -(v.position.x * sn) + v.position.z * cs);
+			v.position = newPos;
+			v.texCoords = Vector2f(xTexCoord, (Vector3f(0, 1, 0).dotProduct(v.position.normalised()) + 1) / 2);
+			std::cout << v.texCoords.x << std::endl;
+			v.normal = (v.position - center).normalised();
+		}
+	}
+}
+
+void Visualization::generateSphereIndices(std::vector<unsigned int>& indices, const int & details)
+{
 	int iOffset, iOffset1;
 	int jOffset, jOffset1;
-	//index setting
 	//rows
 	for (int i = 0; i < details; i++)
 	{
@@ -390,26 +386,6 @@ void Visualization::generateSphereMesh(const Vector3f & center, const float & ra
 
 			if (i != 0 && i != (details - 1)) // middle
 			{
-				/*if (j != (details - 1))
-				{
-					indices.emplace_back(iOffset1 + jOffset);
-					indices.emplace_back(iOffset1 + jOffset1);
-					indices.emplace_back(iOffset + jOffset);
-
-					indices.emplace_back(iOffset + jOffset);
-					indices.emplace_back(iOffset1 + jOffset1);
-					indices.emplace_back(iOffset + jOffset1);
-				}
-				else
-				{					
-					indices.emplace_back(iOffset1 + jOffset);
-					indices.emplace_back(iOffset1);
-					indices.emplace_back(iOffset + jOffset);
-
-					indices.emplace_back(iOffset + jOffset);
-					indices.emplace_back(iOffset1);
-					indices.emplace_back(iOffset);
-				}*/
 				indices.emplace_back(iOffset1 + jOffset);
 				indices.emplace_back(iOffset1 + jOffset1);
 				indices.emplace_back(iOffset + jOffset);
@@ -420,56 +396,12 @@ void Visualization::generateSphereMesh(const Vector3f & center, const float & ra
 			}
 			else if (i == 0) // top
 			{
-				/*if (j != (details - 1))
-				{
-					indices.emplace_back(0);
-					indices.emplace_back(iOffset + jOffset1);
-					indices.emplace_back(iOffset + jOffset);
-				}
-				else
-				{
-					indices.emplace_back(0);
-					indices.emplace_back(iOffset);
-					indices.emplace_back(iOffset + jOffset);
-				}*/
 				indices.emplace_back(0);
 				indices.emplace_back(iOffset + jOffset1);
 				indices.emplace_back(iOffset + jOffset);
 			}
 			else if (i == (details - 1)) // bottom
 			{
-				/*if (j != (details - 1))
-				{
-					//last middle
-					indices.emplace_back(iOffset1 + jOffset);
-					indices.emplace_back(iOffset1 + jOffset1);
-					indices.emplace_back(iOffset + jOffset);
-
-					indices.emplace_back(iOffset + jOffset);
-					indices.emplace_back(iOffset1 + jOffset1);
-					indices.emplace_back(iOffset + jOffset1);
-
-					//bottom
-					indices.emplace_back(iOffset + jOffset);
-					indices.emplace_back(iOffset + jOffset1);
-					indices.emplace_back(1);
-				}
-				else
-				{
-					//last middle
-					indices.emplace_back(iOffset1 + jOffset);
-					indices.emplace_back(iOffset1);
-					indices.emplace_back(iOffset + jOffset);
-
-					indices.emplace_back(iOffset + jOffset);
-					indices.emplace_back(iOffset1);
-					indices.emplace_back(iOffset);
-
-					//bottom
-					indices.emplace_back(iOffset + jOffset);
-					indices.emplace_back(iOffset);
-					indices.emplace_back(1);
-				}*/
 				//last middle
 				indices.emplace_back(iOffset1 + jOffset);
 				indices.emplace_back(iOffset1 + jOffset1);
@@ -486,8 +418,6 @@ void Visualization::generateSphereMesh(const Vector3f & center, const float & ra
 			}
 		}
 	}
-
-	generateMesh(vertices, indices, meshName);
 }
 
 void Visualization::useShader(const std::string & shaderName)
