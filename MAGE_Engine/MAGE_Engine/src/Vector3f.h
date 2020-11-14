@@ -76,4 +76,3 @@ public:
 	float x, y, z;
 	~Vector3f();
 };
-

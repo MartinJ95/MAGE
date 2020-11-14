@@ -311,7 +311,7 @@ void Visualization::generateSphereMesh(const Vector3f & center, const float & ra
 
 		cs = cos(theta);
 		sn = sin(theta);
-
+		//vertex generation
 		for (int j = 0; j < details + 1; j++)
 		{
 			if (j != 0)
@@ -331,7 +331,7 @@ void Visualization::generateSphereMesh(const Vector3f & center, const float & ra
 				//y rotation
 				newPos = Vector3f(v.position.x * cs + v.position.z * sn, v.position.y, -(v.position.x * sn) + v.position.z * cs);
 				v.position = newPos;
-				v.texCoords = Vector2f((Vector3f(1, 0, 0).dotProduct(v.position.normalised()) + 2) / 1, (Vector3f(0, 1, 0).dotProduct(v.position.normalised()) + 2) / 1);
+				v.texCoords = Vector2f((Vector3f(1, 0, 0).dotProduct(v.position.normalised()) + 1) / 2, (Vector3f(0, 1, 0).dotProduct(v.position.normalised()) + 1) / 2);
 				v.normal = (v.position - center).normalised();
 			}
 		}
@@ -339,7 +339,7 @@ void Visualization::generateSphereMesh(const Vector3f & center, const float & ra
 
 	int iOffset, iOffset1;
 	int jOffset, jOffset1;
-
+	//index setting
 	for (int i = 0; i < details; i++)
 	{
 		for (int j = 0; j < details; j++)

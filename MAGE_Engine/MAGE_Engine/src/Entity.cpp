@@ -62,6 +62,10 @@ colliderTypes Entity::getCollider()
 	{
 		return colliderTypes::ePlane;
 	}
+	else if (getComponent<BoxCollider>() != NULL)
+	{
+		return colliderTypes::eBox;
+	}
 	else
 	{
 		return colliderTypes::eNone;

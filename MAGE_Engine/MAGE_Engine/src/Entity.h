@@ -6,6 +6,7 @@
 #include "RigidBody.h"
 #include "PlaneCollider.h"
 #include "SphereCollider.h"
+#include "BoxCollider.h"
 #include "Mesh.h"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -16,7 +17,8 @@ enum colliderTypes
 {
 	eNone,
 	eSphere,
-	ePlane
+	ePlane,
+	eBox
 };
 
 typedef bool(*componentManager)(Component*, World*, int);
@@ -42,7 +44,8 @@ manageComponents<Camera>,
 manageComponents<Mesh>,
 manageComponents<RigidBody>,
 manageComponents<PlaneCollider>,
-manageComponents<SphereCollider>
+manageComponents<SphereCollider>,
+manageComponents<BoxCollider>
 };
 
 class Entity

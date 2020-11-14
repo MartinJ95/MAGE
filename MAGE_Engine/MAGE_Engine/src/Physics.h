@@ -6,11 +6,13 @@ class RigidBody;
 class World;
 class SphereCollider;
 class PlaneCollider;
+class BoxCollider;
 
 enum class collisionTypes
 {
 	eSphereToSphere,
-	eSphereToPlane
+	eSphereToPlane,
+	eSphereToBox
 };
 
 struct collisionData
@@ -37,10 +39,20 @@ public:
 	collisionData detectCollision(Entity &entity1, Entity &entity2);
 	collisionData detectCollisions(SphereCollider &collider1, SphereCollider &collider2);
 	collisionData detectCollisions(SphereCollider &collider1, PlaneCollider &collider2);
+	collisionData detectCollisions(SphereCollider &collider1, BoxCollider &collider2);
 	void collisionResponse(RigidBody &object1, RigidBody &object2, collisionData &collisionData);
 	void collisionResponse(RigidBody &object, collisionData &data);
 	~Physics();
 	float m_gravity;
 	float m_velocityDropoff;
+	Vector3f compass[6]
+	{
+		Vector3f(1, 0, 0),
+		Vector3f(0, 1, 0),
+		Vector3f(0, 0, 1),
+		Vector3f(-1, 0, 0),
+		Vector3f(0, -1, 0),
+		Vector3f(0, 0, -1)
+	};
 };
 

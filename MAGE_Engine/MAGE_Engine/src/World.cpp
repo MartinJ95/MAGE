@@ -25,6 +25,8 @@ bool World::Initualize()
 	m_viz.generateTexture("Resources\\mageIntro.png", "introTexture");
 	m_viz.generateTexture("Resources\\wall.png", "wall");
 	m_viz.generateTexture("Resources\\floor.png", "floor");
+	m_viz.generateTexture("Resources\\box.png", "box");
+	m_viz.generateTexture("Resources\\world.png", "world");
 
 	m_viz.generateSquareMesh(-1, 1, 0, 1, "default2DMesh");
 	m_viz.generateSquareMesh(-25, 25, 0, 5, "wall");
@@ -40,7 +42,7 @@ bool World::Initualize()
 	cam->addComponent<RigidBody>();
 	//cam->getComponent<RigidBody>()->m_force = Vector3f(0.002, 0, 0.003);
 	cam->addComponent<SphereCollider>();
-	cam->getComponent<SphereCollider>()->m_radius = 5.f;
+	cam->getComponent<SphereCollider>()->m_radius = 2.5f;
 	m_mainCamera = cam->getComponent<Camera>();
 
 	m_entities.emplace_back(cam);
@@ -51,7 +53,10 @@ bool World::Initualize()
 	box->addComponent<Mesh>();
 	box->getComponent<Mesh>()->m_meshName = "box";
 	box->getComponent<Mesh>()->m_shaderName = "default3DShader";
-	box->getComponent<Mesh>()->m_textureName = "wall";
+	box->getComponent<Mesh>()->m_textureName = "box";
+	box->addComponent<BoxCollider>();
+	box->getComponent<BoxCollider>()->m_minDimensions = Vector3f(-1, -1, -1);
+	box->getComponent<BoxCollider>()->m_maxDimensions = Vector3f(1, 1, 1);
 
 	m_entities.emplace_back(box);
 
@@ -61,7 +66,9 @@ bool World::Initualize()
 	sphere->addComponent<Mesh>();
 	sphere->getComponent<Mesh>()->m_meshName = "sphere";
 	sphere->getComponent<Mesh>()->m_shaderName = "default3DShader";
-	sphere->getComponent<Mesh>()->m_textureName = "wall";
+	sphere->getComponent<Mesh>()->m_textureName = "world";
+	sphere->addComponent<SphereCollider>();
+	sphere->getComponent<SphereCollider>()->m_radius = 0.5f;
 
 	m_entities.emplace_back(sphere);
 
