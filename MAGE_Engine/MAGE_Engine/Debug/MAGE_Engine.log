@@ -12,8 +12,11 @@ c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.c
 c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(271): warning C4244: 'argument': conversion from 'const int' to 'const float', possible loss of data
 c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(275): warning C4244: 'argument': conversion from 'const int' to 'const float', possible loss of data
 c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(276): warning C4244: 'argument': conversion from 'const int' to 'const float', possible loss of data
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(310): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(322): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(313): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(325): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(337): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(344): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(354): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\entity.h(58): warning C4018: '<': signed/unsigned mismatch
   c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(122): note: see reference to function template instantiation 'T *Entity::getComponent<Transform>(void)' being compiled
           with
