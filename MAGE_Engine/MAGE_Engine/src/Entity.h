@@ -21,9 +21,9 @@ enum colliderTypes
 	eBox
 };
 
-typedef bool(*componentManager)(Component*, World*, int);
+typedef bool(*componentManager)(Component*, World*, int, collisionData*);
 
-template<typename T> bool manageComponents(Component *component, World *world, int functionNumber)
+template<typename T> bool manageComponents(Component *component, World *world, int functionNumber, collisionData *data)
 {
 	switch(functionNumber)
 	{
@@ -33,6 +33,8 @@ template<typename T> bool manageComponents(Component *component, World *world, i
 		return Entity::FixedUpdateComponent<T>(component, *world);
 	case 2:
 		return Entity::CleanUpComponent<T>(component);
+	case 3:
+		return Entity::ComponentCollision<T>(component, *world, *data);
 	default:
 		return false;
 	}
@@ -114,8 +116,19 @@ public:
 		}
 		return false;
 	}
+	template<typename T> static bool ComponentCollision(Component *component, World &world, collisionData &data)
+	{
+		if (dynamic_cast<T*>(component) != NULL)
+		{
+			T *c = static_cast<T*>(component);
+			c->onCollisionEnter(world, data);
+			return true;
+		}
+		return false;
+	}
 	void Update(World &world);
 	void fixedUpdate(World &world);
+	void onCollisionEnter(World &world, collisionData &data);
 	void createChild(bool active);
 	colliderTypes getCollider();
 	glm::mat4 getTransformMatrix2D(World &world);

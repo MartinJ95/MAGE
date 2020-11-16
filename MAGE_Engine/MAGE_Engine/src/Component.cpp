@@ -16,6 +16,10 @@ void Component::FixedUpdate(World &world)
 {
 }
 
+void Component::onCollisionEnter(World & world, collisionData & data)
+{
+}
+
 Component::~Component()
 {
 	

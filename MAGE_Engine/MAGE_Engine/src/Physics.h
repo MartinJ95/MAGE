@@ -17,17 +17,15 @@ enum class collisionTypes
 
 struct collisionData
 {
-	collisionData(bool &collided, float &penetrationDepth, Vector3f &collisionNormal) : 
+	collisionData(const bool &collided, const float &penetrationDepth, const Vector3f &collisionNormal, Entity *entity = nullptr) : 
 		m_hasCollided(collided), 
 		m_penetrationDepth(penetrationDepth), 
-		m_collisionNormal(collisionNormal){}
-	collisionData(bool collided, float penetrationDepth, Vector3f collisionNormal) :
-		m_hasCollided(collided),
-		m_penetrationDepth(penetrationDepth),
-		m_collisionNormal(collisionNormal) {}
+		m_collisionNormal(collisionNormal),
+	collidedEntity(entity){}
 	bool m_hasCollided;
 	float m_penetrationDepth;
 	Vector3f m_collisionNormal;
+	Entity *collidedEntity;
 };
 
 class Physics
@@ -35,8 +33,8 @@ class Physics
 public:
 	Physics();
 	void applyForces(const World &world, RigidBody &body);
-	void handleCollisions(RigidBody &body, World &world);
-	collisionData detectCollision(Entity &entity1, Entity &entity2);
+	void handleCollisions(Entity &entity, World &world);
+	collisionData detectCollision(Entity &entity1, World &world);
 	collisionData detectCollisions(SphereCollider &collider1, SphereCollider &collider2);
 	collisionData detectCollisions(SphereCollider &collider1, PlaneCollider &collider2);
 	collisionData detectCollisions(SphereCollider &collider1, BoxCollider &collider2);

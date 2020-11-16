@@ -19,74 +19,65 @@ void Physics::applyForces(const World & world, RigidBody & body)
 	body.m_entity.getComponent<Transform>()->m_position += body.m_velocity;
 }
 
-void Physics::handleCollisions(RigidBody & body, World & world)
+void Physics::handleCollisions(Entity & entity, World & world)
 {
-	colliderTypes collider1 = body.m_entity.getCollider();
-	std::vector<Entity*> &entities = world.m_entities;
-	RigidBody *r;
-	if (collider1 != colliderTypes::eNone)
+	if (entity.getCollider() != colliderTypes::eNone)
 	{
-		for (int i = 0; i < entities.size(); i++)
+		collisionData data = detectCollision(entity, world);
+		if (data.m_hasCollided == true)
 		{
-			r = entities[i]->getComponent<RigidBody>();
-			if (entities[i]->getCollider() != colliderTypes::eNone && r != &body)
+			entity.onCollisionEnter(world, data);
+			if (entity.getComponent<RigidBody>() != NULL)
 			{
-				colliderTypes collider2 = world.m_entities[i]->getCollider();
-				if (collider2 != colliderTypes::eNone)
-				{
-					if (collider1 == colliderTypes::eSphere && collider2 == colliderTypes::eSphere)
-					{
-						collisionData data = detectCollisions(*body.m_entity.getComponent<SphereCollider>(), *entities[i]->getComponent<SphereCollider>());
-						if (data.m_hasCollided == true)
-						{
-							collisionResponse(body, data);
-						}
-					}
-					else if (collider1 == colliderTypes::eSphere && collider2 == colliderTypes::eBox)
-					{
-						collisionData data = detectCollisions(*body.m_entity.getComponent<SphereCollider>(), *entities[i]->getComponent<BoxCollider>());
-						if (data.m_hasCollided == true)
-						{
-							collisionResponse(body, data);
-						}
-					}
-					else if (collider1 == colliderTypes::eSphere && collider2 == colliderTypes::ePlane)
-					{
-						collisionData data = detectCollisions(*body.m_entity.getComponent<SphereCollider>(), *entities[i]->getComponent<PlaneCollider>());
-						if (data.m_hasCollided == true)
-						{
-							collisionResponse(body, data);
-						}
-					}
-					else if (collider1 == colliderTypes::ePlane && collider2 == colliderTypes::eSphere)
-					{
-
-					}
-				}
+				collisionResponse(*entity.getComponent<RigidBody>(), data);
 			}
 		}
 	}
 }
 
-collisionData Physics::detectCollision(Entity & entity1, Entity & entity2)
+collisionData Physics::detectCollision(Entity & entity, World &world)
 {
-	colliderTypes collider1 = entity1.getCollider();
-	colliderTypes collider2 = entity2.getCollider();
-	if (collider1 != colliderTypes::eNone && collider2 != colliderTypes::eNone)
+	colliderTypes collider1 = entity.getCollider();
+	std::vector<Entity*> &entities = world.m_entities;
+	for (int i = 0; i < entities.size(); i++)
 	{
-		if (collider1 & collider2 == colliderTypes::eSphere)
+		if (entities[i]->getCollider() != colliderTypes::eNone && entities[i] != &entity)
 		{
-			return detectCollisions(*entity1.getComponent<SphereCollider>(), *entity2.getComponent<SphereCollider>());
-		}
-		else if (collider1 == colliderTypes::eSphere && collider2 == colliderTypes::ePlane)
-		{
-			return detectCollisions(*entity1.getComponent<SphereCollider>(), *entity2.getComponent<PlaneCollider>());
-		}
-		else if (collider1 == colliderTypes::ePlane && collider2 == colliderTypes::eSphere)
-		{
-			return detectCollisions(*entity2.getComponent<SphereCollider>(), *entity1.getComponent<PlaneCollider>());
+			colliderTypes collider2 = world.m_entities[i]->getCollider();
+			if (collider2 != colliderTypes::eNone)
+			{
+				if (collider1 == colliderTypes::eSphere && collider2 == colliderTypes::eSphere)
+				{
+					collisionData data = detectCollisions(*entity.getComponent<SphereCollider>(), *entities[i]->getComponent<SphereCollider>());
+					if (data.m_hasCollided == true)
+					{
+						return data;
+					}
+				}
+				else if (collider1 == colliderTypes::eSphere && collider2 == colliderTypes::eBox)
+				{
+					collisionData data = detectCollisions(*entity.getComponent<SphereCollider>(), *entities[i]->getComponent<BoxCollider>());
+					if (data.m_hasCollided == true)
+					{
+						return data;
+					}
+				}
+				else if (collider1 == colliderTypes::eSphere && collider2 == colliderTypes::ePlane)
+				{
+					collisionData data = detectCollisions(*entity.getComponent<SphereCollider>(), *entities[i]->getComponent<PlaneCollider>());
+					if (data.m_hasCollided == true)
+					{
+						return data;
+					}
+				}
+				else if (collider1 == colliderTypes::ePlane && collider2 == colliderTypes::eSphere)
+				{
+
+				}
+			}
 		}
 	}
+	return collisionData(false, 0, Vector3f(0, 0, 0));
 }
 
 collisionData Physics::detectCollisions(SphereCollider &collider1, SphereCollider &collider2)

@@ -24,7 +24,7 @@ void Entity::Update(World &world)
 	{
 		for (auto f : componentManagerTypes)
 		{
-			if (f(m_components[i], &world, 0) == true)
+			if (f(m_components[i], &world, 0, nullptr) == true)
 			{
 				break;
 			}
@@ -38,7 +38,21 @@ void Entity::fixedUpdate(World &world)
 	{
 		for (auto f : componentManagerTypes)
 		{
-			if (f(m_components[i], &world, 1) == true)
+			if (f(m_components[i], &world, 1, nullptr) == true)
+			{
+				break;
+			}
+		}
+	}
+}
+
+void Entity::onCollisionEnter(World & world, collisionData & data)
+{
+	for (int i = 0; i < m_components.size(); i++)
+	{
+		for (auto f : componentManagerTypes)
+		{
+			if (f(m_components[i], &world, 3, &data) == true)
 			{
 				break;
 			}
@@ -112,7 +126,7 @@ Entity::~Entity()
 	{
 		for (auto f : componentManagerTypes)
 		{
-			if (f(m_components[i], nullptr, 2) == true)
+			if (f(m_components[i], nullptr, 2, nullptr) == true)
 			{
 				break;
 			}
