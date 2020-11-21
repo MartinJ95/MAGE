@@ -37,7 +37,10 @@ public:
 	collisionData detectCollision(Entity &entity1, World &world);
 	collisionData detectCollisions(SphereCollider &collider1, SphereCollider &collider2);
 	collisionData detectCollisions(SphereCollider &collider1, PlaneCollider &collider2);
-	collisionData detectCollisions(SphereCollider &collider1, BoxCollider &collider2);
+	void detectClosestEdgeBox(int &closestEdgeIndex, float &penetrationDepth, Vector3f &collisionPoint, BoxCollider &collidedBox);
+	collisionData detectCollisions(SphereCollider &collider1, BoxCollider &collider2, bool inverted);
+	collisionData detectCollisions(BoxCollider &collider1, BoxCollider &collider2);
+	collisionData detectCollisions(BoxCollider &collider1, PlaneCollider &collider2);
 	void collisionResponse(RigidBody &object1, RigidBody &object2, collisionData &collisionData);
 	void collisionResponse(RigidBody &object, collisionData &data);
 	~Physics();

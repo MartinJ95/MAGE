@@ -41,8 +41,11 @@ bool World::Initualize()
 	cam->addComponent<Camera>();
 	cam->addComponent<RigidBody>();
 	//cam->getComponent<RigidBody>()->m_force = Vector3f(0.002, 0, 0.003);
-	cam->addComponent<SphereCollider>();
-	cam->getComponent<SphereCollider>()->m_radius = 2.5f;
+	//cam->addComponent<SphereCollider>();
+	//cam->getComponent<SphereCollider>()->m_radius = 2.5f;
+	cam->addComponent<BoxCollider>();
+	cam->getComponent<BoxCollider>()->m_minDimensions = Vector3f(-1, -1, -1);
+	cam->getComponent<BoxCollider>()->m_maxDimensions = Vector3f(1, 1, 1);
 	m_mainCamera = cam->getComponent<Camera>();
 
 	m_entities.emplace_back(cam);

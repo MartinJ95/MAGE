@@ -47,7 +47,7 @@ void InputManager::mouse_callback(GLFWwindow * window, double xpos, double ypos)
 	else if(ActiveInputManager->m_lastMousePos != Vector2f(xpos, ypos))
 	{
 		Vector2f mouseMove = (Vector2f(xpos, ypos) - ActiveInputManager->m_lastMousePos).normalised();
-		std::cout << mouseMove.x << " - " << mouseMove.y << std::endl;
+		//std::cout << mouseMove.x << " - " << mouseMove.y << std::endl;
 		ActiveInputManager->m_lastMousePos = Vector2f(xpos, ypos);
 		ActiveInputManager->getAxis(ActiveInputManager->m_mouseAxis)->m_inputValue = -mouseMove.y;
 		ActiveInputManager->getAxis(ActiveInputManager->m_mouseAxis1)->m_inputValue = mouseMove.x;

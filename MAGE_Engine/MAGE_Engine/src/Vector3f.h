@@ -73,6 +73,24 @@ public:
 		z = other.z;
 	}
 
+	bool operator>(const Vector3f& other)
+	{
+		if (other.x < x && other.y < y && other.z < z)
+		{
+			return true;
+		}
+		return false;
+	}
+
+	bool operator<(const Vector3f& other)
+	{
+		if (other.x > x && other.y > y && other.z > z)
+		{
+			return true;
+		}
+		return false;
+	}
+
 	float x, y, z;
 	~Vector3f();
 };
