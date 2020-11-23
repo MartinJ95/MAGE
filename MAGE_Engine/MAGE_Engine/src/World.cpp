@@ -41,6 +41,7 @@ bool World::Initualize()
 	cam->getComponent<Transform>()->m_rotation = Vector3f(-45, -90, 0);
 	cam->getComponent<Transform>()->updateDirection();
 	cam->addComponent<Camera>();
+	cam->getComponent<Camera>()->m_fieldOfView = 45.f;
 	cam->addComponent<RigidBody>();
 	//cam->getComponent<RigidBody>()->m_force = Vector3f(0.002, 0, 0.003);
 	//cam->addComponent<SphereCollider>();
@@ -52,8 +53,13 @@ bool World::Initualize()
 	cam->addComponent<PointLight>();
 	cam->getComponent<PointLight>()->m_intensity = Vector3f(1, 1, 1);
 	cam->getComponent<PointLight>()->m_position = Vector3f(0, 0, 0);
-	cam->getComponent<PointLight>()->m_radius = 50.f;
+	cam->getComponent<PointLight>()->m_radius = 5.f;
+	cam->addComponent<SpotLight>();
+	cam->getComponent<SpotLight>()->m_fieldOfView = 45.f;
+	cam->getComponent<SpotLight>()->m_intensity = Vector3f(1, 1, 1);
+	cam->getComponent<SpotLight>()->m_range = 50.f;
 	m_pointLights.push_back(cam->getComponent<PointLight>());
+	m_spotLights.push_back(cam->getComponent<SpotLight>());
 
 	m_entities.emplace_back(cam);
 

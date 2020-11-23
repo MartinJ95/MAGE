@@ -118,20 +118,33 @@ void Visualization::render3D(const std::string & meshName, const std::string & t
 {
 	useShader(shaderName);
 	setShaderUniformVector3f(shaderName, "cameraPosition", world.m_mainCamera->m_entity.getComponent<Transform>()->m_position);
-	setShaderUniformVector3f(shaderName, "cameraDirection", world.m_mainCamera->m_entity.getComponent<Transform>()->m_forward);
 	setShaderUniformVector3f(shaderName, "ambientLighting", world.m_ambientLighting);
 	int numPointLights = 0;
 	for (int i = 0; i < world.m_pointLights.size(); i++)
 	{
 		if (world.m_pointLights[i]->m_entity.m_active == true)
 		{
-			setShaderUniformVector3f(shaderName, "pointLights[" + std::to_string(numPointLights) + "].m_position", world.m_pointLights[i]->m_entity.getComponent<Transform>()->m_position);
+			setShaderUniformVector3f(shaderName, "pointLights[" + std::to_string(numPointLights) + "].m_position", world.m_pointLights[i]->m_entity.getComponent<Transform>()->worldPosition());
 			setShaderUniformFloat(shaderName, "pointLights[" + std::to_string(numPointLights) + "].m_radius", world.m_pointLights[i]->m_radius);
 			setShaderUniformVector3f(shaderName, "pointLights[" + std::to_string(numPointLights) + "].m_intensity", world.m_pointLights[i]->m_intensity);
 			numPointLights++;
 		}
 	}
+	int numSpotLights = 0;
+	for (int i = 0; i < world.m_spotLights.size(); i++)
+	{
+		if (world.m_spotLights[i]->m_entity.m_active == true)
+		{
+			setShaderUniformVector3f(shaderName, "spotLights[" + std::to_string(numSpotLights) + "].m_position", world.m_spotLights[i]->m_entity.getComponent<Transform>()->worldPosition());
+			setShaderUniformVector3f(shaderName, "spotLights[" + std::to_string(numSpotLights) + "].m_intensity", world.m_spotLights[i]->m_intensity);
+			setShaderUniformVector3f(shaderName, "spotLights[" + std::to_string(numSpotLights) + "].m_direction", world.m_spotLights[i]->m_entity.getComponent<Transform>()->worldForward());
+			setShaderUniformFloat(shaderName, "spotlights[" + std::to_string(numSpotLights) + "].m_range", world.m_spotLights[i]->m_range);
+			setShaderUniformFloat(shaderName, "spotLights[" + std::to_string(numSpotLights) + "].m_fieldOfView", world.m_spotLights[i]->m_fieldOfView);
+			numSpotLights++;
+		}
+	}
 	setShaderUniformInt(shaderName, "numPointLights", numPointLights);
+	setShaderUniformInt(shaderName, "numSpotLights", numSpotLights);
 	setShaderUniformMatrix4f(shaderName, "model_xform", transformMatrix);
 	glm::mat4 projection = glm::perspective(glm::radians(camera.m_fieldOfView), (float)m_screenWidth / (float)m_screenHeight, 0.1f, 100.0f);
 	setShaderUniformMatrix4f(shaderName, "projection", projection);

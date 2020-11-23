@@ -8,6 +8,7 @@
 #include "SphereCollider.h"
 #include "BoxCollider.h"
 #include "PointLight.h"
+#include "SpotLight.h"
 #include "Mesh.h"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -48,7 +49,9 @@ manageComponents<Mesh>,
 manageComponents<RigidBody>,
 manageComponents<PlaneCollider>,
 manageComponents<SphereCollider>,
-manageComponents<BoxCollider>
+manageComponents<BoxCollider>,
+manageComponents<PointLight>,
+manageComponents<SpotLight>
 };
 
 class Entity

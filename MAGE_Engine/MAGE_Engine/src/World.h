@@ -22,6 +22,7 @@ public:
 	Physics m_physics;
 	std::vector<Entity*> m_entities;
 	std::vector<PointLight*> m_pointLights;
+	std::vector<SpotLight*> m_spotLights;
 	Vector3f m_worldUp;
 	Vector3f m_worldForward;
 	Vector3f m_worldRight;
