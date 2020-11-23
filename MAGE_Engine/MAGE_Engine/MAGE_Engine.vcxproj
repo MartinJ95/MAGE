@@ -132,6 +132,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\PointLight.cpp" />
     <ClCompile Include="src\BoxCollider.cpp" />
     <ClCompile Include="src\InputManager.cpp" />
     <ClCompile Include="src\PlaneCollider.cpp" />
@@ -156,6 +157,7 @@
     <ClCompile Include="src\Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\PointLight.h" />
     <ClInclude Include="src\BoxCollider.h" />
     <ClInclude Include="src\InputManager.h" />
     <ClInclude Include="src\PlaneCollider.h" />

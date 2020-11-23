@@ -21,9 +21,11 @@ public:
 	InputManager *m_input;
 	Physics m_physics;
 	std::vector<Entity*> m_entities;
+	std::vector<PointLight*> m_pointLights;
 	Vector3f m_worldUp;
 	Vector3f m_worldForward;
 	Vector3f m_worldRight;
+	Vector3f m_ambientLighting;
 	Camera *m_mainCamera;
 };
 

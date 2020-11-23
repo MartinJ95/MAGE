@@ -3,6 +3,7 @@
 #include "stb_image.h"
 #include "Camera.h"
 #include "Entity.h"
+#include "World.h"
 
 Visualization::Visualization(const int screenWidth, const int screenHeight, const std::string &windowName) :
 	m_screenWidth(screenWidth),
@@ -113,9 +114,24 @@ void Visualization::render2D(const std::string & meshName, const std::string & t
 	m_meshes.find(meshName)->second->render();
 }
 
-void Visualization::render3D(const std::string & meshName, const std::string & textureName, const std::string & shaderName, const glm::mat4 transformMatrix, Camera & camera, Vector3f &worldUp)
+void Visualization::render3D(const std::string & meshName, const std::string & textureName, const std::string & shaderName, const glm::mat4 transformMatrix, Camera & camera, Vector3f &worldUp, World &world)
 {
 	useShader(shaderName);
+	setShaderUniformVector3f(shaderName, "cameraPosition", world.m_mainCamera->m_entity.getComponent<Transform>()->m_position);
+	setShaderUniformVector3f(shaderName, "cameraDirection", world.m_mainCamera->m_entity.getComponent<Transform>()->m_forward);
+	setShaderUniformVector3f(shaderName, "ambientLighting", world.m_ambientLighting);
+	int numPointLights = 0;
+	for (int i = 0; i < world.m_pointLights.size(); i++)
+	{
+		if (world.m_pointLights[i]->m_entity.m_active == true)
+		{
+			setShaderUniformVector3f(shaderName, "pointLights[" + std::to_string(numPointLights) + "].m_position", world.m_pointLights[i]->m_entity.getComponent<Transform>()->m_position);
+			setShaderUniformFloat(shaderName, "pointLights[" + std::to_string(numPointLights) + "].m_radius", world.m_pointLights[i]->m_radius);
+			setShaderUniformVector3f(shaderName, "pointLights[" + std::to_string(numPointLights) + "].m_intensity", world.m_pointLights[i]->m_intensity);
+			numPointLights++;
+		}
+	}
+	setShaderUniformInt(shaderName, "numPointLights", numPointLights);
 	setShaderUniformMatrix4f(shaderName, "model_xform", transformMatrix);
 	glm::mat4 projection = glm::perspective(glm::radians(camera.m_fieldOfView), (float)m_screenWidth / (float)m_screenHeight, 0.1f, 100.0f);
 	setShaderUniformMatrix4f(shaderName, "projection", projection);
@@ -473,6 +489,19 @@ void Visualization::setShaderUniformMatrix4f(const std::string & shaderName, con
 			std::cout << "error finding uniform location" << std::endl;
 		}
 		glUniformMatrix4fv(glGetUniformLocation(m_shaderPrograms.find(shaderName)->second, uniformName.c_str()), 1, GL_FALSE, glm::value_ptr(matrix));
+	}
+}
+
+void Visualization::setShaderUniformVector3f(const std::string &shaderName, const std::string &uniformName, const Vector3f &vector)
+{
+	glm::vec3 vec = glm::vec3(vector.x, vector.y, vector.z);
+	if (m_shaderPrograms.find(shaderName) != m_shaderPrograms.end())
+	{
+		if (glGetUniformLocation(m_shaderPrograms.find(shaderName)->second, uniformName.c_str()) == -1)
+		{
+			std::cout << "error finding uniform location" << std::endl;
+		}
+		glUniform3fv(glGetUniformLocation(m_shaderPrograms.find(shaderName)->second, uniformName.c_str()), 1, &vec[0]);
 	}
 }
 

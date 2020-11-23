@@ -42,7 +42,7 @@ collisionData Physics::detectCollision(Entity & entity, World &world)
 	collisionData data(false, 0, Vector3f(0,0,0));
 	for (int i = 0; i < entities.size(); i++)
 	{
-		if (entities[i]->getCollider() != colliderTypes::eNone && entities[i] != &entity)
+		if (entities[i]->getCollider() != colliderTypes::eNone && entities[i] != &entity && entities[i]->m_active == true)
 		{
 			colliderTypes collider2 = world.m_entities[i]->getCollider();
 			if (collider2 != colliderTypes::eNone)

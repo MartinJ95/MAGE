@@ -7,6 +7,7 @@
 #include "PlaneCollider.h"
 #include "SphereCollider.h"
 #include "BoxCollider.h"
+#include "PointLight.h"
 #include "Mesh.h"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>

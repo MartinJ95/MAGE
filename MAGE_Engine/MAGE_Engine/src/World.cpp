@@ -5,9 +5,11 @@ World::World(const int screenWidth, const int screenHeight, const std::string &w
 	m_input(new InputManager(nullptr)),
 	m_physics(),
 	m_entities(),
+	m_pointLights(),
 	m_worldUp(0, 1, 0),
 	m_worldForward(1, 0, 0),
 	m_worldRight(0, 0, 1),
+	m_ambientLighting(0.2, 0.2, 0.2),
 	m_mainCamera(nullptr)
 {
 }
@@ -47,6 +49,11 @@ bool World::Initualize()
 	cam->getComponent<BoxCollider>()->m_minDimensions = Vector3f(-1, -1, -1);
 	cam->getComponent<BoxCollider>()->m_maxDimensions = Vector3f(1, 1, 1);
 	m_mainCamera = cam->getComponent<Camera>();
+	cam->addComponent<PointLight>();
+	cam->getComponent<PointLight>()->m_intensity = Vector3f(1, 1, 1);
+	cam->getComponent<PointLight>()->m_position = Vector3f(0, 0, 0);
+	cam->getComponent<PointLight>()->m_radius = 50.f;
+	m_pointLights.push_back(cam->getComponent<PointLight>());
 
 	m_entities.emplace_back(cam);
 
@@ -79,7 +86,7 @@ bool World::Initualize()
 	Entity *floor = new Entity(true);
 	floor->addComponent<Transform>();
 	floor->getComponent<Transform>()->m_position = Vector3f(0, 0, 0);
-	floor->getComponent<Transform>()->m_rotation.x = 90;
+	floor->getComponent<Transform>()->m_rotation.x = -90;
 	floor->getComponent<Transform>()->m_scale = Vector3f(1, 1, 1);
 	floor->addComponent<Mesh>();
 	floor->getComponent<Mesh>()->m_meshName = "wall";
@@ -94,7 +101,7 @@ bool World::Initualize()
 	wall1->addComponent<Transform>();
 	wall1->getComponent<Transform>()->m_position = Vector3f(25, 25, 0);
 	wall1->getComponent<Transform>()->m_scale = Vector3f(1, 1, 1);
-	wall1->getComponent<Transform>()->m_rotation.y = 90;
+	wall1->getComponent<Transform>()->m_rotation.y = -90;
 	wall1->addComponent<Mesh>();
 	wall1->getComponent<Mesh>()->m_meshName = "wall";
 	wall1->getComponent<Mesh>()->m_shaderName = "default3DShader";
@@ -123,6 +130,7 @@ bool World::Initualize()
 	wall3->addComponent<Transform>();
 	wall3->getComponent<Transform>()->m_position = Vector3f(0, 25, 25);
 	wall3->getComponent<Transform>()->m_scale = Vector3f(1, 1, 1);
+	wall3->getComponent<Transform>()->m_rotation.y = 180;
 	wall3->addComponent<Mesh>();
 	wall3->getComponent<Mesh>()->m_meshName = "wall";
 	wall3->getComponent<Mesh>()->m_shaderName = "default3DShader";
@@ -175,7 +183,10 @@ void World::Run()
 
 		for (int i = 0; i < m_entities.size(); i++)
 		{
-			m_entities[i]->Update(*this);
+			if (m_entities[i]->m_active)
+			{
+				m_entities[i]->Update(*this);
+			}
 		}
 
 		//m_mainCamera->m_entity.getComponent<Transform>()->m_rotation.y -= 0.1;

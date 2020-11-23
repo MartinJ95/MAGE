@@ -15,6 +15,7 @@
 #define PI 3.14159265
 
 class Camera;
+class World;
 
 void frameBufferSizeCallback(GLFWwindow *window, int screenWidth, int screenHeight);
 
@@ -28,7 +29,7 @@ public:
 	GLFWwindow* getWindow() const;
 	void clear();
 	void render2D(const std::string &meshName, const std::string &textureName, const std::string &shaderName, const glm::mat4 transformMatrix);
-	void render3D(const std::string &meshName, const std::string &textureName, const std::string &shaderName, const glm::mat4 transformMatrix, Camera &camera, Vector3f &worldUp);
+	void render3D(const std::string &meshName, const std::string &textureName, const std::string &shaderName, const glm::mat4 transformMatrix, Camera &camera, Vector3f &worldUp, World &world);
 	void display();
 	void generateTexture(const std::string &textureFilePath, const std::string &textureName);
 	void generateFace(std::vector<Vertex> &vertices, std::vector<unsigned int> &indices, const Vector3f &minSize, const Vector3f &maxSize, const Vector2f &minTexcoord, const Vector2f &maxTexcoord, const Vector3f &normal, const int &offset);
@@ -45,6 +46,7 @@ public:
 	void setShaderUniformInt(const std::string &shaderName, const std::string &uniformName, const int value);
 	void setShaderUniformBool(const std::string &shaderName, const std::string &uniformName, const bool value);
 	void setShaderUniformMatrix4f(const std::string &shaderName, const std::string &uniformName, const glm::mat4 &matrix);
+	void setShaderUniformVector3f(const std::string &shaderName, const std::string &uniformName, const Vector3f &vector);
 	~Visualization();
 	int m_screenWidth, m_screenHeight;
 private:
