@@ -34,6 +34,7 @@ bool World::Initualize()
 	m_viz.generateSquareMesh(-25, 25, 0, 5, "wall");
 	m_viz.generateBoxMesh(-1, 1, 0, 1, "box");
 	m_viz.generateSphereMesh(Vector3f(0, 0, 0), 1, 50, "sphere");
+	m_viz.loadObject("Resources\\", "yeet", ".obj");
 
 	Entity *cam = new Entity(true);
 	cam->addComponent<Transform>();
@@ -75,6 +76,19 @@ bool World::Initualize()
 	box->getComponent<BoxCollider>()->m_maxDimensions = Vector3f(1, 1, 1);
 
 	m_entities.emplace_back(box);
+
+	Entity *loadedBox = new Entity(true);
+	loadedBox->addComponent<Transform>();
+	loadedBox->getComponent<Transform>()->m_position = Vector3f(2, 2, 0);
+	loadedBox->addComponent<Mesh>();
+	loadedBox->getComponent<Mesh>()->m_meshName = "yeet";
+	loadedBox->getComponent<Mesh>()->m_shaderName = "default3DShader";
+	loadedBox->getComponent<Mesh>()->m_textureName = "box";
+	loadedBox->addComponent<BoxCollider>();
+	loadedBox->getComponent<BoxCollider>()->m_minDimensions = Vector3f(-1, -1, -1);
+	loadedBox->getComponent<BoxCollider>()->m_maxDimensions = Vector3f(1, 1, 1);
+
+	m_entities.emplace_back(loadedBox);
 
 	Entity *sphere = new Entity(true);
 	sphere->addComponent<Transform>();
@@ -164,7 +178,7 @@ bool World::Initualize()
 	e->addComponent<Transform>();
 	e->addComponent<Mesh>();
 	Transform * t = e->getComponent<Transform>();
-	t->m_position = Vector3f(m_viz.m_screenWidth / 2, m_viz.m_screenHeight / 2, 0);
+	t->m_position = Vector3f(m_viz.m_screenWidth / 2, (m_viz.m_screenHeight / 4) * 3, 0);
 	t->m_scale = Vector3f(m_viz.m_screenWidth / 4, m_viz.m_screenHeight / 4, 1);
 	t->m_rotation = Vector3f(0, 0, 0);
 

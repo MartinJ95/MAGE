@@ -449,6 +449,147 @@ void Visualization::generateSphereIndices(std::vector<unsigned int>& indices, co
 	}
 }
 
+void Visualization::loadObject(const std::string &filePath, const std::string & fileName, const std::string &fileType)
+{
+	std::vector<Vertex> vertices;
+	std::vector<Vector3f> vertexPositions;
+	std::vector<Vector3f> vertexNormals;
+	std::vector<Vector2f> vertexTexcoords;
+	std::vector<Vector3i> vertexElements;
+	std::vector<unsigned int> elements;
+	int faceElements = 0;
+	for (int i = 0; i < 4; i++)
+	{
+		vertexElements.emplace_back(Vector3i());
+	}
+	std::ifstream reader(filePath + fileName + fileType);
+	std::string readLine;
+	if (!reader)
+	{
+		std::cout << "error opening file " + (fileName + fileType) << std::endl;
+		return;
+	}
+	while (!reader.eof())
+	{
+		reader >> readLine;
+		if (readLine == "v")
+		{
+			vertexPositions.emplace_back(Vector3f());
+			Vector3f &newVertexPosition = vertexPositions.back();
+			reader >> newVertexPosition.x;
+			reader >> newVertexPosition.y;
+			reader >> newVertexPosition.z;
+		}
+		else if (readLine == "vn")
+		{
+			vertexNormals.emplace_back(Vector3f());
+			Vector3f &newVertexNormal = vertexNormals.back();
+			reader >> newVertexNormal.x;
+			reader >> newVertexNormal.y;
+			reader >> newVertexNormal.z;
+		}
+		else if (readLine == "vt")
+		{
+			vertexTexcoords.emplace_back(Vector2f());
+			Vector2f &newVertexTexCoords = vertexTexcoords.back();
+			reader >> newVertexTexCoords.x;
+			reader >> newVertexTexCoords.y;
+		}
+		else if (readLine == "f")
+		{
+			std::cout << "now testing reader" << std::endl;
+			int test = reader.peek();
+			char c = static_cast<char>(test);
+			std::cout << c << std::endl;
+			for (int i = 0; i < 4; i++)
+			{
+				std::string output;
+				reader >> output;
+				if (output.empty())
+				{
+					break;
+				}
+				char test = output[0];
+				if (!std::isdigit(test))
+				{
+					reader.unget();
+					break;
+				}
+				size_t pos = 0;
+				std::string delimiter = "/";
+				std::string tokens[3];
+				unsigned int tokenIndex = 0;
+				while (pos = output.find(delimiter) != output.npos)
+				{
+					tokens[tokenIndex] = output.substr(0, output.find(delimiter));
+					tokenIndex++;
+					output.erase(0, output.find(delimiter) + delimiter.length());
+				}
+				tokens[2] = output;
+				vertexElements[faceElements].x = std::stoi(tokens[0]) - 1;
+				vertexElements[faceElements].y = std::stoi(tokens[2]) - 1;
+				vertexElements[faceElements].z = std::stoi(tokens[1]) - 1;
+				faceElements++;
+			}
+			std::vector<unsigned int> indices;
+			for (int i = 0; i < faceElements; i++)
+			{
+				Vertex newVertex;
+				int indexCheck = -1;
+				newVertex.position = vertexPositions[vertexElements[i].x];
+				newVertex.normal = vertexNormals[vertexElements[i].y];
+				newVertex.texCoords = vertexTexcoords[vertexElements[i].z];
+				if (vertices.empty())
+				{
+					vertices.emplace_back(newVertex);
+					indices.emplace_back(0);
+				}
+				else
+				{
+					for (int j = 0; j < static_cast<int>(vertices.size()); j++)
+					{
+						if (vertices[j].position == newVertex.position && vertices[j].normal == newVertex.normal && vertices[j].texCoords == newVertex.texCoords)
+						{
+							indexCheck = j;
+							break;
+						}
+					}
+					if (indexCheck != -1)
+					{
+						indices.emplace_back(indexCheck);
+						indexCheck = -1;
+					}
+					else
+					{
+						vertices.emplace_back(newVertex);
+						indices.emplace_back(static_cast<int>(vertices.size()) - 1);
+					}
+				}
+			}
+			if (faceElements == 4)
+			{
+				elements.emplace_back(indices[1]);
+				elements.emplace_back(indices[0]);
+				elements.emplace_back(indices[2]);
+
+				elements.emplace_back(indices[2]);
+				elements.emplace_back(indices[0]);
+				elements.emplace_back(indices[3]);
+			}
+			else if (faceElements == 3)
+			{
+				elements.emplace_back(indices[1]);
+				elements.emplace_back(indices[0]);
+				elements.emplace_back(indices[2]);
+			}
+			indices.clear();
+			faceElements = 0;
+		}
+	}
+	reader.close();
+	generateMesh(vertices, elements, fileName);
+}
+
 void Visualization::useShader(const std::string & shaderName)
 {
 	if (m_shaderPrograms.find(shaderName) != m_shaderPrograms.end())

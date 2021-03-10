@@ -1,14 +1,14 @@
 ﻿  World.cpp
 c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(14): warning C4305: 'argument': truncation from 'double' to 'const float'
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(167): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(168): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(190): warning C4018: '<': signed/unsigned mismatch
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(217): warning C4305: 'argument': truncation from 'double' to 'const float'
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(224): warning C4305: 'argument': truncation from 'double' to 'const float'
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(225): warning C4305: 'argument': truncation from 'double' to 'const float'
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(234): warning C4018: '<': signed/unsigned mismatch
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(181): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(182): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(204): warning C4018: '<': signed/unsigned mismatch
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(231): warning C4305: 'argument': truncation from 'double' to 'const float'
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(238): warning C4305: 'argument': truncation from 'double' to 'const float'
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(239): warning C4305: 'argument': truncation from 'double' to 'const float'
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(248): warning C4018: '<': signed/unsigned mismatch
 c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\entity.h(64): warning C4018: '<': signed/unsigned mismatch
-  c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(40): note: see reference to function template instantiation 'T *Entity::getComponent<Transform>(void)' being compiled
+  c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(41): note: see reference to function template instantiation 'T *Entity::getComponent<Transform>(void)' being compiled
           with
           [
               T=Transform

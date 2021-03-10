@@ -11,6 +11,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <vector>
 #include <math.h>
+#include <cctype>
 
 #define PI 3.14159265
 
@@ -40,6 +41,7 @@ public:
 	void generateSphereVertices(std::vector<Vertex>& vertices, const Vector3f &center, const int & details, Vector3f &newPos, float &theta, float &theta1, float &cs, float &sn, float &cs1, float &sn1);
 	void generateSphereColumn(std::vector<Vertex>& vertices, const Vector3f &center, const int & details, Vector3f &newPos, float &theta, float &theta1, float &cs, float &sn, float &cs1, float &sn1);
 	void generateSphereIndices(std::vector<unsigned int> &indices, const int &details);
+	void loadObject(const std::string &filePath, const std::string &fileName, const std::string &fileType = ".obj");
 	void useShader(const std::string &shaderName);
 	void setShaderTexture(const std::string &textureUniform, const std::string &textureName, const std::string &shaderName, const int textureIndex);
 	void setShaderUniformFloat(const std::string &shaderName, const std::string &uniformName, const float value);
