@@ -22,13 +22,14 @@ void Entity::Update(World &world)
 {
 	for (int i = 0; i < m_components.size(); i++)
 	{
-		for (auto f : componentManagerTypes)
+		/*for (auto f : componentManagerTypes)
 		{
 			if (f(m_components[i], &world, 0, nullptr) == true)
 			{
 				break;
 			}
-		}
+		}*/
+		m_components[i]->Update(world);
 	}
 }
 
@@ -36,13 +37,14 @@ void Entity::fixedUpdate(World &world)
 {
 	for (int i = 0; i < m_components.size(); i++)
 	{
-		for (auto f : componentManagerTypes)
+		/*for (auto f : componentManagerTypes)
 		{
 			if (f(m_components[i], &world, 1, nullptr) == true)
 			{
 				break;
 			}
-		}
+		}*/
+		m_components[i]->FixedUpdate(world);
 	}
 }
 
@@ -50,13 +52,14 @@ void Entity::onCollisionEnter(World & world, collisionData & data)
 {
 	for (int i = 0; i < m_components.size(); i++)
 	{
-		for (auto f : componentManagerTypes)
+		/*for (auto f : componentManagerTypes)
 		{
 			if (f(m_components[i], &world, 3, &data) == true)
 			{
 				break;
 			}
-		}
+		}*/
+		m_components[i]->onCollisionEnter(world, data);
 	}
 }
 
@@ -122,7 +125,7 @@ glm::mat4 Entity::getTransformMatrix3D(World &world)
 
 Entity::~Entity()
 {
-	for (int i = 0; i < m_components.size(); i++)
+	/*for (int i = 0; i < m_components.size(); i++)
 	{
 		for (auto f : componentManagerTypes)
 		{
@@ -131,6 +134,14 @@ Entity::~Entity()
 				break;
 			}
 		}
+		for (int i = 0; i < m_components.size(); i++)
+		{
+			delete(m_components[i]);
+		}
+	}*/
+	for (auto c : m_components)
+	{
+		delete(c);
 	}
 	m_components.clear();
 }

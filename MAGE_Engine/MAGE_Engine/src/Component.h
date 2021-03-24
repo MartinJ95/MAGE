@@ -11,7 +11,7 @@ public:
 	virtual void Update(World &world);
 	virtual void FixedUpdate(World &world);
 	virtual void onCollisionEnter(World &world, collisionData &data);
-	~Component();
+	virtual ~Component();
 	Entity &m_entity;
 };
 

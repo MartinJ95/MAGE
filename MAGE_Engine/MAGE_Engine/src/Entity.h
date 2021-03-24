@@ -22,7 +22,7 @@ enum colliderTypes
 	ePlane,
 	eBox
 };
-
+/*
 typedef bool(*componentManager)(Component*, World*, int, collisionData*);
 
 template<typename T> bool manageComponents(Component *component, World *world, int functionNumber, collisionData *data)
@@ -52,7 +52,7 @@ manageComponents<SphereCollider>,
 manageComponents<BoxCollider>,
 manageComponents<PointLight>,
 manageComponents<SpotLight>
-};
+};*/
 
 class Entity
 {
@@ -90,7 +90,7 @@ public:
 			m_components.emplace_back(newComponent);
 		}
 	}
-	template<typename T> static bool updateComponent(Component *component, World &world)
+	/*template<typename T> static bool updateComponent(Component *component, World &world)
 	{
 		if (dynamic_cast<T*>(component) != NULL)
 		{
@@ -129,7 +129,7 @@ public:
 			return true;
 		}
 		return false;
-	}
+	}*/
 	void Update(World &world);
 	void fixedUpdate(World &world);
 	void onCollisionEnter(World &world, collisionData &data);

@@ -255,10 +255,20 @@ collisionData Physics::detectCollisions(BoxCollider &collider1, BoxCollider &col
 		//for each axis
 		//if on positive side of axis use max of min dimensions
 		//if on negative side of axis use min of max dimensions
-		Vector3f collisionPoint(
+		/*Vector3f collisionPoint(
 			(vectorBetween.x >=0.f ) ? std::fmaxf(minDimensions.x, collider2.m_minDimensions.x) : std::fminf(maxDimensions.x, collider2.m_maxDimensions.x),
 			(vectorBetween.y >=0.f ) ? std::fmaxf(minDimensions.y, collider2.m_minDimensions.y) : std::fminf(maxDimensions.y, collider2.m_maxDimensions.y),
-			(vectorBetween.z >=0.f ) ? std::fmaxf(minDimensions.z, collider2.m_minDimensions.z) : std::fminf(maxDimensions.z, collider2.m_maxDimensions.z));
+			(vectorBetween.z >=0.f ) ? std::fmaxf(minDimensions.z, collider2.m_minDimensions.z) : std::fminf(maxDimensions.z, collider2.m_maxDimensions.z));*/
+		Vector3f minCollisionPoint(
+			std::fmaxf(minDimensions.x, collider2.m_minDimensions.x),
+			std::fmaxf(minDimensions.y, collider2.m_minDimensions.y),
+			std::fmaxf(minDimensions.z, collider2.m_minDimensions.z));
+		Vector3f maxCollisionPoint(
+			std::fminf(maxDimensions.x, collider2.m_maxDimensions.x),
+			std::fminf(maxDimensions.y, collider2.m_maxDimensions.y),
+			std::fminf(maxDimensions.z, collider2.m_maxDimensions.z));
+		Vector3f collisionPoint = minCollisionPoint + ((maxCollisionPoint - minCollisionPoint) / 2);
+		//maxCollisionPoint = maxCollisionPoint - collider2.m_entity.getComponent<Transform>()->m_position;
 		Vector3f vectorBetweenCollisionPoint = collisionPoint - collider2.m_entity.getComponent<Transform>()->m_position;
 		//std::cout << "x: " << std::to_string(vectorBetweenCollisionPoint.x) << " y: " << std::to_string(vectorBetweenCollisionPoint.y) << " z: " << std::to_string(vectorBetweenCollisionPoint.z) << std::endl;
 		int closestEdgeIndex;
@@ -284,7 +294,7 @@ collisionData Physics::detectCollisions(BoxCollider &collider1, BoxCollider &col
 				(compass[closestEdgeIndex] * -1).dotProduct(maxDimensions - collider2.m_minDimensions);
 		}
 
-		std::cout << std::to_string(penetrationDepth) << std::endl;
+		//std::cout << std::to_string(penetrationDepth) << std::endl;
 		return collisionData(true, (penetrationDepth >= 0) ? penetrationDepth : -penetrationDepth, compass[closestEdgeIndex], &collider2.m_entity);
 	}
 	return collisionData(false, 0, Vector3f(0, 0, 0));

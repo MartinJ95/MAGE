@@ -1,1 +1,11 @@
-﻿
+﻿  Entity.cpp
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\entity.cpp(23): warning C4018: '<': signed/unsigned mismatch
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\entity.cpp(38): warning C4018: '<': signed/unsigned mismatch
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\entity.cpp(53): warning C4018: '<': signed/unsigned mismatch
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\entity.h(64): warning C4018: '<': signed/unsigned mismatch
+  c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\entity.cpp(74): note: see reference to function template instantiation 'T *Entity::getComponent<SphereCollider>(void)' being compiled
+          with
+          [
+              T=SphereCollider
+          ]
+  MAGE_Engine.vcxproj -> C:\Users\marti\Documents\GitHub\MAGE\MAGE_Engine\Debug\MAGE_Engine.exe
