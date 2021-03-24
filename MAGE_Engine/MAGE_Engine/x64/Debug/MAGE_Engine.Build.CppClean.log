@@ -1,8 +1,5 @@
 c:\users\marti\documents\github\mage\mage_engine\mage_engine\x64\debug\vc141.pdb
 c:\users\marti\documents\github\mage\mage_engine\mage_engine\x64\debug\vc141.idb
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\x64\debug\transform.obj
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\x64\debug\world.obj
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\x64\debug\vector3i.obj
 c:\users\marti\documents\github\mage\mage_engine\mage_engine\x64\debug\vector3f.obj
 c:\users\marti\documents\github\mage\mage_engine\mage_engine\x64\debug\vector2i.obj
 c:\users\marti\documents\github\mage\mage_engine\mage_engine\x64\debug\vector2f.obj
@@ -17,6 +14,15 @@ c:\users\marti\documents\github\mage\mage_engine\mage_engine\x64\debug\mesh.obj
 c:\users\marti\documents\github\mage\mage_engine\mage_engine\x64\debug\camera.obj
 c:\users\marti\documents\github\mage\mage_engine\mage_engine\x64\debug\physics.obj
 c:\users\marti\documents\github\mage\mage_engine\mage_engine\x64\debug\rigidbody.obj
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\x64\debug\spherecollider.obj
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\x64\debug\planecollider.obj
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\x64\debug\inputmanager.obj
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\x64\debug\boxcollider.obj
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\x64\debug\pointlight.obj
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\x64\debug\spotlight.obj
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\x64\debug\transform.obj
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\x64\debug\world.obj
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\x64\debug\vector3i.obj
 c:\users\marti\documents\github\mage\mage_engine\mage_engine\x64\debug\glad.obj
 c:\users\marti\documents\github\mage\mage_engine\x64\debug\mage_engine.pdb
 c:\users\marti\documents\github\mage\mage_engine\mage_engine\x64\debug\mage_engine.tlog\cl.command.1.tlog
