@@ -7,12 +7,12 @@ class Server;
 class ConnectedUser
 {
 public:
-	ConnectedUser(Server &server, std::unique_ptr<sf::TcpSocket> socket);
+	ConnectedUser(Server *server, std::unique_ptr<sf::TcpSocket> socket);
 	void ReadForMessages();
-	void SendMessage();
+	void SendMessage(char *message, size_t messageSize);
 	~ConnectedUser();
 public:
-	Server *serverRef;
+	Server &serverRef;
 	std::unique_ptr<sf::TcpSocket> m_socket;
 	sf::IpAddress m_address;
 	char m_buffer[1024];

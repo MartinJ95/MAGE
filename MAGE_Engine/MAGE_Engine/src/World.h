@@ -2,6 +2,7 @@
 #include "Visualization.h"
 #include "InputManager.h"
 #include "Physics.h"
+#include "NetworkClient.h"
 #include "Entity.h"
 #include "Component.h"
 #include "Transform.h"
@@ -20,6 +21,7 @@ public:
 	Visualization m_viz;
 	InputManager *m_input;
 	Physics m_physics;
+	NetworkClient m_client;
 	std::vector<Entity*> m_entities;
 	std::vector<PointLight*> m_pointLights;
 	std::vector<SpotLight*> m_spotLights;

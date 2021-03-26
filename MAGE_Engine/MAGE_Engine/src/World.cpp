@@ -4,6 +4,7 @@ World::World(const int screenWidth, const int screenHeight, const std::string &w
 	m_viz(screenWidth, screenHeight, windowName),
 	m_input(new InputManager(nullptr)),
 	m_physics(),
+	m_client(*this),
 	m_entities(),
 	m_pointLights(),
 	m_worldUp(0, 1, 0),
@@ -190,6 +191,33 @@ bool World::Initualize()
 
 	m_entities.emplace_back(e);
 
+	for (int i = 0; i < 10; i++)
+	{
+		Entity *remotePlayer = new Entity(false);
+		remotePlayer->addComponent<Transform>();
+		remotePlayer->getComponent<Transform>()->m_position = Vector3f(0, -90, 0);
+		remotePlayer->addComponent<Mesh>();
+		remotePlayer->getComponent<Mesh>()->m_meshName = "yeet";
+		remotePlayer->getComponent<Mesh>()->m_shaderName = "default3DShader";
+		remotePlayer->getComponent<Mesh>()->m_textureName = "box";
+		remotePlayer->addComponent<RemoteClient>();
+		//remotePlayer->addComponent<RemoteClient>();
+		remotePlayer->addComponent<BoxCollider>();
+		remotePlayer->getComponent<BoxCollider>()->m_minDimensions = Vector3f(-1, -1, -1);
+		remotePlayer->getComponent<BoxCollider>()->m_maxDimensions = Vector3f(1, 1, 1);
+		//m_mainCamera = cam->getComponent<Camera>();
+		remotePlayer->addComponent<PointLight>();
+		remotePlayer->getComponent<PointLight>()->m_intensity = Vector3f(1, 1, 1);
+		remotePlayer->getComponent<PointLight>()->m_position = Vector3f(0, 0, 0);
+		remotePlayer->getComponent<PointLight>()->m_radius = 5.f;
+		remotePlayer->addComponent<SpotLight>();
+		remotePlayer->getComponent<SpotLight>()->m_fieldOfView = 45.f;
+		remotePlayer->getComponent<SpotLight>()->m_intensity = Vector3f(1, 1, 1);
+		remotePlayer->getComponent<SpotLight>()->m_range = 50.f;
+		m_pointLights.push_back(remotePlayer->getComponent<PointLight>());
+		m_spotLights.push_back(remotePlayer->getComponent<SpotLight>());
+	}
+
 	return true;
 }
 
@@ -237,6 +265,16 @@ void World::Run()
 		forward.normaliseInPlace();
 		r->m_impulseForce += forward * movement.x * 0.01;
 		r->m_impulseForce += forward.crossProduct(m_worldUp) * movement.z * 0.01;
+
+		TransformUpdateMessage tm;
+		tm.ID = m_client.m_ID;
+		tm.type = MessageType::PositionUpdate;
+		tm.position = m_mainCamera->m_entity.getComponent<Transform>()->m_position;
+		tm.rotation = m_mainCamera->m_entity.getComponent<Transform>()->m_rotation;
+		tm.scale = m_mainCamera->m_entity.getComponent<Transform>()->m_scale;
+
+		m_client.SendMessage((TransformUpdateMessage*)&tm);
+
 		m_viz.display();
 
 		glfwPollEvents();

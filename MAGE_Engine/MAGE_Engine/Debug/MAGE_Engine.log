@@ -1,11 +1,130 @@
-﻿  Entity.cpp
+﻿  Maths.cpp
+  Matrix4f.cpp
+  Vector2f.cpp
+c:\users\marti\documents\github\mage\mage_engine\utilities\vector2f.cpp(22): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\utilities\vector2f.cpp(46): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  Vector2i.cpp
+c:\users\marti\documents\github\mage\mage_engine\utilities\vector2i.cpp(22): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\utilities\vector2i.cpp(28): warning C4244: 'argument': conversion from 'float' to 'const int', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\utilities\vector2i.cpp(34): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\utilities\vector2i.cpp(35): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\utilities\vector2i.cpp(41): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\utilities\vector2i.cpp(46): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  Vector3f.cpp
+c:\users\marti\documents\github\mage\mage_engine\utilities\vector3f.cpp(26): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\utilities\vector3f.cpp(51): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  Vector3i.cpp
+c:\users\marti\documents\github\mage\mage_engine\utilities\vector3i.cpp(4): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\utilities\vector3i.cpp(5): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\utilities\vector3i.cpp(6): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\utilities\vector3i.cpp(26): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\utilities\vector3i.cpp(32): warning C4244: 'argument': conversion from 'float' to 'const int', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\utilities\vector3i.cpp(38): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\utilities\vector3i.cpp(39): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\utilities\vector3i.cpp(40): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\utilities\vector3i.cpp(47): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\utilities\vector3i.cpp(52): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  RemoteClient.cpp
+  NetworkClient.cpp
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\networkclient.cpp(41): warning C4018: '<': signed/unsigned mismatch
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\networkclient.cpp(54): warning C4018: '<': signed/unsigned mismatch
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\networkclient.cpp(69): warning C4018: '<': signed/unsigned mismatch
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\entity.h(65): warning C4018: '<': signed/unsigned mismatch
+  c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\networkclient.cpp(43): note: see reference to function template instantiation 'T *Entity::getComponent<RemoteClient>(void)' being compiled
+          with
+          [
+              T=RemoteClient
+          ]
+  SpotLight.cpp
+  PointLight.cpp
+  BoxCollider.cpp
+  InputManager.cpp
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\inputmanager.cpp(45): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\inputmanager.cpp(47): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\inputmanager.cpp(49): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\inputmanager.cpp(51): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\inputmanager.cpp(75): warning C4244: '=': conversion from 'const int' to 'float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\inputmanager.cpp(87): warning C4244: '=': conversion from 'const int' to 'float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\inputmanager.cpp(91): warning C4244: '=': conversion from 'const int' to 'float', possible loss of data
+  PlaneCollider.cpp
+  SphereCollider.cpp
+  RigidBody.cpp
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\rigidbody.cpp(11): warning C4305: 'initializing': truncation from 'double' to 'float'
+  Physics.cpp
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\physics.cpp(11): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\physics.cpp(43): warning C4018: '<': signed/unsigned mismatch
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\entity.h(65): warning C4018: '<': signed/unsigned mismatch
+  c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\physics.cpp(19): note: see reference to function template instantiation 'T *Entity::getComponent<Transform>(void)' being compiled
+          with
+          [
+              T=Transform
+          ]
+  Camera.cpp
+  Mesh.cpp
+  Entity.cpp
 c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\entity.cpp(23): warning C4018: '<': signed/unsigned mismatch
 c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\entity.cpp(38): warning C4018: '<': signed/unsigned mismatch
 c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\entity.cpp(53): warning C4018: '<': signed/unsigned mismatch
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\entity.h(64): warning C4018: '<': signed/unsigned mismatch
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\entity.h(65): warning C4018: '<': signed/unsigned mismatch
   c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\entity.cpp(74): note: see reference to function template instantiation 'T *Entity::getComponent<SphereCollider>(void)' being compiled
           with
           [
               T=SphereCollider
           ]
+  Component.cpp
+  Generating Code...
+  Compiling...
+  MeshGL.cpp
+  main.cpp
+  Visualization.cpp
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(123): warning C4018: '<': signed/unsigned mismatch
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(134): warning C4018: '<': signed/unsigned mismatch
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(267): warning C4244: 'argument': conversion from 'const int' to 'const float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(279): warning C4244: 'argument': conversion from 'const int' to 'const float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(280): warning C4244: 'argument': conversion from 'const int' to 'const float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(284): warning C4244: 'argument': conversion from 'const int' to 'const float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(285): warning C4244: 'argument': conversion from 'const int' to 'const float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(289): warning C4244: 'argument': conversion from 'const int' to 'const float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(290): warning C4244: 'argument': conversion from 'const int' to 'const float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(294): warning C4244: 'argument': conversion from 'const int' to 'const float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(295): warning C4244: 'argument': conversion from 'const int' to 'const float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(299): warning C4244: 'argument': conversion from 'const int' to 'const float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(300): warning C4244: 'argument': conversion from 'const int' to 'const float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(304): warning C4244: 'argument': conversion from 'const int' to 'const float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(305): warning C4244: 'argument': conversion from 'const int' to 'const float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(349): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(361): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(372): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(373): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\entity.h(65): warning C4018: '<': signed/unsigned mismatch
+  c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\visualization.cpp(120): note: see reference to function template instantiation 'T *Entity::getComponent<Transform>(void)' being compiled
+          with
+          [
+              T=Transform
+          ]
+  World.cpp
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(15): warning C4305: 'argument': truncation from 'double' to 'const float'
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(182): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(183): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(232): warning C4018: '<': signed/unsigned mismatch
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(259): warning C4305: 'argument': truncation from 'double' to 'const float'
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(266): warning C4305: 'argument': truncation from 'double' to 'const float'
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(267): warning C4305: 'argument': truncation from 'double' to 'const float'
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(286): warning C4018: '<': signed/unsigned mismatch
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\entity.h(65): warning C4018: '<': signed/unsigned mismatch
+  c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(42): note: see reference to function template instantiation 'T *Entity::getComponent<Transform>(void)' being compiled
+          with
+          [
+              T=Transform
+          ]
+  Transform.cpp
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\entity.h(65): warning C4018: '<': signed/unsigned mismatch
+  c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\transform.cpp(71): note: see reference to function template instantiation 'T *Entity::getComponent<Transform>(void)' being compiled
+          with
+          [
+              T=Transform
+          ]
+  Generating Code...
+  glad.c
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   MAGE_Engine.vcxproj -> C:\Users\marti\Documents\GitHub\MAGE\MAGE_Engine\Debug\MAGE_Engine.exe

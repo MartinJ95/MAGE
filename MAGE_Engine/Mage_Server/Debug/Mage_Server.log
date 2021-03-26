@@ -1,151 +1,32 @@
 ﻿  pch.cpp
+  Maths.cpp
+  Matrix4f.cpp
+  Vector2f.cpp
+c:\users\marti\documents\github\mage\mage_engine\utilities\vector2f.cpp(22): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\utilities\vector2f.cpp(46): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  Vector2i.cpp
+c:\users\marti\documents\github\mage\mage_engine\utilities\vector2i.cpp(22): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\utilities\vector2i.cpp(28): warning C4244: 'argument': conversion from 'float' to 'const int', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\utilities\vector2i.cpp(34): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\utilities\vector2i.cpp(35): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\utilities\vector2i.cpp(41): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\utilities\vector2i.cpp(46): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  Vector3f.cpp
+c:\users\marti\documents\github\mage\mage_engine\utilities\vector3f.cpp(26): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\utilities\vector3f.cpp(51): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  Vector3i.cpp
+c:\users\marti\documents\github\mage\mage_engine\utilities\vector3i.cpp(4): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\utilities\vector3i.cpp(5): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\utilities\vector3i.cpp(6): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\utilities\vector3i.cpp(26): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\utilities\vector3i.cpp(32): warning C4244: 'argument': conversion from 'float' to 'const int', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\utilities\vector3i.cpp(38): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\utilities\vector3i.cpp(39): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\utilities\vector3i.cpp(40): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\utilities\vector3i.cpp(47): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+c:\users\marti\documents\github\mage\mage_engine\utilities\vector3i.cpp(52): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
   ConnectedUser.cpp
   main.cpp
   Server.cpp
-c:\users\marti\documents\github\mage\mage_engine\mage_server\server.cpp(10): error C2659: '=': function as left operand
-c:\users\marti\documents\github\mage\mage_engine\mage_server\server.cpp(18): error C2276: '&': illegal operation on bound member function expression
-c:\users\marti\documents\github\mage\mage_engine\mage_server\server.cpp(20): error C3867: 'std::_Hash<std::_Umap_traits<_Kty,_Ty,std::_Uhash_compare<_Kty,_Hasher,_Keyeq>,_Alloc,false>>::begin': non-standard syntax; use '&' to create a pointer to member
-          with
-          [
-              _Kty=int,
-              _Ty=ConnectedUser,
-              _Hasher=std::hash<int>,
-              _Keyeq=std::equal_to<int>,
-              _Alloc=std::allocator<std::pair<const int,ConnectedUser>>
-          ]
-c:\users\marti\documents\github\mage\mage_engine\mage_server\server.cpp(20): error C3536: 'it': cannot be used before it is initialized
-c:\users\marti\documents\github\mage\mage_engine\mage_server\server.cpp(20): error C3867: 'std::_Hash<std::_Umap_traits<_Kty,_Ty,std::_Uhash_compare<_Kty,_Hasher,_Keyeq>,_Alloc,false>>::end': non-standard syntax; use '&' to create a pointer to member
-          with
-          [
-              _Kty=int,
-              _Ty=ConnectedUser,
-              _Hasher=std::hash<int>,
-              _Keyeq=std::equal_to<int>,
-              _Alloc=std::allocator<std::pair<const int,ConnectedUser>>
-          ]
-c:\users\marti\documents\github\mage\mage_engine\mage_server\server.cpp(20): error C2568: '!=': unable to resolve function overload
-  c:\users\marti\documents\github\mage\mage_engine\mage_server\server.cpp(20): note: could be 'std::_List_const_iterator<std::_List_val<std::_List_simple_types<_Ty>>> std::_Hash<std::_Umap_traits<_Kty,ConnectedUser,std::_Uhash_compare<_Kty,_Hasher,_Keyeq>,_Alloc,false>>::end(unsigned int) const'
-          with
-          [
-              _Ty=std::pair<const int,ConnectedUser>,
-              _Kty=int,
-              _Hasher=std::hash<int>,
-              _Keyeq=std::equal_to<int>,
-              _Alloc=std::allocator<std::pair<const int,ConnectedUser>>
-          ]
-  c:\users\marti\documents\github\mage\mage_engine\mage_server\server.cpp(20): note: or       'std::_List_iterator<std::_List_val<std::_List_simple_types<_Ty>>> std::_Hash<std::_Umap_traits<_Kty,ConnectedUser,std::_Uhash_compare<_Kty,_Hasher,_Keyeq>,_Alloc,false>>::end(unsigned int)'
-          with
-          [
-              _Ty=std::pair<const int,ConnectedUser>,
-              _Kty=int,
-              _Hasher=std::hash<int>,
-              _Keyeq=std::equal_to<int>,
-              _Alloc=std::allocator<std::pair<const int,ConnectedUser>>
-          ]
-  c:\users\marti\documents\github\mage\mage_engine\mage_server\server.cpp(20): note: or       'std::_List_const_iterator<std::_List_val<std::_List_simple_types<_Ty>>> std::_Hash<std::_Umap_traits<_Kty,ConnectedUser,std::_Uhash_compare<_Kty,_Hasher,_Keyeq>,_Alloc,false>>::end(void) noexcept const'
-          with
-          [
-              _Ty=std::pair<const int,ConnectedUser>,
-              _Kty=int,
-              _Hasher=std::hash<int>,
-              _Keyeq=std::equal_to<int>,
-              _Alloc=std::allocator<std::pair<const int,ConnectedUser>>
-          ]
-  c:\users\marti\documents\github\mage\mage_engine\mage_server\server.cpp(20): note: or       'std::_List_iterator<std::_List_val<std::_List_simple_types<_Ty>>> std::_Hash<std::_Umap_traits<_Kty,ConnectedUser,std::_Uhash_compare<_Kty,_Hasher,_Keyeq>,_Alloc,false>>::end(void) noexcept'
-          with
-          [
-              _Ty=std::pair<const int,ConnectedUser>,
-              _Kty=int,
-              _Hasher=std::hash<int>,
-              _Keyeq=std::equal_to<int>,
-              _Alloc=std::allocator<std::pair<const int,ConnectedUser>>
-          ]
-c:\users\marti\documents\github\mage\mage_engine\mage_server\server.cpp(28): error C3867: 'std::_Hash<std::_Umap_traits<_Kty,_Ty,std::_Uhash_compare<_Kty,_Hasher,_Keyeq>,_Alloc,false>>::begin': non-standard syntax; use '&' to create a pointer to member
-          with
-          [
-              _Kty=int,
-              _Ty=ConnectedUser,
-              _Hasher=std::hash<int>,
-              _Keyeq=std::equal_to<int>,
-              _Alloc=std::allocator<std::pair<const int,ConnectedUser>>
-          ]
-c:\users\marti\documents\github\mage\mage_engine\mage_server\server.cpp(28): error C3536: 'it': cannot be used before it is initialized
-c:\users\marti\documents\github\mage\mage_engine\mage_server\server.cpp(28): error C3867: 'std::_Hash<std::_Umap_traits<_Kty,_Ty,std::_Uhash_compare<_Kty,_Hasher,_Keyeq>,_Alloc,false>>::end': non-standard syntax; use '&' to create a pointer to member
-          with
-          [
-              _Kty=int,
-              _Ty=ConnectedUser,
-              _Hasher=std::hash<int>,
-              _Keyeq=std::equal_to<int>,
-              _Alloc=std::allocator<std::pair<const int,ConnectedUser>>
-          ]
-c:\users\marti\documents\github\mage\mage_engine\mage_server\server.cpp(28): error C2568: '!=': unable to resolve function overload
-  c:\users\marti\documents\github\mage\mage_engine\mage_server\server.cpp(28): note: could be 'std::_List_const_iterator<std::_List_val<std::_List_simple_types<_Ty>>> std::_Hash<std::_Umap_traits<_Kty,ConnectedUser,std::_Uhash_compare<_Kty,_Hasher,_Keyeq>,_Alloc,false>>::end(unsigned int) const'
-          with
-          [
-              _Ty=std::pair<const int,ConnectedUser>,
-              _Kty=int,
-              _Hasher=std::hash<int>,
-              _Keyeq=std::equal_to<int>,
-              _Alloc=std::allocator<std::pair<const int,ConnectedUser>>
-          ]
-  c:\users\marti\documents\github\mage\mage_engine\mage_server\server.cpp(28): note: or       'std::_List_iterator<std::_List_val<std::_List_simple_types<_Ty>>> std::_Hash<std::_Umap_traits<_Kty,ConnectedUser,std::_Uhash_compare<_Kty,_Hasher,_Keyeq>,_Alloc,false>>::end(unsigned int)'
-          with
-          [
-              _Ty=std::pair<const int,ConnectedUser>,
-              _Kty=int,
-              _Hasher=std::hash<int>,
-              _Keyeq=std::equal_to<int>,
-              _Alloc=std::allocator<std::pair<const int,ConnectedUser>>
-          ]
-  c:\users\marti\documents\github\mage\mage_engine\mage_server\server.cpp(28): note: or       'std::_List_const_iterator<std::_List_val<std::_List_simple_types<_Ty>>> std::_Hash<std::_Umap_traits<_Kty,ConnectedUser,std::_Uhash_compare<_Kty,_Hasher,_Keyeq>,_Alloc,false>>::end(void) noexcept const'
-          with
-          [
-              _Ty=std::pair<const int,ConnectedUser>,
-              _Kty=int,
-              _Hasher=std::hash<int>,
-              _Keyeq=std::equal_to<int>,
-              _Alloc=std::allocator<std::pair<const int,ConnectedUser>>
-          ]
-  c:\users\marti\documents\github\mage\mage_engine\mage_server\server.cpp(28): note: or       'std::_List_iterator<std::_List_val<std::_List_simple_types<_Ty>>> std::_Hash<std::_Umap_traits<_Kty,ConnectedUser,std::_Uhash_compare<_Kty,_Hasher,_Keyeq>,_Alloc,false>>::end(void) noexcept'
-          with
-          [
-              _Ty=std::pair<const int,ConnectedUser>,
-              _Kty=int,
-              _Hasher=std::hash<int>,
-              _Keyeq=std::equal_to<int>,
-              _Alloc=std::allocator<std::pair<const int,ConnectedUser>>
-          ]
-c:\users\marti\documents\github\mage\mage_engine\mage_server\server.cpp(43): error C3867: 'std::_Hash<std::_Umap_traits<_Kty,_Ty,std::_Uhash_compare<_Kty,_Hasher,_Keyeq>,_Alloc,false>>::end': non-standard syntax; use '&' to create a pointer to member
-          with
-          [
-              _Kty=int,
-              _Ty=ConnectedUser,
-              _Hasher=std::hash<int>,
-              _Keyeq=std::equal_to<int>,
-              _Alloc=std::allocator<std::pair<const int,ConnectedUser>>
-          ]
-c:\users\marti\documents\github\mage\mage_engine\mage_server\server.cpp(43): error C2678: binary '==': no operator found which takes a left-hand operand of type 'std::_List_iterator<std::_List_val<std::_List_simple_types<_Ty>>>' (or there is no acceptable conversion)
-          with
-          [
-              _Ty=std::pair<const int,ConnectedUser>
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\list(237): note: could be 'bool std::_List_const_iterator<std::_List_val<std::_List_simple_types<_Ty>>>::operator ==(const std::_List_const_iterator<std::_List_val<std::_List_simple_types<_Ty>>> &) const'
-          with
-          [
-              _Ty=std::pair<const int,ConnectedUser>
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\exception(321): note: or       'bool std::operator ==(const std::exception_ptr &,const std::exception_ptr &) noexcept' [found using argument-dependent lookup]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\exception(326): note: or       'bool std::operator ==(std::nullptr_t,const std::exception_ptr &) noexcept' [found using argument-dependent lookup]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\exception(331): note: or       'bool std::operator ==(const std::exception_ptr &,std::nullptr_t) noexcept' [found using argument-dependent lookup]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\system_error(266): note: or       'bool std::operator ==(const std::error_code &,const std::error_code &) noexcept' [found using argument-dependent lookup]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\system_error(272): note: or       'bool std::operator ==(const std::error_code &,const std::error_condition &) noexcept' [found using argument-dependent lookup]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\system_error(278): note: or       'bool std::operator ==(const std::error_condition &,const std::error_code &) noexcept' [found using argument-dependent lookup]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\system_error(284): note: or       'bool std::operator ==(const std::error_condition &,const std::error_condition &) noexcept' [found using argument-dependent lookup]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\thread(208): note: or       'bool std::operator ==(std::thread::id,std::thread::id) noexcept' [found using argument-dependent lookup]
-  c:\users\marti\documents\github\mage\mage_engine\mage_server\server.cpp(43): note: while trying to match the argument list '(std::_List_iterator<std::_List_val<std::_List_simple_types<_Ty>>>, overloaded-function)'
-          with
-          [
-              _Ty=std::pair<const int,ConnectedUser>
-          ]
   Generating Code...
+  Mage_Server.vcxproj -> C:\Users\marti\Documents\GitHub\MAGE\MAGE_Engine\Debug\Mage_Server.exe

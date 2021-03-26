@@ -10,6 +10,7 @@
 #include "PointLight.h"
 #include "SpotLight.h"
 #include "Mesh.h"
+#include "RemoteClient.h"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 

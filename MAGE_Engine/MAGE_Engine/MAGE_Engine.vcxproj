@@ -87,7 +87,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\include;$(SolutionDir)Dependencies\SFML-2.5.1\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\include;$(SolutionDir)Dependencies\SFML-2.5.1\include;$(SolutionDir)Utilities</AdditionalIncludeDirectories>
       <LanguageStandard>
       </LanguageStandard>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
@@ -106,7 +106,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\include;$(SolutionDir)Dependencies\SFML-2.5.1\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\include;$(SolutionDir)Dependencies\SFML-2.5.1\include;$(SolutionDir)Utilities</AdditionalIncludeDirectories>
       <LanguageStandard>
       </LanguageStandard>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
@@ -126,7 +126,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\include;$(SolutionDir)Dependencies\SFML-2.5.1\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\include;$(SolutionDir)Dependencies\SFML-2.5.1\include;$(SolutionDir)Utilities</AdditionalIncludeDirectories>
       <LanguageStandard>
       </LanguageStandard>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
@@ -148,7 +148,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\include;$(SolutionDir)Dependencies\SFML-2.5.1\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\include;$(SolutionDir)Dependencies\SFML-2.5.1\include;$(SolutionDir)Utilities</AdditionalIncludeDirectories>
       <LanguageStandard>
       </LanguageStandard>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
@@ -163,6 +163,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\Utilities\Maths.cpp" />
+    <ClCompile Include="..\Utilities\Matrix4f.cpp" />
+    <ClCompile Include="..\Utilities\Vector2f.cpp" />
+    <ClCompile Include="..\Utilities\Vector2i.cpp" />
+    <ClCompile Include="..\Utilities\Vector3f.cpp" />
+    <ClCompile Include="..\Utilities\Vector3i.cpp" />
+    <ClCompile Include="src\RemoteClient.cpp" />
+    <ClCompile Include="src\NetworkClient.cpp" />
     <ClCompile Include="src\SpotLight.cpp" />
     <ClCompile Include="src\PointLight.cpp" />
     <ClCompile Include="src\BoxCollider.cpp" />
@@ -176,19 +184,22 @@
     <ClCompile Include="src\Entity.cpp" />
     <ClCompile Include="src\Component.cpp" />
     <ClCompile Include="src\glad.c" />
-    <ClCompile Include="src\Matrix4f.cpp" />
-    <ClCompile Include="src\Maths.cpp" />
     <ClCompile Include="src\MeshGL.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Visualization.cpp" />
-    <ClCompile Include="src\Vector2f.cpp" />
-    <ClCompile Include="src\Vector2i.cpp" />
-    <ClCompile Include="src\Vector3f.cpp" />
-    <ClCompile Include="src\Vector3i.cpp" />
     <ClCompile Include="src\World.cpp" />
     <ClCompile Include="src\Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Utilities\Maths.h" />
+    <ClInclude Include="..\Utilities\Matrix4f.h" />
+    <ClInclude Include="..\Utilities\NetworkMessages.h" />
+    <ClInclude Include="..\Utilities\Vector2f.h" />
+    <ClInclude Include="..\Utilities\Vector2i.h" />
+    <ClInclude Include="..\Utilities\Vector3f.h" />
+    <ClInclude Include="..\Utilities\Vector3i.h" />
+    <ClInclude Include="src\RemoteClient.h" />
+    <ClInclude Include="src\NetworkClient.h" />
     <ClInclude Include="src\SpotLight.h" />
     <ClInclude Include="src\PointLight.h" />
     <ClInclude Include="src\BoxCollider.h" />
@@ -201,14 +212,8 @@
     <ClInclude Include="src\Mesh.h" />
     <ClInclude Include="src\Entity.h" />
     <ClInclude Include="src\Component.h" />
-    <ClInclude Include="src\Matrix4f.h" />
-    <ClInclude Include="src\Maths.h" />
     <ClInclude Include="src\MeshGL.h" />
     <ClInclude Include="src\Visualization.h" />
-    <ClInclude Include="src\Vector2f.h" />
-    <ClInclude Include="src\Vector2i.h" />
-    <ClInclude Include="src\Vector3f.h" />
-    <ClInclude Include="src\Vector3i.h" />
     <ClInclude Include="src\World.h" />
     <ClInclude Include="src\Transform.h" />
   </ItemGroup>

@@ -2,10 +2,13 @@
 //
 
 #include "pch.h"
+#include "Server.h"
 #include <iostream>
 
 int main()
 {
+	Server myServer;
+	myServer.run();
     std::cout << "Hello World!\n"; 
 }
 
