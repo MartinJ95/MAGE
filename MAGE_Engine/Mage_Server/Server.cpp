@@ -22,20 +22,19 @@ void Server::run()
 	m_listenerThread = std::thread(&Server::ListenForConnections, this);
 	while (true)
 	{
-		m_lock.lock();
-		for (auto it = m_users.begin(); it != m_users.end(); it++)
+		/*for (auto it = m_users.begin(); it != m_users.end(); it++)
 		{
 			ConnectedUser* user = it->second;
 			user->m_ReaderThread = std::thread(&ConnectedUser::ReadForMessages, user);
 		}
-		m_lock.unlock();
-		m_lock.lock();
 		for (auto it = m_users.begin(); it != m_users.end(); it++)
 		{
 			ConnectedUser* user = it->second;
-			user->m_ReaderThread.join();
-		}
-		m_lock.unlock();
+			if (user->m_ReaderThread.joinable())
+			{
+				user->m_ReaderThread.join();
+			}
+		}*/
 	}
 }
 
@@ -54,6 +53,7 @@ void Server::ListenForConnections()
 				if (m_users.find(i) == m_users.end())
 				{
 					newSocket->setBlocking(false);
+					std::cout << "confirming new client" << std::endl;
 					m_users.emplace(std::make_pair(i, new ConnectedUser(this, std::move(newSocket))));
 					Message newMessage;
 					newMessage.type = Connect;
@@ -61,10 +61,21 @@ void Server::ListenForConnections()
 					for (auto it = m_users.begin(); it != m_users.end(); it++)
 					{
 						char *message = (char*)&newMessage;
-						it->second->SendMessage(message, sizeof(newMessage));
+						it->second->SendMessage(message, sizeof(Message));
 					}
-					break;
+					std::this_thread::sleep_for(std::chrono::milliseconds(10));
+					for (auto it = m_users.begin(); it != m_users.end(); it++)
+					{
+						if (it->first != i)
+						{
+							Message previousConnected;
+							previousConnected.type = Connect;
+							previousConnected.ID = it->first;
+							m_users.find(i)->second->SendMessage(&previousConnected, sizeof(Message));
+						}
+					}
 					m_lock.unlock();
+					break;
 				}
 				m_lock.unlock();
 			}

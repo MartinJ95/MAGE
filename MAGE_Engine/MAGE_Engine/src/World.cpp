@@ -216,7 +216,11 @@ bool World::Initualize()
 		remotePlayer->getComponent<SpotLight>()->m_range = 50.f;
 		m_pointLights.push_back(remotePlayer->getComponent<PointLight>());
 		m_spotLights.push_back(remotePlayer->getComponent<SpotLight>());
+
+		m_entities.emplace_back(remotePlayer);
 	}
+
+	m_client.Initialize();
 
 	return true;
 }
@@ -266,14 +270,21 @@ void World::Run()
 		r->m_impulseForce += forward * movement.x * 0.01;
 		r->m_impulseForce += forward.crossProduct(m_worldUp) * movement.z * 0.01;
 
-		TransformUpdateMessage tm;
-		tm.ID = m_client.m_ID;
-		tm.type = MessageType::PositionUpdate;
-		tm.position = m_mainCamera->m_entity.getComponent<Transform>()->m_position;
-		tm.rotation = m_mainCamera->m_entity.getComponent<Transform>()->m_rotation;
-		tm.scale = m_mainCamera->m_entity.getComponent<Transform>()->m_scale;
+		sf::Time time = m_clock.getElapsedTime();
+		if (time.asMilliseconds() > 10)
+		{
+			TransformUpdateMessage tm;
+			tm.ID = m_client.m_ID;
+			tm.type = MessageType::PositionUpdate;
+			tm.position = m_mainCamera->m_entity.getComponent<Transform>()->m_position;
+			tm.rotation = m_mainCamera->m_entity.getComponent<Transform>()->m_rotation;
+			tm.scale = m_mainCamera->m_entity.getComponent<Transform>()->m_scale;
 
-		m_client.SendMessage((TransformUpdateMessage*)&tm);
+			m_client.SendMessage(&tm);
+			m_clock.restart();
+		}
+
+		
 
 		m_viz.display();
 

@@ -2,6 +2,8 @@
 #include <SFML/Network.hpp>
 #include "NetworkMessages.h"
 #include <iostream>
+#include <thread>
+#include <mutex>
 
 class World;
 
@@ -16,9 +18,13 @@ public:
 	size_t m_bufferSize;
 	size_t m_bufferRecieved;
 	World &m_worldRef;
+	std::thread m_readerThread;
+	std::mutex m_lock;
+	bool m_connected;
 	NetworkClient(World &world);
+	void Initialize();
 	void RecieveMessage();
-	void SendMessage(const Message *message);
+	void SendMessage(Message *message);
 	~NetworkClient();
 };
 

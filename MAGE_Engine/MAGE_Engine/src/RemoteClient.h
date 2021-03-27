@@ -5,6 +5,7 @@ class RemoteClient :
 {
 public:
 	RemoteClient(Entity &entity);
+	void Update(World &world) override;
 	~RemoteClient();
 public:
 	int m_ID;

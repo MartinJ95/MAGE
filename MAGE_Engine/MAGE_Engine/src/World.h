@@ -30,5 +30,6 @@ public:
 	Vector3f m_worldRight;
 	Vector3f m_ambientLighting;
 	Camera *m_mainCamera;
+	sf::Clock m_clock;
 };
 

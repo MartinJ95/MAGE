@@ -1,5 +1,6 @@
 #include <SFML/Network.hpp>
 #include <thread>
+#include <mutex>
 
 class Server;
 
@@ -9,7 +10,7 @@ class ConnectedUser
 public:
 	ConnectedUser(Server *server, std::unique_ptr<sf::TcpSocket> socket);
 	void ReadForMessages();
-	void SendMessage(char *message, size_t messageSize);
+	void SendMessage(void *message, size_t messageSize);
 	~ConnectedUser();
 public:
 	Server &serverRef;
@@ -18,6 +19,8 @@ public:
 	char m_buffer[1024];
 	size_t m_bufferSize;
 	size_t m_bufferRecieved;
+	bool m_connected;
 	std::thread m_ReaderThread;
+	std::mutex m_lock;
 };
 

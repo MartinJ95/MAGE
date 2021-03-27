@@ -25,12 +25,18 @@ c:\users\marti\documents\github\mage\mage_engine\utilities\vector3i.cpp(40): war
 c:\users\marti\documents\github\mage\mage_engine\utilities\vector3i.cpp(47): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
 c:\users\marti\documents\github\mage\mage_engine\utilities\vector3i.cpp(52): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
   RemoteClient.cpp
-  NetworkClient.cpp
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\networkclient.cpp(41): warning C4018: '<': signed/unsigned mismatch
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\networkclient.cpp(54): warning C4018: '<': signed/unsigned mismatch
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\networkclient.cpp(69): warning C4018: '<': signed/unsigned mismatch
 c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\entity.h(65): warning C4018: '<': signed/unsigned mismatch
-  c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\networkclient.cpp(43): note: see reference to function template instantiation 'T *Entity::getComponent<RemoteClient>(void)' being compiled
+  c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\remoteclient.cpp(16): note: see reference to function template instantiation 'T *Entity::getComponent<Transform>(void)' being compiled
+          with
+          [
+              T=Transform
+          ]
+  NetworkClient.cpp
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\networkclient.cpp(55): warning C4018: '<': signed/unsigned mismatch
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\networkclient.cpp(69): warning C4018: '<': signed/unsigned mismatch
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\networkclient.cpp(84): warning C4018: '<': signed/unsigned mismatch
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\entity.h(65): warning C4018: '<': signed/unsigned mismatch
+  c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\networkclient.cpp(57): note: see reference to function template instantiation 'T *Entity::getComponent<RemoteClient>(void)' being compiled
           with
           [
               T=RemoteClient
@@ -106,11 +112,11 @@ c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\entity.h(65): w
 c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(15): warning C4305: 'argument': truncation from 'double' to 'const float'
 c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(182): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
 c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(183): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(232): warning C4018: '<': signed/unsigned mismatch
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(259): warning C4305: 'argument': truncation from 'double' to 'const float'
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(266): warning C4305: 'argument': truncation from 'double' to 'const float'
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(267): warning C4305: 'argument': truncation from 'double' to 'const float'
-c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(286): warning C4018: '<': signed/unsigned mismatch
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(236): warning C4018: '<': signed/unsigned mismatch
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(263): warning C4305: 'argument': truncation from 'double' to 'const float'
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(270): warning C4305: 'argument': truncation from 'double' to 'const float'
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(271): warning C4305: 'argument': truncation from 'double' to 'const float'
+c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(297): warning C4018: '<': signed/unsigned mismatch
 c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\entity.h(65): warning C4018: '<': signed/unsigned mismatch
   c:\users\marti\documents\github\mage\mage_engine\mage_engine\src\world.cpp(42): note: see reference to function template instantiation 'T *Entity::getComponent<Transform>(void)' being compiled
           with

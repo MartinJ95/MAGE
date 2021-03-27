@@ -10,6 +10,9 @@ enum MessageType
 
 struct Message
 {
+	Message() :
+		type(),
+		ID(){}
 	MessageType type;
 	int ID;
 };
@@ -21,6 +24,11 @@ struct DirectionChangeMessage : Message
 
 struct TransformUpdateMessage : Message
 {
+	TransformUpdateMessage() :
+		Message(),
+		position(),
+		rotation(),
+		scale() {}
 	Vector3f position;
 	Vector3f rotation;
 	Vector3f scale;
